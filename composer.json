@@ -1,0 +1,7 @@
+{
+	"require": {
+		"yoast/yoastcs": "2.1",
+		"squizlabs/php_codesniffer": "^3.5",
+		"chillerlan/php-qrcode": "^4.3"
+	}
+}
