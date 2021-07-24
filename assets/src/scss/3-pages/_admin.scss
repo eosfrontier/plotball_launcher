@@ -1,0 +1,83 @@
+body,
+html {
+	min-height: 100%;
+}
+
+html {
+	position: relative;
+}
+
+header {
+	min-height: 200px;
+	border-bottom: solid 1px #ccc;
+	margin-bottom: 24px;
+	padding-top: 24px;
+}
+
+.row {
+	width: 1024px;
+	margin: 0 auto;
+}
+
+.modal {
+	background: #fff;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background: rgba(0, 0, 0, 0.4);
+
+	&__window {
+		position: absolute;
+		background: $color-white;
+		width: calc(90% - 32px);
+		height: calc(90% - 32px);
+		top: 5%;
+		left: 5%;
+		padding: 16px;
+		overflow-y: scroll;
+
+		form {
+
+			input,
+			textarea,
+			select {
+				border: solid 1px #ccc;
+				padding: 6px;
+				min-width: 240px;
+			}
+
+			button {
+				border: solid 1px #ccc;
+				padding: 6px;
+				border-radius: 2px;
+				transition: all 0.1s ease;
+
+				&:hover {
+					background: #ddd;
+					cursor: pointer;
+				}
+			}
+
+			textarea {
+				height: 150px;
+
+			}
+
+			label {
+				display: block;
+				margin-bottom: 4px;
+				font-weight: 600;
+			}
+
+			select {
+				min-width: 240px;
+			}
+
+			.skill_row {
+				margin-bottom: 8px;
+			}
+		}
+	}
+}
