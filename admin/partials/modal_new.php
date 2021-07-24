@@ -1,8 +1,11 @@
 <?php
 
+use frontier\ploball\database\admin\Sl;
 use frontier\ploball\database\admin\Skills;
 
 $skills = Skills::get_all_skills_groups();
+
+$sls = Sl::get_all_sls();
 
 $main_skills = '';
 
@@ -17,6 +20,11 @@ foreach ( $skills as $skill ) {
 	if ( $skill['parents'] !== 'none' ) {
 		$special_skills .= '<option value="' . $skill['primaryskill_id'] . '">' . $skill['name'] . '</option>';
 	}
+}
+
+$sl_list = '';
+foreach ( $sls as $sl ) {
+	$sl_list .= '<option value="' . $sl['id'] . '">' . $sl['name'] . '</option>';
 }
 
 ?>
@@ -114,6 +122,14 @@ foreach ( $skills as $skill ) {
 					<option value="skill">Skill</option>
 					<option value="skill_transfer">Skill transfer</option>
 					<option value="threshold">Threshold</option>
+				</select>
+			</p>
+			<p>
+				<label for="new_form_plot_owner">
+					Plot owner
+				</label>
+				<select id="new_form_plot_owner" name="plot_owner">
+					<?php echo $sl_list; ?>
 				</select>
 			</p>
 		</form>
