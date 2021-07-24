@@ -22,6 +22,9 @@ module.exports = function (grunt) {
 				files: {
 					'assets/css/style.min.css': [
 						'assets/src/scss/style.scss'
+					],
+					'assets/css/admin.min.css': [
+						'assets/src/scss/admin.scss'
 					]
 				}
 			}
