@@ -145,7 +145,8 @@ foreach ( $sls as $sl ) {
 				</label>
 				<textarea id="new_form_flavourtext" name="flavourtext"></textarea>
 			</p>
-
+			<button>Save draft</button>
+			<button>Publish plotball</button>
 		</form>
 	</div>
 </div>
