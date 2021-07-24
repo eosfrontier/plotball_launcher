@@ -73,10 +73,10 @@ foreach ( $skills as $skill ) {
 				</button>
 			</p>
 			<p>
-				<label>
+				<label for="new_form_type">
 					Type
 				</label>
-				<select name="type">
+				<select id="new_form_type" name="type">
 					<optgroup label="Plotgedreven">
 						<option value="anticlima">Anti-Climax</option>
 						<option value="climax">Climax</option>
@@ -98,6 +98,24 @@ foreach ( $skills as $skill ) {
 					</optgroup>
 				</select>
 			</p>
+			<p>
+				<label for="new_form_bounce">
+					Bounce
+				</label>
+				<select id="new_form_bounce" class="bounce">
+					<option value="buff">Buff</option>
+					<option value="combine_them_all">Combine them all!</option>
+					<option value="faciliterende">Faciliterende</option>
+					<option value="factional">Factional</option>
+					<option value="group">Group</option>
+					<option value="healing">Healing/Reparatie</option>
+					<option value="item">Item</option>
+					<option value="multiplier">Multiplier</option>
+					<option value="skill">Skill</option>
+					<option value="skill_transfer">Skill transfer</option>
+					<option value="threshold">Threshold</option>
+				</select>
+			</p>
 		</form>
 	</div>
 </div>
@@ -106,8 +124,7 @@ foreach ( $skills as $skill ) {
 	function add_main_skill() {
 		var date = + new Date();
 		var html = `
-			<div class="`+ date +` skill_row">
-				
+			<div class="`+ date +` skill_row">			
 				<select class="" name="main_skills_validations[`+ date +`][skill]">
 					<optgroup label="Main Skills">
 						<?php echo $main_skills; ?>
@@ -126,8 +143,7 @@ foreach ( $skills as $skill ) {
 					<option value="5">5</option>
 				</select>
 				<button class="remove-validation">Remove row</i>
-			</div>
-			
+			</div>		
 		`;		
 		$("#new_main_skill_button").before(html);
 	};
@@ -177,6 +193,4 @@ foreach ( $skills as $skill ) {
 		`;		
 		$("#new_faction_button").before(html);
 	};
-
-	
 </script>
