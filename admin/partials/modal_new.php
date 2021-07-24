@@ -72,6 +72,32 @@ foreach ( $skills as $skill ) {
 					New specialty skill validation
 				</button>
 			</p>
+			<p>
+				<label>
+					Type
+				</label>
+				<select name="type">
+					<optgroup label="Plotgedreven">
+						<option value="anticlima">Anti-Climax</option>
+						<option value="climax">Climax</option>
+						<option value="openended">Open ended</option>
+					</optgroup>
+					<optgroup label="Infodrip">
+						<option value="mystery">Mystery</option>
+						<option value="noir">Noir</option>
+						<option value="worldbuilding">Worldbuilding</option>
+					</optgroup>
+					<optgroup label="Planning">
+						<option value="heist-coverup">Heist/coverup</option>
+						<option value="strategy">Strategy</option>
+					</optgroup>
+					<optgroup label="Talky">
+						<option value="legal">Legal</option>
+						<option value="philosophical">Philosophical</option>
+						<option value="political">Political</option>
+					</optgroup>
+				</select>
+			</p>
 		</form>
 	</div>
 </div>
