@@ -38,6 +38,32 @@ foreach ( $sls as $sl ) {
 				<input id="title-plotbal" required name="title" type="text" />
 			</p>
 			<p>
+				<label for="new_form_type">
+					Type
+				</label>
+				<select id="new_form_type" name="type">
+					<optgroup label="Plotgedreven">
+						<option value="anticlima">Anti-Climax</option>
+						<option value="climax">Climax</option>
+						<option value="openended">Open ended</option>
+					</optgroup>
+					<optgroup label="Infodrip">
+						<option value="mystery">Mystery</option>
+						<option value="noir">Noir</option>
+						<option value="worldbuilding">Worldbuilding</option>
+					</optgroup>
+					<optgroup label="Planning">
+						<option value="heist-coverup">Heist/coverup</option>
+						<option value="strategy">Strategy</option>
+					</optgroup>
+					<optgroup label="Talky">
+						<option value="legal">Legal</option>
+						<option value="philosophical">Philosophical</option>
+						<option value="political">Political</option>
+					</optgroup>
+				</select>
+			</p>
+			<p>
 				<label>
 					Starting date & time
 				</label>
@@ -49,6 +75,32 @@ foreach ( $sls as $sl ) {
 					Expected runtime in minutes
 				</label>
 				<input name="expected-runtime" required min="0" id="expected-runtime" step="10" type="number">
+			</p>
+			<p>
+				<label for="new_form_bounce">
+					Bounce
+				</label>
+				<select id="new_form_bounce" class="bounce">
+					<option value="buff">Buff</option>
+					<option value="combine_them_all">Combine them all!</option>
+					<option value="faciliterende">Faciliterende</option>
+					<option value="factional">Factional</option>
+					<option value="group">Group</option>
+					<option value="healing">Healing/Reparatie</option>
+					<option value="item">Item</option>
+					<option value="multiplier">Multiplier</option>
+					<option value="skill">Skill</option>
+					<option value="skill_transfer">Skill transfer</option>
+					<option value="threshold">Threshold</option>
+				</select>
+			</p>
+			<p>
+				<label for="new_form_plot_owner">
+					Plot owner
+				</label>
+				<select id="new_form_plot_owner" name="plot_owner">
+					<?php echo $sl_list; ?>
+				</select>
 			</p>
 			<p>
 				<label for="expected-runtime">
@@ -80,65 +132,27 @@ foreach ( $sls as $sl ) {
 					New specialty skill validation
 				</button>
 			</p>
+			
 			<p>
-				<label for="new_form_type">
-					Type
+				<label for="new_form_loot">
+					Loot
 				</label>
-				<select id="new_form_type" name="type">
-					<optgroup label="Plotgedreven">
-						<option value="anticlima">Anti-Climax</option>
-						<option value="climax">Climax</option>
-						<option value="openended">Open ended</option>
-					</optgroup>
-					<optgroup label="Infodrip">
-						<option value="mystery">Mystery</option>
-						<option value="noir">Noir</option>
-						<option value="worldbuilding">Worldbuilding</option>
-					</optgroup>
-					<optgroup label="Planning">
-						<option value="heist-coverup">Heist/coverup</option>
-						<option value="strategy">Strategy</option>
-					</optgroup>
-					<optgroup label="Talky">
-						<option value="legal">Legal</option>
-						<option value="philosophical">Philosophical</option>
-						<option value="political">Political</option>
-					</optgroup>
-				</select>
+				<textarea id="new_form_loot" name="loot"></textarea>
 			</p>
 			<p>
-				<label for="new_form_bounce">
-					Bounce
+				<label for="new_form_flavourtext">
+					Flavour text after plot
 				</label>
-				<select id="new_form_bounce" class="bounce">
-					<option value="buff">Buff</option>
-					<option value="combine_them_all">Combine them all!</option>
-					<option value="faciliterende">Faciliterende</option>
-					<option value="factional">Factional</option>
-					<option value="group">Group</option>
-					<option value="healing">Healing/Reparatie</option>
-					<option value="item">Item</option>
-					<option value="multiplier">Multiplier</option>
-					<option value="skill">Skill</option>
-					<option value="skill_transfer">Skill transfer</option>
-					<option value="threshold">Threshold</option>
-				</select>
+				<textarea id="new_form_flavourtext" name="flavourtext"></textarea>
 			</p>
-			<p>
-				<label for="new_form_plot_owner">
-					Plot owner
-				</label>
-				<select id="new_form_plot_owner" name="plot_owner">
-					<?php echo $sl_list; ?>
-				</select>
-			</p>
+
 		</form>
 	</div>
 </div>
 
 <script>
 	function add_main_skill() {
-		var date = + new Date();
+		var date = + new Date() + Math.floor(Math.random() * 100);
 		var html = `
 			<div class="`+ date +` skill_row">			
 				<select class="" name="main_skills_validations[`+ date +`][skill]">
@@ -165,7 +179,7 @@ foreach ( $sls as $sl ) {
 	};
 
 	function add_specialty_skill() {
-		var date = + new Date();
+		var date = + new Date() + Math.floor(Math.random() * 100);
 		var html = `
 			<div class="`+ date +` skill_row">
 				<select class="" name="specialty_skills_validations[`+ date +`][skill]">
@@ -192,7 +206,7 @@ foreach ( $sls as $sl ) {
 	};
 
 	function add_faction() {
-		var date = + new Date();
+		var date = + new Date() + Math.floor(Math.random() * 100);
 		var html = `
 			<div class="`+ date +` skill_row">
 				<select class="" name="faction_validations[`+ date +`][faction]">

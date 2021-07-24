@@ -37,7 +37,6 @@
 		});
 
 		$('.modal__window').on("click", ".remove-validation", function() {
-			console.log('hoi');
 			$(this).parent().remove();
 		})
 	</script>

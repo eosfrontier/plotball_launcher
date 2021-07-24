@@ -45,7 +45,8 @@ header {
 			select {
 				border: solid 1px #ccc;
 				padding: 6px;
-				min-width: 240px;
+				max-width: 240px;
+				width: 100%;
 			}
 
 			button {
@@ -62,7 +63,8 @@ header {
 
 			textarea {
 				height: 150px;
-
+				width: 100%;
+				max-width: 480px;
 			}
 
 			label {
@@ -72,7 +74,8 @@ header {
 			}
 
 			select {
-				min-width: 240px;
+				max-width: 240px;
+				width: 100%;
 			}
 
 			.skill_row {
