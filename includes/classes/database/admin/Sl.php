@@ -2,7 +2,6 @@
 namespace frontier\ploball\database\admin;
 
 use frontier\ploball\database\Get;
-
 class Sl {
 
 	/**
