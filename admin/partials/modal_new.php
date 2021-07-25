@@ -1,7 +1,15 @@
 <?php
 
+use frontier\ploball\database\Insert;
 use frontier\ploball\database\admin\Sl;
 use frontier\ploball\database\admin\Skills;
+
+$args = [
+	'title' => 'hoi',
+	'loot'  => 'doei',
+];
+
+$put = Insert::insert( 'plotball', $args );
 
 $skills = Skills::get_all_skills_groups();
 
@@ -132,7 +140,6 @@ foreach ( $sls as $sl ) {
 					New specialty skill validation
 				</button>
 			</p>
-			
 			<p>
 				<label for="new_form_loot">
 					Loot
