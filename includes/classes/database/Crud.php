@@ -37,6 +37,7 @@ class Crud {
 
 		$stmt   = Database_Connection::connect()->prepare( $sql );
 		$result = $stmt->execute( $values );
+		$stmt   = null;
 
 		return $result;
 	}
@@ -46,11 +47,14 @@ class Crud {
 	 *
 	 * @param  mixed $sql The query.
 	 * @param  mixed $args The arguments needed for the query.
-	 * @return object
+	 * @return array
 	 */
-	public static function get( $sql, $args = [] ):object {
+	public static function get( $sql, $args = [] ):array {
 		$stmt = Database_Connection::connect()->prepare( $sql );
 		$stmt->execute( $args );
-		return $stmt;
+		$result = $stmt->fetchAll();
+		$stmt   = null;
+
+		return $result;
 	}
 }

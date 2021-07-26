@@ -12,7 +12,7 @@ class Skills {
 	 */
 	public static function get_all_skills(): array {
 
-		$skills = Crud::get( 'SELECT * FROM ecc_skills_allskills' )->fetchAll();
+		$skills = Crud::get( 'SELECT * FROM ecc_skills_allskills' );
 
 		return $skills;
 	}
@@ -24,7 +24,7 @@ class Skills {
 	 */
 	public static function get_all_skills_groups(): array {
 
-		$skills = Crud::get( 'SELECT * FROM ecc_skills_groups ORDER BY name' )->fetchAll();
+		$skills = Crud::get( 'SELECT * FROM ecc_skills_groups ORDER BY name' );
 
 		return $skills;
 	}
