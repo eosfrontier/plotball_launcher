@@ -4,7 +4,7 @@ namespace frontier\ploball\database;
 
 use frontier\ploball\database\Database_Connection;
 
-class Insert {
+class Crud {
 
 	/**
 	 * Function to insert a new row into a specified table.
@@ -15,7 +15,6 @@ class Insert {
 	 */
 	public static function insert( $table = '', $args = [] ):bool {
 		$count          = count( $args );
-		$i              = 0;
 		$question_marks = '';
 		$columns_keys   = array_keys( $args );
 		$values         = [];
@@ -40,5 +39,18 @@ class Insert {
 		$result = $stmt->execute( $values );
 
 		return $result;
+	}
+
+	/**
+	 * An abstract select query function.
+	 *
+	 * @param  mixed $sql The query.
+	 * @param  mixed $args The arguments needed for the query.
+	 * @return object
+	 */
+	public static function get( $sql, $args = [] ):object {
+		$stmt = Database_Connection::connect()->prepare( $sql );
+		$stmt->execute( $args );
+		return $stmt;
 	}
 }
