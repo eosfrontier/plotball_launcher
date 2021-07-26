@@ -21,12 +21,8 @@ class Insert {
 		$values         = [];
 		$column         = '';
 
-		while ( $i < $count ) {
-			$question_marks .= '?,';
-			$i++;
-		}
-
-		$question_marks = substr( $question_marks, 0, -1 );
+		$question_marks = array_fill( 0, $count, '?' );
+		$question_marks = implode( ', ', $question_marks );
 
 		foreach ( $args as $arg ) {
 			$values[] = $arg;
