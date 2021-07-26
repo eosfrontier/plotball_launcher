@@ -61,14 +61,14 @@ class Crud {
 	 * @param  array  $args An array where the key is the column and the value is the value that goes into said column.
 	 * @return bool
 	 */
-	public function delete( $tablename, array $args = [] ) :bool {
+	public static function delete( $tablename, array $args = [] ) :bool {
 		$i = 0;
 		foreach ( $args as $key => $value ) {
 			$expression[ $i ] = $key . "='" . $value . "'";
 		}
 
 		$expression = implode( ' AND ', $expression );
-		$stmt       = $this->conn->prepare( "DELETE FROM $tablename WHERE $expression" );
+		$stmt       = Database_Connection::connect()->prepare( "DELETE FROM $tablename WHERE $expression" );
 		$result     = $stmt->execute();
 		$stmt       = null;
 
@@ -83,7 +83,7 @@ class Crud {
 	 * @param  array  $condition  An array where the key is the column and the value is the value that goes into said column that you want to use to target the row with.
 	 * @return bool
 	 */
-	public function update( string $tablename, array $set_values, array $condition ):bool {
+	public static function update( string $tablename, array $set_values, array $condition ):bool {
 
 		$i = 0;
 		foreach ( $set_values as $key => $value ) {
@@ -100,7 +100,7 @@ class Crud {
 		}
 		$set_condition = implode( ' AND ', $set_condition );
 
-		$stmt   = $this->conn->prepare( "UPDATE $tablename SET $set_expression WHERE $set_condition" );
+		$stmt   = Database_Connection::connect()->prepare( "UPDATE $tablename SET $set_expression WHERE $set_condition" );
 		$result = $stmt->execute();
 		$stmt   = null;
 
