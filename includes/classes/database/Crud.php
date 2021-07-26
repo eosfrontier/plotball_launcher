@@ -57,8 +57,8 @@ class Crud {
 	/**
 	 * Function to delete table rows.
 	 *
-	 * @param  string $tablename
-	 * @param  array  $args
+	 * @param  string $tablename Name of the table where the row lives.
+	 * @param  array  $args An array where the key is the column and the value is the value that goes into said column.
 	 * @return bool
 	 */
 	public function delete( $tablename, array $args = [] ) :bool {
@@ -71,6 +71,38 @@ class Crud {
 		$stmt       = $this->conn->prepare( "DELETE FROM $tablename WHERE $expression" );
 		$result     = $stmt->execute();
 		$stmt       = null;
+
+		return $result;
+	}
+
+	/**
+	 * Function to update a row.
+	 *
+	 * @param  string $tablename Name of the table where the row lives.
+	 * @param  array  $set_values  An array where the key is the column and the value is the value that goes into said column.
+	 * @param  array  $condition  An array where the key is the column and the value is the value that goes into said column that you want to use to target the row with.
+	 * @return bool
+	 */
+	public function update( string $tablename, array $set_values, array $condition ):bool {
+
+		$i = 0;
+		foreach ( $set_values as $key => $value ) {
+			$set_expression[ $i ] = $key . "='" . $value . "'";
+			$i++;
+		}
+
+		$set_expression = implode( ', ', $set_expression );
+
+		$a = 0;
+		foreach ( $condition as $key => $value ) {
+			$set_condition[ $a ] = $key . "='" . $value . "'";
+			$a++;
+		}
+		$set_condition = implode( ' AND ', $set_condition );
+
+		$stmt   = $this->conn->prepare( "UPDATE $tablename SET $set_expression WHERE $set_condition" );
+		$result = $stmt->execute();
+		$stmt   = null;
 
 		return $result;
 	}
