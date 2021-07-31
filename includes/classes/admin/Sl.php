@@ -1,5 +1,5 @@
 <?php
-namespace frontier\ploball\database\admin;
+namespace frontier\ploball\admin;
 
 use frontier\ploball\database\Crud;
 class Sl {
