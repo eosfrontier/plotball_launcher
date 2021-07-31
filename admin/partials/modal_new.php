@@ -1,11 +1,10 @@
 <?php
 
-use frontier\ploball\database\admin\Sl;
-use frontier\ploball\database\admin\Skills;
+use frontier\ploball\admin\Sl;
+use frontier\ploball\admin\Skills;
 
 $skills = Skills::get_all_skills_groups();
-
-$sls = Sl::get_all_sls();
+$sls    = Sl::get_all_sls();
 
 $main_skills = '';
 
@@ -30,12 +29,12 @@ foreach ( $sls as $sl ) {
 ?>
 <div class="modal">
 	<div class="modal__window">
-		<form method="post" id="plotball-form">
+		<form method="post" id="new-plotball-form">
 			<p>
 				<label for="title-plotbal">
 					Title plotball
 				</label>
-				<input id="title-plotbal" required name="title" type="text" />
+				<input id="title-plotbal" required name="title" type="text" required />
 			</p>
 			<p>
 				<label for="new_form_type">
@@ -64,11 +63,14 @@ foreach ( $sls as $sl ) {
 				</select>
 			</p>
 			<p>
-				<label>
-					Starting date & time
+				<label for="new_plotball_date">
+					Starting date
 				</label>
-				<input name="starting-date" type="date">
-				<input name="starting-time" type="time">
+				<label for="new_plotball_time">
+					Starting time
+				</label>
+				<input name="starting-date" id="new_plotball_date" type="date">
+				<input name="starting-time" id="new_plotball_time" type="time">
 			</p>
 			<p>
 				<label for="expected-runtime">
@@ -80,9 +82,8 @@ foreach ( $sls as $sl ) {
 				<label for="new_form_bounce">
 					Bounce
 				</label>
-				<select id="new_form_bounce" class="bounce">
+				<select id="new_form_bounce" class="bounce" multiple>
 					<option value="buff">Buff</option>
-					<option value="combine_them_all">Combine them all!</option>
 					<option value="faciliterende">Faciliterende</option>
 					<option value="factional">Factional</option>
 					<option value="group">Group</option>
@@ -103,10 +104,10 @@ foreach ( $sls as $sl ) {
 				</select>
 			</p>
 			<p>
-				<label for="expected-runtime">
+				<label for="new_plotball_message">
 					Plotball description for the players
 				</label>
-				<textarea name="message"></textarea>
+				<textarea id="new_plotball_message" name="message"></textarea>
 			</p>
 			<p id="main_skills">
 				<label>
@@ -133,6 +134,12 @@ foreach ( $sls as $sl ) {
 				</button>
 			</p>
 			<p>
+				<label for="new_form_custom_validation">
+					Custom validation
+				</label>
+				<textarea id="new_form_custom_validation" name="custom_validation"></textarea>
+			</p>
+			<p>
 				<label for="new_form_loot">
 					Loot
 				</label>
@@ -144,7 +151,7 @@ foreach ( $sls as $sl ) {
 				</label>
 				<textarea id="new_form_flavourtext" name="flavourtext"></textarea>
 			</p>
-			<button>Save draft</button>
+			<button id="new_form_save_draft">Save draft</button>
 			<button>Publish plotball</button>
 		</form>
 	</div>
@@ -223,4 +230,12 @@ foreach ( $sls as $sl ) {
 		`;		
 		$("#new_faction_button").before(html);
 	};
+
+	jQuery('#new-plotball-form').on('submit', function (e) {
+		e.preventDefault();
+	});
+
+	jQuery("#new_form_save_draft").on('click', function () {
+		console.log(jQuery('#new-plotball-form').serialize());
+	});
 </script>
