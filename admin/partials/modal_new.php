@@ -42,7 +42,7 @@ foreach ( $sls as $sl ) {
 				</label>
 				<select id="new_form_type" name="type">
 					<optgroup label="Plotgedreven">
-						<option value="anticlima">Anti-Climax</option>
+						<option value="anticlimax">Anti-Climax</option>
 						<option value="climax">Climax</option>
 						<option value="openended">Open ended</option>
 					</optgroup>
@@ -76,7 +76,7 @@ foreach ( $sls as $sl ) {
 				<label for="expected-runtime">
 					Expected runtime in minutes
 				</label>
-				<input name="expected-runtime" required min="0" id="expected-runtime" step="10" type="number">
+				<input name="expected_runtime" required min="0" id="expected-runtime" step="10" type="number">
 			</p>
 			<p>
 				<label for="new_form_bounce">
@@ -151,6 +151,7 @@ foreach ( $sls as $sl ) {
 				</label>
 				<textarea id="new_form_flavourtext" name="flavourtext"></textarea>
 			</p>
+			<input type="hidden" name="xf" value="insert_plotball">
 			<button id="new_form_save_draft">Save draft</button>
 			<button>Publish plotball</button>
 		</form>
@@ -236,6 +237,14 @@ foreach ( $sls as $sl ) {
 	});
 
 	jQuery("#new_form_save_draft").on('click', function () {
-		console.log(jQuery('#new-plotball-form').serialize());
+		var form_data = jQuery('#new-plotball-form').serialize();
+
+		$.ajax({
+			url: "xf.php",
+			type: "post",
+			data: form_data
+		}).done(function (response) {
+			console.log(response);
+		});
 	});
 </script>
