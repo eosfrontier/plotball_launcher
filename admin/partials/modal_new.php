@@ -232,9 +232,7 @@ foreach ( $sls as $sl ) {
 		$("#new_faction_button").before(html);
 	};
 
-	jQuery('#new-plotball-form').on('submit', function (e) {
-		e.preventDefault();
-	});
+
 
 	jQuery("#new_form_save_draft").on('click', function () {
 		var form_data = jQuery('#new-plotball-form').serialize();

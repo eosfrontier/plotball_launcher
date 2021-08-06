@@ -28,4 +28,15 @@ class Skills {
 
 		return $skills;
 	}
+
+	/**
+	 * Get a specific skill name by id.
+	 *
+	 * @param  int $id the id of the skill.
+	 * @return string
+	 */
+	public static function get_skill_by_id( int $id ): string {
+		$skill = Crud::get( "SELECT name from ecc_skills_groups WHERE primaryskill_id  = $id" );
+		return $skill[0]['name'];
+	}
 }

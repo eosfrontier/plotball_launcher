@@ -23,4 +23,15 @@ class Sl {
 
 		return $sls;
 	}
+
+	/**
+	 * Get a specific sl name by id.
+	 *
+	 * @param  int $id the id of the sl.
+	 * @return string
+	 */
+	public static function get_sl_by_id( int $id ): string {
+		$sl = Crud::get( "SELECT name from jml_users WHERE id  = $id" );
+		return $sl[0]['name'];
+	}
 }

@@ -1,5 +1,6 @@
 <?php
 	require '../includes/admin_includes.php';
+	date_default_timezone_set( 'Europe/Amsterdam' );
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +24,7 @@
 	</header>
 	<main>
 		<div class="row">
+			<?php require './partials/overview_table.php'; ?>
 		</div>
 	</main>
 	<?php require './partials/modal_new.php'; ?>
@@ -32,9 +34,10 @@
 		})
 
 		$(".modal").click(function(){
+			console.log(this);
 			$(".modal").hide();
 		}).children().click(function(e) {
-			return false;
+			e.stopPropagation();
 		});
 
 		$('.modal__window').on("click", ".remove-validation", function() {
