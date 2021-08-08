@@ -21,7 +21,28 @@ header {
 	margin: 0 auto;
 }
 
+button {
+	cursor: pointer;
+	color: $color-white;
+	background: $button-default;
+	border: 1px solid $button-default;
+	border-radius: 5px;
+	padding: 1ch 2ch;
+	transition: 0.4s;
+	text-shadow: 1px 1px 4px rgb(38 46 62 / 60%);
+
+	&:hover,
+	&:active {
+		background: $accent-default;
+		border-color: $accent-default;
+	}
+}
+
 .overview-table {
+
+	button {
+		margin-bottom: 16px;
+	}
 
 	.item {
 		list-style: none;
@@ -63,6 +84,14 @@ header {
 				margin-bottom: 8px;
 				border-bottom: solid 1px $text-fade;
 				padding-bottom: 4px;
+			}
+		}
+	}
+
+	&.small {
+		.item {
+			li:not(.title) {
+				display: none;
 			}
 		}
 	}
@@ -126,23 +155,6 @@ header {
 				&:hover,
 				&:active {
 					border: 1px solid $accent-default;
-				}
-			}
-
-			button {
-				cursor: pointer;
-				color: $color-white;
-				background: $button-default;
-				border: 1px solid $button-default;
-				border-radius: 5px;
-				padding: 1ch 2ch;
-				transition: 0.4s;
-				text-shadow: 1px 1px 4px rgb(38 46 62 / 60%);
-
-				&:hover,
-				&:active {
-					background: $accent-default;
-					border-color: $accent-default;
 				}
 			}
 

@@ -25,6 +25,7 @@
 	<main>
 		<div class="row">
 			<div class="overview-table">
+				<button id="collapse-items" class="button">Collapse items</button>
 				<?php require './partials/overview_table.php'; ?>
 			</div>
 		</div>
@@ -36,7 +37,6 @@
 		})
 
 		$(".modal").click(function(){
-			console.log(this);
 			$(".modal").hide();
 		}).children().click(function(e) {
 			e.stopPropagation();
@@ -44,6 +44,16 @@
 
 		$('.modal__window').on("click", ".remove-validation", function() {
 			$(this).parent().remove();
+		})
+
+		$("#collapse-items").click(function(){
+			if($(".overview-table").hasClass('small')){
+				$(".overview-table").removeClass("small");
+				$(this).html('Collapse items');
+			}else{
+				$(".overview-table").addClass("small");
+				$(this).html('Uncollapse items');
+			}
 		})
 	</script>
 </body>
