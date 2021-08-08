@@ -69,14 +69,14 @@ foreach ( $sls as $sl ) {
 				<label for="new_plotball_time">
 					Starting time
 				</label>
-				<input name="starting-date" id="new_plotball_date" type="date">
-				<input name="starting-time" id="new_plotball_time" type="time">
+				<input name="starting-date" id="new_plotball_date" type="date" required>
+				<input name="starting-time" id="new_plotball_time" type="time" required>
 			</p>
 			<p>
 				<label for="expected-runtime">
 					Expected runtime in minutes
 				</label>
-				<input name="expected_runtime" required min="0" id="expected-runtime" step="10" type="number">
+				<input name="expected_runtime" required min="0" id="expected-runtime" step="10" type="number" required>
 			</p>
 			<p>
 				<label for="new_form_bounce">
@@ -107,13 +107,13 @@ foreach ( $sls as $sl ) {
 				<label for="new_plotball_message">
 					Plotball description for the players
 				</label>
-				<textarea id="new_plotball_message" name="message"></textarea>
+				<textarea id="new_plotball_message" name="message" required></textarea>
 			</p>
 			<p id="main_skills">
 				<label>
 					Main skills validation
 				</label>
-				<button id="new_main_skill_button" onClick="add_main_skill()">
+				<button id="new_main_skill_button" onClick="add_main_skill(); return false">
 					New main skill validation
 				</button>
 			</p>
@@ -121,7 +121,7 @@ foreach ( $sls as $sl ) {
 				<label>
 					Specialty skills validation
 				</label>
-				<button id="new_specialty_skill_button" onClick="add_specialty_skill()">
+				<button id="new_specialty_skill_button" onClick="add_specialty_skill(); return false">
 					New specialty skill validation
 				</button>
 			</p>
@@ -129,7 +129,7 @@ foreach ( $sls as $sl ) {
 				<label>
 					Faction validation
 				</label>
-				<button id="new_faction_button" onClick="add_faction()">
+				<button id="new_faction_button" onClick="add_faction(); return false">
 					New specialty skill validation
 				</button>
 			</p>
@@ -159,7 +159,10 @@ foreach ( $sls as $sl ) {
 </div>
 
 <script>
-	function add_main_skill() {
+	function add_main_skill(e) {
+		$('#new-plotball-form').submit(function(e){
+			e.preventDefault();
+		})
 		var date = + new Date() + Math.floor(Math.random() * 100);
 		var html = `
 			<div class="`+ date +` skill_row">			
@@ -187,6 +190,9 @@ foreach ( $sls as $sl ) {
 	};
 
 	function add_specialty_skill() {
+		$('#new-plotball-form').submit(function(e){
+			e.preventDefault();
+		})
 		var date = + new Date() + Math.floor(Math.random() * 100);
 		var html = `
 			<div class="`+ date +` skill_row">
@@ -214,6 +220,9 @@ foreach ( $sls as $sl ) {
 	};
 
 	function add_faction() {
+		$('#new-plotball-form').submit(function(e){
+			e.preventDefault();
+		})
 		var date = + new Date() + Math.floor(Math.random() * 100);
 		var html = `
 			<div class="`+ date +` skill_row">
@@ -234,7 +243,7 @@ foreach ( $sls as $sl ) {
 
 
 
-	jQuery("#new_form_save_draft").on('click', function () {
+	jQuery("#new-plotball-form").on('submit', function () {
 		var form_data = jQuery('#new-plotball-form').serialize();
 
 		$.ajax({
