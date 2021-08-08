@@ -31,16 +31,17 @@ foreach ( $sls as $sl ) {
 	<div class="modal__window">
 		<form method="post" id="new-plotball-form">
 			<p>
-				<label for="title-plotbal">
+				<label for="title-plotbal" class="required">
 					Title plotball
-				</label>
-				<input id="title-plotbal" required name="title" type="text" required />
+				</label><br />
+				<input id="title-plotbal" name="title" type="text" required />
 			</p>
 			<p>
-				<label for="new_form_type">
+				<label for="new_form_type" class="required">
 					Type
-				</label>
-				<select id="new_form_type" name="type">
+				</label><br />
+				<select id="new_form_type" required name="type">
+					<option disabled selected value>Select an option</option>
 					<optgroup label="Plotgedreven">
 						<option value="anticlimax">Anti-Climax</option>
 						<option value="climax">Climax</option>
@@ -63,26 +64,26 @@ foreach ( $sls as $sl ) {
 				</select>
 			</p>
 			<p>
-				<label for="new_plotball_date">
+				<label for="new_plotball_date" class="required">
 					Starting date
-				</label>
-				<label for="new_plotball_time">
+				</label><br />
+				<label for="new_plotball_time" class="required">
 					Starting time
-				</label>
+				</label><br />
 				<input name="starting-date" id="new_plotball_date" type="date" required>
 				<input name="starting-time" id="new_plotball_time" type="time" required>
 			</p>
 			<p>
-				<label for="expected-runtime">
+				<label for="expected-runtime" class="required">
 					Expected runtime in minutes
-				</label>
+				</label><br />
 				<input name="expected_runtime" required min="0" id="expected-runtime" step="10" type="number" required>
 			</p>
 			<p>
-				<label for="new_form_bounce">
+				<label for="new_form_bounce" class="required">
 					Bounce
-				</label>
-				<select id="new_form_bounce" class="bounce" multiple>
+				</label><br />
+				<select id="new_form_bounce" class="bounce" required multiple>
 					<option value="buff">Buff</option>
 					<option value="faciliterende">Faciliterende</option>
 					<option value="factional">Factional</option>
@@ -96,23 +97,23 @@ foreach ( $sls as $sl ) {
 				</select>
 			</p>
 			<p>
-				<label for="new_form_plot_owner">
+				<label for="new_form_plot_owner" class="required">
 					Plot owner
-				</label>
+				</label><br />
 				<select id="new_form_plot_owner" name="plot_owner">
 					<?php echo $sl_list; ?>
 				</select>
 			</p>
 			<p>
-				<label for="new_plotball_message">
+				<label for="new_plotball_message" class="required">
 					Plotball description for the players
-				</label>
-				<textarea id="new_plotball_message" name="message" required></textarea>
+				</label><br />
+				<textarea id="new_plotball_message" name="message" placeholder="Roleplay-type description that the players will see." required></textarea>
 			</p>
 			<p id="main_skills">
 				<label>
 					Main skills validation
-				</label>
+				</label><br />
 				<button id="new_main_skill_button" onClick="add_main_skill(); return false">
 					New main skill validation
 				</button>
@@ -120,7 +121,7 @@ foreach ( $sls as $sl ) {
 			<p id="special_skills">
 				<label>
 					Specialty skills validation
-				</label>
+				</label><br />
 				<button id="new_specialty_skill_button" onClick="add_specialty_skill(); return false">
 					New specialty skill validation
 				</button>
@@ -128,7 +129,7 @@ foreach ( $sls as $sl ) {
 			<p id="special_skills">
 				<label>
 					Faction validation
-				</label>
+				</label><br />
 				<button id="new_faction_button" onClick="add_faction(); return false">
 					New specialty skill validation
 				</button>
@@ -136,24 +137,30 @@ foreach ( $sls as $sl ) {
 			<p>
 				<label for="new_form_custom_validation">
 					Custom validation
-				</label>
-				<textarea id="new_form_custom_validation" name="custom_validation"></textarea>
+				</label><br />
+				<textarea id="new_form_custom_validation" name="custom_validation" placeholder="This field is optional"></textarea>
 			</p>
 			<p>
 				<label for="new_form_loot">
 					Loot
-				</label>
+				</label><br />
 				<textarea id="new_form_loot" name="loot"></textarea>
 			</p>
 			<p>
 				<label for="new_form_flavourtext">
 					Flavour text after plot
-				</label>
+				</label><br />
 				<textarea id="new_form_flavourtext" name="flavourtext"></textarea>
 			</p>
+			<div></div>
+			<p>
+				<button id="new_form_save_draft">Save draft</button>
+			</p>
 			<input type="hidden" name="xf" value="insert_plotball">
-			<button id="new_form_save_draft">Save draft</button>
 		</form>
+		<p>
+			<span class="warning">*</span> required fields.
+		</p>
 	</div>
 </div>
 
@@ -182,7 +189,7 @@ foreach ( $sls as $sl ) {
 					<option value="4">4</option>
 					<option value="5">5</option>
 				</select>
-				<button class="remove-validation">Remove row</i>
+				<button class="remove-validation">Remove row 🗑️</i>
 			</div>		
 		`;		
 		$("#new_main_skill_button").before(html);

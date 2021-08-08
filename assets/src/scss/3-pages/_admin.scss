@@ -17,7 +17,7 @@ header {
 }
 
 .row {
-	width: 1024px;
+	max-width: 1024px;
 	margin: 0 auto;
 }
 
@@ -36,6 +36,13 @@ button {
 		background: $accent-default;
 		border-color: $accent-default;
 	}
+
+	&.remove-validation {
+		font-weight: bold;
+		border-color: $warning-red;
+		background: $warning-red;
+		text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+	}
 }
 
 .overview-table {
@@ -45,11 +52,14 @@ button {
 	}
 
 	.item {
+		background: $background-card;
 		list-style: none;
-		border: solid 1px $text-fade;
-		padding: 16px 16px 0;
+		// border: solid 1px $text-fade;
+		padding: 16px 16px 8px;
 		margin-top: 0;
-		transition: border-bottom 0.3s ease;
+		transition: all 0.3s ease;
+		box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%),
+			0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
 
 		li {
 			margin-bottom: 8px;
@@ -66,7 +76,9 @@ button {
 		}
 
 		&:hover {
-			border: solid 1px $accent-default;
+			// border: solid 1px $accent-default;
+			box-shadow: 0 5px 5px -3px rgb(0 0 0 / 20%),
+				0 8px 10px 1px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%);
 
 			.title {
 				border-bottom: solid 1px $accent-default;
@@ -78,6 +90,14 @@ button {
 			display: grid;
 			gap: 16px;
 			grid-template-columns: 1fr 1fr 1fr 1fr;
+
+			@media screen and (max-width: 768px) {
+				grid-template-columns: 1fr 1fr;
+			}
+
+			@media screen and (max-width: 480px) {
+				grid-template-columns: 1fr;
+			}
 
 			strong {
 				display: block;
@@ -115,15 +135,27 @@ button {
 		left: 5%;
 		padding: 16px;
 		overflow-y: scroll;
+		box-shadow: 0 8px 10px -5px rgb(0 0 0 / 20%),
+			0 16px 24px 2px rgb(0 0 0 / 14%), 0 6px 30px 5px rgb(0 0 0 / 12%);
 
 		form {
+
+			&#new-plotball-form {
+				display: grid;
+				gap: 32px;
+				grid-template-columns: 1fr 1fr;
+
+				@media screen and (max-width: 768px) {
+					grid-template-columns: 1fr;
+				}
+			}
 
 			input,
 			textarea,
 			select {
+				box-sizing: border-box;
 				border: solid 1px $text-fade;
 				padding: 6px;
-				max-width: 240px;
 				width: 100%;
 			}
 
@@ -144,8 +176,6 @@ button {
 
 			textarea {
 				min-height: 12ch;
-				min-width: 45ch;
-				max-width: 480px;
 				background: $background-block;
 				margin-top: 1rem;
 				padding: 5px 5px 0 5px;
@@ -179,13 +209,21 @@ button {
 
 				&[multiple] {
 					background-image: none;
+					min-height: 14em;
 				}
 			}
 
 			label {
-				display: block;
 				margin-bottom: 4px;
 				font-weight: 600;
+				cursor: pointer;
+
+				&.required {
+					&:after {
+						content: '*';
+						color: $warning-red;
+					}
+				}
 			}
 
 			.skill_row {
