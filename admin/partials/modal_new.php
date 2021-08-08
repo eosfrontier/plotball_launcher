@@ -153,7 +153,6 @@ foreach ( $sls as $sl ) {
 			</p>
 			<input type="hidden" name="xf" value="insert_plotball">
 			<button id="new_form_save_draft">Save draft</button>
-			<button>Publish plotball</button>
 		</form>
 	</div>
 </div>
