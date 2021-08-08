@@ -21,6 +21,53 @@ header {
 	margin: 0 auto;
 }
 
+.overview-table {
+
+	.item {
+		list-style: none;
+		border: solid 1px $text-fade;
+		padding: 16px 16px 0;
+		margin-top: 0;
+		transition: border-bottom 0.3s ease;
+
+		li {
+			margin-bottom: 8px;
+		}
+
+		.title {
+			display: block;
+			font-size: 24px;
+			padding: 4px 0 4px 8px;
+			border-bottom: solid 1px $text-fade;
+			margin-bottom: 16px;
+			background: $background-block;
+			transition: border-bottom 0.3s ease;
+		}
+
+		&:hover {
+			border: solid 1px $accent-default;
+
+			.title {
+				border-bottom: solid 1px $accent-default;
+			}
+		}
+
+		.validations {
+			margin-top: 16px;
+			display: grid;
+			gap: 16px;
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+
+			strong {
+				display: block;
+				margin-bottom: 8px;
+				border-bottom: solid 1px $text-fade;
+				padding-bottom: 4px;
+			}
+		}
+	}
+}
+
 .modal {
 	position: absolute;
 	top: 0px;
@@ -70,7 +117,7 @@ header {
 				min-height: 12ch;
 				min-width: 45ch;
 				max-width: 480px;
-				background: #424959;
+				background: $background-block;
 				margin-top: 1rem;
 				padding: 5px 5px 0 5px;
 				border: 1px solid $text-fade;
@@ -100,7 +147,7 @@ header {
 			}
 
 			select {
-				background: #424959;
+				background: $background-block;
 				color: $text-default;
 				border: 1px solid $background-default;
 				min-width: 30ch;

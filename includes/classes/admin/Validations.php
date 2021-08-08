@@ -18,7 +18,7 @@ class Validations {
 
 		if ( isset( $validations['main_skills_validations'] ) ) {
 			$list .= '<p>';
-			$list .= '<strong>Main Skills</strong><br />';
+			$list .= '<strong>Main Skills</strong>';
 
 			foreach ( $validations['main_skills_validations'] as $main_skill ) {
 				$list .= Skills::get_skill_by_id( $main_skill['skill'] ) . ' ';
@@ -42,7 +42,7 @@ class Validations {
 
 		if ( isset( $validations['specialty_skills_validations'] ) ) {
 			$list .= '<p>';
-			$list .= '<strong>Specialty Skills</strong><br />';
+			$list .= '<strong>Specialty Skills</strong>';
 
 			foreach ( $validations['specialty_skills_validations'] as $special_skill ) {
 				$list .= Skills::get_skill_by_id( $special_skill['skill'] ) . ' ';
@@ -66,7 +66,7 @@ class Validations {
 
 		if ( isset( $validations['faction_validations'] ) ) {
 			$list .= '<p>';
-			$list .= '<strong>Factions</strong><br />';
+			$list .= '<strong>Factions</strong>';
 
 			foreach ( $validations['faction_validations'] as $faction ) {
 
@@ -77,7 +77,7 @@ class Validations {
 
 		if ( ! empty( $validations['custom_validation'] ) ) {
 			$list .= '<p>';
-			$list .= '<strong>Custom validation</strong><br />';
+			$list .= '<strong>Custom validation</strong>';
 			$list .= $validations['custom_validation'] . '<br />';
 			$list .= '</p>';
 		}

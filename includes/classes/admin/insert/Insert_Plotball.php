@@ -6,7 +6,13 @@ use frontier\ploball\database\Crud;
 
 class Insert_Plotball {
 
-	public static function insert( $post ) {
+	/**
+	 * Insert a new plotbal in the database
+	 *
+	 * @param  mixed $post Array of data.
+	 * @return bool
+	 */
+	public static function insert( $post ): bool {
 		unset( $post['xf'] );
 
 		$validations = [];

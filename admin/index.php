@@ -24,7 +24,9 @@
 	</header>
 	<main>
 		<div class="row">
-			<?php require './partials/overview_table.php'; ?>
+			<div class="overview-table">
+				<?php require './partials/overview_table.php'; ?>
+			</div>
 		</div>
 	</main>
 	<?php require './partials/modal_new.php'; ?>
