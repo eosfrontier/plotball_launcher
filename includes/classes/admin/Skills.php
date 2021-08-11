@@ -2,7 +2,6 @@
 namespace frontier\ploball\admin;
 
 use frontier\ploball\database\Crud;
-
 class Skills {
 
 	/**

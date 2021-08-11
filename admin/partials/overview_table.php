@@ -9,7 +9,7 @@ $items = Get_All_Plotballs::get_all_plotballs();
 
 foreach ( $items as $item ) {
 	?>
-	<ul class="item">
+	<ul class="item" data-id="<?php echo $item['id']; ?>">
 		<li class="title"><?php echo $item['title']; ?></li>
 		<li><?php echo gmdate( 'd-m-Y H:i', $item['start_date'] ); ?></li>
 		<li><?php echo Sl::get_sl_by_id( $item['plot_owner'] ); ?></li>

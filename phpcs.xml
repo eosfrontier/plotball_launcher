@@ -48,6 +48,7 @@
 		<exclude name="WordPress.PHP.IniSet.display_errors_Blacklisted" />
 		<exclude name="Yoast.Files.TestDoubles.MissingBasePath" />
 		<exclude name="WordPress.Security.NonceVerification.Missing" />
+		<exclude name="WordPress.Security.NonceVerification.Recommended" />
 	</rule>
 	<rule ref="ruleset.xml" />
 </ruleset>
