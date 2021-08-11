@@ -5,43 +5,31 @@ $id = $_GET['id'];
 
 use frontier\ploball\admin\get\Get_All_Plotballs;
 use frontier\ploball\admin\Sl;
-use frontier\ploball\admin\Skills;
 
-$plotball = Get_All_Plotballs::get_plotball_by_id( $id );
+$plotball = Get_All_Plotballs::get_plotball_by_id( $id )[0];
 
+echo '<pre>';
 var_dump( $plotball );
+echo '</pre>';
 
-$skills = Skills::get_all_skills_groups();
-$sls    = Sl::get_all_sls();
-
-$main_skills = '';
-
-foreach ( $skills as $skill ) {
-	if ( $skill['parents'] === 'none' || $skill['parents'] === 'tele' ) {
-		$main_skills .= '<option value="' . $skill['primaryskill_id'] . '">' . $skill['name'] . '</option>';
-	}
-}
-
-$special_skills = '';
-foreach ( $skills as $skill ) {
-	if ( $skill['parents'] !== 'none' ) {
-		$special_skills .= '<option value="' . $skill['primaryskill_id'] . '">' . $skill['name'] . '</option>';
-	}
-}
+$sls = Sl::get_all_sls();
 
 $sl_list = '';
 foreach ( $sls as $sl ) {
-	$sl_list .= '<option value="' . $sl['id'] . '">' . $sl['name'] . '</option>';
+	$selected = '';
+	if ( $sl['id'] === $plotball['plot_owner'] ) {
+		$selected = ' selected';
+	}
+	$sl_list .= '<option value="' . $sl['id'] . '"' . $selected . '>' . $sl['name'] . '</option>';
 }
 
 ?>
 <form method="post" id="new-plotball-form">
-	<?php echo $_GET['id']; ?>
 	<p>
 		<label for="title-plotbal" class="required">
 			Title plotball
 		</label><br />
-		<input id="title-plotbal" name="title" type="text" required />
+		<input id="title-plotbal" name="title" type="text" value="<?php echo $plotball['title']; ?>" required />
 	</p>
 	<p>
 		<label for="new_form_type" class="required">
@@ -50,23 +38,78 @@ foreach ( $sls as $sl ) {
 		<select id="new_form_type" required name="type">
 			<option disabled selected value>Select an option</option>
 			<optgroup label="Plotgedreven">
-				<option value="anticlimax">Anti-Climax</option>
-				<option value="climax">Climax</option>
-				<option value="openended">Open ended</option>
+				<option 
+				<?php
+				if ( $plotball['type'] === 'anticlimax' ) {
+					echo 'selected';}
+				?>
+				value="anticlimax">Anti-Climax</option>
+				<option 
+				<?php
+				if ( $plotball['type'] === 'climax' ) {
+					echo 'selected';}
+				?>
+				value="climax">Climax</option>
+				<option 
+				<?php
+				if ( $plotball['type'] === 'openended' ) {
+					echo 'selected';}
+				?>
+				value="openended">Open ended</option>
 			</optgroup>
 			<optgroup label="Infodrip">
-				<option value="mystery">Mystery</option>
-				<option value="noir">Noir</option>
-				<option value="worldbuilding">Worldbuilding</option>
+				<option 
+				<?php
+				if ( $plotball['type'] === 'mystery' ) {
+					echo 'selected';}
+				?>
+				value="mystery">Mystery</option>
+				<option 
+				<?php
+				if ( $plotball['type'] === 'noir' ) {
+					echo 'selected';}
+				?>
+				value="noir">Noir</option>
+				<option 
+				<?php
+				if ( $plotball['type'] === 'worldbuilding' ) {
+					echo 'selected';}
+				?>
+				value="worldbuilding">Worldbuilding</option>
 			</optgroup>
 			<optgroup label="Planning">
-				<option value="heist-coverup">Heist/coverup</option>
-				<option value="strategy">Strategy</option>
+				<option 
+				<?php
+				if ( $plotball['type'] === 'heist-coverup' ) {
+					echo 'selected';}
+				?>
+				value="heist-coverup">Heist/coverup</option>
+				<option 
+				<?php
+				if ( $plotball['type'] === 'strategy' ) {
+					echo 'selected';}
+				?>
+				value="strategy">Strategy</option>
 			</optgroup>
 			<optgroup label="Talky">
-				<option value="legal">Legal</option>
-				<option value="philosophical">Philosophical</option>
-				<option value="political">Political</option>
+				<option 
+				<?php
+				if ( $plotball['type'] === 'legal' ) {
+					echo 'selected';}
+				?>
+				value="legal">Legal</option>
+				<option 
+				<?php
+				if ( $plotball['type'] === 'philosophical' ) {
+					echo 'selected';}
+				?>
+				value="philosophical">Philosophical</option>
+				<option 
+				<?php
+				if ( $plotball['type'] === 'political' ) {
+					echo 'selected';}
+				?>
+				value="political">Political</option>
 			</optgroup>
 		</select>
 	</p>
@@ -84,7 +127,7 @@ foreach ( $sls as $sl ) {
 		<label for="expected-runtime" class="required">
 			Expected runtime in minutes
 		</label><br />
-		<input name="expected_runtime" required min="0" id="expected-runtime" step="10" type="number" required>
+		<input name="expected_runtime" required min="0" id="expected-runtime" step="10" type="number" required  value="<?php echo $plotball['expected_runtime']; ?>">
 	</p>
 	<p>
 		<label for="new_form_bounce" class="required">
@@ -115,7 +158,7 @@ foreach ( $sls as $sl ) {
 		<label for="new_plotball_message" class="required">
 			Plotball description for the players
 		</label><br />
-		<textarea id="new_plotball_message" name="message" placeholder="Roleplay-type description that the players will see." required></textarea>
+		<textarea id="new_plotball_message" name="message" placeholder="Roleplay-type description that the players will see." required><?php echo $plotball['message']; ?></textarea>
 	</p>
 	<p id="main_skills">
 		<label>
@@ -151,13 +194,13 @@ foreach ( $sls as $sl ) {
 		<label for="new_form_loot">
 			Loot
 		</label><br />
-		<textarea id="new_form_loot" name="loot"></textarea>
+		<textarea id="new_form_loot" name="loot"><?php echo $plotball['loot']; ?></textarea>
 	</p>
 	<p>
 		<label for="new_form_flavourtext">
 			Flavour text after plot
 		</label><br />
-		<textarea id="new_form_flavourtext" name="flavourtext"></textarea>
+		<textarea id="new_form_flavourtext" name="flavourtext"><?php echo $plotball['flavourtext']; ?></textarea>
 	</p>
 	<div></div>
 	<p>
