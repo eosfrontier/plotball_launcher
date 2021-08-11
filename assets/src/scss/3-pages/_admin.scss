@@ -17,17 +17,114 @@ header {
 }
 
 .row {
-	width: 1024px;
+	max-width: 1024px;
 	margin: 0 auto;
 }
 
+button {
+	cursor: pointer;
+	color: $color-white;
+	background: $button-default;
+	border: 1px solid $button-default;
+	border-radius: 5px;
+	padding: 1ch 2ch;
+	transition: 0.4s;
+	text-shadow: 1px 1px 4px rgb(38 46 62 / 60%);
+
+	&:hover,
+	&:active {
+		background: $accent-default;
+		border-color: $accent-default;
+	}
+
+	&.remove-validation {
+		font-weight: bold;
+		border-color: $warning-red;
+		background: $warning-red;
+		text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+	}
+}
+
+.overview-table {
+
+	button {
+		margin-bottom: 16px;
+	}
+
+	.item {
+		background: $background-card;
+		list-style: none;
+		// border: solid 1px $text-fade;
+		padding: 16px 16px 8px;
+		margin-top: 0;
+		transition: all 0.3s ease;
+		box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%),
+			0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+
+		li {
+			margin-bottom: 8px;
+		}
+
+		.title {
+			display: block;
+			font-size: 24px;
+			padding: 4px 0 4px 8px;
+			border-bottom: solid 1px $text-fade;
+			margin-bottom: 16px;
+			background: $background-block;
+			transition: border-bottom 0.3s ease;
+		}
+
+		&:hover {
+			// border: solid 1px $accent-default;
+			box-shadow: 0 5px 5px -3px rgb(0 0 0 / 20%),
+				0 8px 10px 1px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%);
+
+			.title {
+				border-bottom: solid 1px $accent-default;
+			}
+		}
+
+		.validations {
+			margin-top: 16px;
+			display: grid;
+			gap: 16px;
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+
+			@media screen and (max-width: 768px) {
+				grid-template-columns: 1fr 1fr;
+			}
+
+			@media screen and (max-width: 480px) {
+				grid-template-columns: 1fr;
+			}
+
+			strong {
+				display: block;
+				margin-bottom: 8px;
+				border-bottom: solid 1px $text-fade;
+				padding-bottom: 4px;
+			}
+		}
+	}
+
+	&.small {
+		.item {
+			li:not(.title) {
+				display: none;
+			}
+		}
+	}
+}
+
 .modal {
-	position: absolute;
+	position: fixed;
 	top: 0px;
 	left: 0px;
 	right: 0px;
 	bottom: 0px;
 	background: rgba(29, 32, 40, 0.6);
+	display: none;
 
 	&__window {
 		background: #2c3445;
@@ -38,15 +135,27 @@ header {
 		left: 5%;
 		padding: 16px;
 		overflow-y: scroll;
+		box-shadow: 0 8px 10px -5px rgb(0 0 0 / 20%),
+			0 16px 24px 2px rgb(0 0 0 / 14%), 0 6px 30px 5px rgb(0 0 0 / 12%);
 
 		form {
+
+			&#new-plotball-form {
+				display: grid;
+				gap: 32px;
+				grid-template-columns: 1fr 1fr;
+
+				@media screen and (max-width: 768px) {
+					grid-template-columns: 1fr;
+				}
+			}
 
 			input,
 			textarea,
 			select {
+				box-sizing: border-box;
 				border: solid 1px $text-fade;
 				padding: 6px;
-				max-width: 240px;
 				width: 100%;
 			}
 
@@ -67,9 +176,7 @@ header {
 
 			textarea {
 				min-height: 12ch;
-				min-width: 45ch;
-				max-width: 480px;
-				background: #424959;
+				background: $background-block;
 				margin-top: 1rem;
 				padding: 5px 5px 0 5px;
 				border: 1px solid $text-fade;
@@ -81,25 +188,8 @@ header {
 				}
 			}
 
-			button {
-				cursor: pointer;
-				color: $color-white;
-				background: $button-default;
-				border: 1px solid $button-default;
-				border-radius: 5px;
-				padding: 1ch 2ch;
-				transition: 0.4s;
-				text-shadow: 1px 1px 4px rgb(38 46 62 / 60%);
-
-				&:hover,
-				&:active {
-					background: $accent-default;
-					border-color: $accent-default;
-				}
-			}
-
 			select {
-				background: #424959;
+				background: $background-block;
 				color: $text-default;
 				border: 1px solid $background-default;
 				min-width: 30ch;
@@ -116,12 +206,24 @@ header {
 				background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), 100% 0;
 				background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
 				background-repeat: no-repeat;
+
+				&[multiple] {
+					background-image: none;
+					min-height: 14em;
+				}
 			}
 
 			label {
-				display: block;
 				margin-bottom: 4px;
 				font-weight: 600;
+				cursor: pointer;
+
+				&.required {
+					&:after {
+						content: '*';
+						color: $warning-red;
+					}
+				}
 			}
 
 			.skill_row {
