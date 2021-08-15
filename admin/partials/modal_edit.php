@@ -5,6 +5,7 @@ $id = $_GET['id'];
 
 use frontier\ploball\admin\get\Get_All_Plotballs;
 use frontier\ploball\admin\Sl;
+use frontier\ploball\admin\Validations;
 
 $plotball = Get_All_Plotballs::get_plotball_by_id( $id )[0];
 
@@ -160,35 +161,40 @@ foreach ( $sls as $sl ) {
 		</label><br />
 		<textarea id="new_plotball_message" name="message" placeholder="Roleplay-type description that the players will see." required><?php echo $plotball['message']; ?></textarea>
 	</p>
-	<p id="main_skills">
+	<div id="main_skills">
 		<label>
 			Main skills validation
 		</label><br />
+
+		<?php echo Validations::list_main_skills( $plotball['validations'] ); ?>
+
 		<button id="new_main_skill_button" onClick="add_main_skill(); return false">
 			New main skill validation
 		</button>
-	</p>
-	<p id="special_skills">
+	</div>
+	<div id="special_skills">
 		<label>
 			Specialty skills validation
 		</label><br />
+		<?php echo Validations::list_specialty_skills( $plotball['validations'] ); ?>
 		<button id="new_specialty_skill_button" onClick="add_specialty_skill(); return false">
 			New specialty skill validation
 		</button>
-	</p>
-	<p id="special_skills">
+	</div>
+	<div id="special_skills">
 		<label>
 			Faction validation
 		</label><br />
+		<?php echo Validations::list_faction( $plotball['validations'] ); ?>
 		<button id="new_faction_button" onClick="add_faction(); return false">
-			New specialty skill validation
+			New Faction validation
 		</button>
-	</p>
+	</div>
 	<p>
 		<label for="new_form_custom_validation">
 			Custom validation
 		</label><br />
-		<textarea id="new_form_custom_validation" name="custom_validation" placeholder="This field is optional"></textarea>
+		<textarea id="new_form_custom_validation" name="custom_validation" placeholder="This field is optional"><?php echo json_decode( $plotball['validations'], true )['custom_validation']; ?></textarea>
 	</p>
 	<p>
 		<label for="new_form_loot">

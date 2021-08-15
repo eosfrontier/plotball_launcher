@@ -131,7 +131,7 @@ foreach ( $sls as $sl ) {
 					Faction validation
 				</label><br />
 				<button id="new_faction_button" onClick="add_faction(); return false">
-					New specialty skill validation
+					New Faction validation
 				</button>
 			</p>
 			<p>
