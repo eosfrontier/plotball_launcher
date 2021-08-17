@@ -9,9 +9,7 @@ use frontier\ploball\admin\Validations;
 
 $plotball = Get_All_Plotballs::get_plotball_by_id( $id )[0];
 
-echo '<pre>';
-var_dump( $plotball );
-echo '</pre>';
+$bounce = explode( ',', $plotball['bounce'] );
 
 $sls = Sl::get_all_sls();
 
@@ -24,8 +22,11 @@ foreach ( $sls as $sl ) {
 	$sl_list .= '<option value="' . $sl['id'] . '"' . $selected . '>' . $sl['name'] . '</option>';
 }
 
+$starting_date = gmdate( 'Y-m-d', $plotball['start_date'] );
+$starting_time = gmdate( 'H:i', $plotball['start_date'] );
+
 ?>
-<form method="post" id="new-plotball-form">
+<form method="post" id="update-plotball-form">
 	<p>
 		<label for="title-plotbal" class="required">
 			Title plotball
@@ -121,8 +122,8 @@ foreach ( $sls as $sl ) {
 		<label for="new_plotball_time" class="required">
 			Starting time
 		</label><br />
-		<input name="starting-date" id="new_plotball_date" type="date" required>
-		<input name="starting-time" id="new_plotball_time" type="time" required>
+		<input name="starting-date" id="new_plotball_date" type="date" value="<?php echo $starting_date; ?>" required>
+		<input name="starting-time" id="new_plotball_time" type="time" value="<?php echo $starting_time; ?>" required>
 	</p>
 	<p>
 		<label for="expected-runtime" class="required">
@@ -134,17 +135,67 @@ foreach ( $sls as $sl ) {
 		<label for="new_form_bounce" class="required">
 			Bounce
 		</label><br />
-		<select id="new_form_bounce" class="bounce" required multiple>
-			<option value="buff">Buff</option>
-			<option value="faciliterende">Faciliterende</option>
-			<option value="factional">Factional</option>
-			<option value="group">Group</option>
-			<option value="healing">Healing/Reparatie</option>
-			<option value="item">Item</option>
-			<option value="multiplier">Multiplier</option>
-			<option value="skill">Skill</option>
-			<option value="skill_transfer">Skill transfer</option>
-			<option value="threshold">Threshold</option>
+		<select id="new_form_bounce" name="bounce[]" class="bounce" required multiple>
+			<option value="buff"
+			<?php
+			if ( in_array( 'buff', $bounce ) ) {
+				echo ' selected';}
+			?>
+			>Buff</option>
+			<option value="faciliterende"
+			<?php
+			if ( in_array( 'faciliterende', $bounce ) ) {
+				echo ' selected';}
+			?>
+			>Faciliterende</option>
+			<option value="factional"
+			<?php
+			if ( in_array( 'factional', $bounce ) ) {
+				echo ' selected';}
+			?>
+			>Factional</option>
+			<option value="group"
+			<?php
+			if ( in_array( 'group', $bounce ) ) {
+				echo ' selected';}
+			?>
+			>Group</option>
+			<option value="healing"
+			<?php
+			if ( in_array( 'healing', $bounce ) ) {
+				echo ' selected';}
+			?>
+			>Healing/Reparatie</option>
+			<option value="item"
+			<?php
+			if ( in_array( 'item', $bounce ) ) {
+				echo ' selected';}
+			?>
+			>Item</option>
+			<option value="multiplier"
+			<?php
+			if ( in_array( 'multiplier', $bounce ) ) {
+				echo ' selected';}
+			?>
+			>Multiplier</option>
+			<option value="skill"
+			<?php
+			if ( in_array( 'skill', $bounce ) ) {
+				echo ' selected';}
+			?>
+			>Skill</option>
+			<option value="skill_transfer"
+			<?php
+			if ( in_array( 'skill_transfer', $bounce ) ) {
+				echo ' selected';}
+			?>
+			>Skill transfer</option>
+			<option value="threshold"
+			<?php
+			if ( in_array( 'threshold', $bounce ) ) {
+				echo ' selected';}
+			?>
+			>Threshold</option>
 		</select>
 	</p>
 	<p>
@@ -210,7 +261,7 @@ foreach ( $sls as $sl ) {
 	</p>
 	<div></div>
 	<p>
-		<button id="new_form_save_draft">Save draft</button>
+		<button id="update_draft_button">Update draft</button>
 	</p>
 	<input type="hidden" name="xf" value="update_plotball">
 	<input type="hidden" name="id" value="<?php echo $id; ?>">
@@ -219,3 +270,16 @@ foreach ( $sls as $sl ) {
 	<span class="warning">*</span> required fields.
 </p>
 
+<script>
+jQuery("#update-plotball-form").on('submit', function (e) {
+	e.preventDefault();
+	var form_data = jQuery('#update-plotball-form').serialize();
+	$.ajax({
+		url: "xf.php",
+		type: "post",
+		data: form_data
+	}).done(function (response) {
+		console.log(response);
+	});
+});
+</script>
