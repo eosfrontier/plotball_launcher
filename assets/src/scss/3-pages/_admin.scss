@@ -278,8 +278,13 @@ button {
 	.timeline-item {
 		margin-bottom: 24px;
 
+		.scrolling {
+			max-width: 100%;
+			overflow-x: scroll;
+		}
+
 		.timeline-table {
-			width: 100%;
+			width: 1500px;
 			border-top: solid 1px rgba($color-white, 0.2);
 			border-left: solid 1px rgba($color-white, 0.2);
 			overflow: hidden;
