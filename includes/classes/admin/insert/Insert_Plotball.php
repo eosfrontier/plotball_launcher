@@ -39,13 +39,6 @@ class Insert_Plotball {
 		}
 		unset( $post['custom_validation'] );
 
-		$customdate   = $post['starting-date'] . ' ' . $post['starting-time'];
-		$datetime     = date_create_from_format( 'Y-m-d H:i', $customdate );
-		$startingtime = strtotime( $datetime->format( 'Y-m-d H:i:s' ) );
-		unset( $post['starting-date'] );
-		unset( $post['starting-time'] );
-
-		$post['start_date']  = $startingtime;
 		$post['validations'] = json_encode( $validations );
 
 		$return = Crud::insert( 'plotball', $post );

@@ -1,6 +1,5 @@
 <?php
 	require '../includes/admin_includes.php';
-	date_default_timezone_set( 'Europe/Amsterdam' );
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +16,9 @@
 <body>
 	<header>
 		<div class="row">
+			<picture>
+				<img class="logo" src="../assets/images/talon.svg" />
+			</picture>
 			<button id="new-plotball">
 				new plotball
 			</button>
@@ -24,9 +26,22 @@
 	</header>
 	<main>
 		<div class="row">
-			<div class="overview-table">
+			<div class="tabs">
+				<div class="active tab-button" data-tab="timeline-table">
+					Timeline
+				</div>
+				<div class="tab-button" data-tab="overview-table">
+					Overview
+				</div>
+			</div>
+			<div class="timeline-table tab active">
+				<?php require './partials/timeline_table.php'; ?>
+			</div>
+			<div class="overview-table tab">
 				<button id="collapse-items" class="button">Collapse items</button>
-				<?php require './partials/overview_table.php'; ?>
+				<div class="overview-tables">
+					<?php require './partials/overview_table.php'; ?>
+				</div>
 			</div>
 		</div>
 	</main>

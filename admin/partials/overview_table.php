@@ -11,7 +11,7 @@ foreach ( $items as $item ) {
 	?>
 	<ul class="item" data-id="<?php echo $item['id']; ?>">
 		<li class="title"><?php echo $item['title']; ?></li>
-		<li><?php echo gmdate( 'd-m-Y H:i', $item['start_date'] ); ?></li>
+		<li><?php echo date( 'd-m-Y', strtotime( $item['starting_date'] ) ) . ' - ' . $item['starting_time']; ?></li>
 		<li><?php echo Sl::get_sl_by_id( $item['plot_owner'] ); ?></li>
 		<li class="validations"><?php echo Validations::get_overview_list( $item['validations'] ); ?></li>
 		<li>Status: <?php echo Status::get_status_as_text( $item['published'] ); ?></li>

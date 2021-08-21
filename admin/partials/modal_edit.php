@@ -22,9 +22,6 @@ foreach ( $sls as $sl ) {
 	$sl_list .= '<option value="' . $sl['id'] . '"' . $selected . '>' . $sl['name'] . '</option>';
 }
 
-$starting_date = gmdate( 'Y-m-d', $plotball['start_date'] );
-$starting_time = gmdate( 'H:i', $plotball['start_date'] );
-
 ?>
 <form method="post" id="update-plotball-form">
 	<p>
@@ -122,8 +119,8 @@ $starting_time = gmdate( 'H:i', $plotball['start_date'] );
 		<label for="new_plotball_time" class="required">
 			Starting time
 		</label><br />
-		<input name="starting-date" id="new_plotball_date" type="date" value="<?php echo $starting_date; ?>" required>
-		<input name="starting-time" id="new_plotball_time" type="time" value="<?php echo $starting_time; ?>" required>
+		<input name="starting_date" id="new_plotball_date" type="date" value="<?php echo $plotball['starting_date']; ?>" required>
+		<input name="starting_time" id="new_plotball_time" type="time" value="<?php echo $plotball['starting_time']; ?>" required>
 	</p>
 	<p>
 		<label for="expected-runtime" class="required">
@@ -138,61 +135,61 @@ $starting_time = gmdate( 'H:i', $plotball['start_date'] );
 		<select id="new_form_bounce" name="bounce[]" class="bounce" required multiple>
 			<option value="buff"
 			<?php
-			if ( in_array( 'buff', $bounce ) ) {
+			if ( in_array( 'buff', $bounce, true ) ) {
 				echo ' selected';}
 			?>
 			>Buff</option>
 			<option value="faciliterende"
 			<?php
-			if ( in_array( 'faciliterende', $bounce ) ) {
+			if ( in_array( 'faciliterende', $bounce, true ) ) {
 				echo ' selected';}
 			?>
 			>Faciliterende</option>
 			<option value="factional"
 			<?php
-			if ( in_array( 'factional', $bounce ) ) {
+			if ( in_array( 'factional', $bounce, true ) ) {
 				echo ' selected';}
 			?>
 			>Factional</option>
 			<option value="group"
 			<?php
-			if ( in_array( 'group', $bounce ) ) {
+			if ( in_array( 'group', $bounce, true ) ) {
 				echo ' selected';}
 			?>
 			>Group</option>
 			<option value="healing"
 			<?php
-			if ( in_array( 'healing', $bounce ) ) {
+			if ( in_array( 'healing', $bounce, true ) ) {
 				echo ' selected';}
 			?>
 			>Healing/Reparatie</option>
 			<option value="item"
 			<?php
-			if ( in_array( 'item', $bounce ) ) {
+			if ( in_array( 'item', $bounce, true ) ) {
 				echo ' selected';}
 			?>
 			>Item</option>
 			<option value="multiplier"
 			<?php
-			if ( in_array( 'multiplier', $bounce ) ) {
+			if ( in_array( 'multiplier', $bounce, true ) ) {
 				echo ' selected';}
 			?>
 			>Multiplier</option>
 			<option value="skill"
 			<?php
-			if ( in_array( 'skill', $bounce ) ) {
+			if ( in_array( 'skill', $bounce, true ) ) {
 				echo ' selected';}
 			?>
 			>Skill</option>
 			<option value="skill_transfer"
 			<?php
-			if ( in_array( 'skill_transfer', $bounce ) ) {
+			if ( in_array( 'skill_transfer', $bounce, true ) ) {
 				echo ' selected';}
 			?>
 			>Skill transfer</option>
 			<option value="threshold"
 			<?php
-			if ( in_array( 'threshold', $bounce ) ) {
+			if ( in_array( 'threshold', $bounce, true ) ) {
 				echo ' selected';}
 			?>
 			>Threshold</option>
@@ -279,7 +276,9 @@ jQuery("#update-plotball-form").on('submit', function (e) {
 		type: "post",
 		data: form_data
 	}).done(function (response) {
-		console.log(response);
+		if(response == 1){
+			hideModal();
+		}
 	});
 });
 </script>
