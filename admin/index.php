@@ -30,31 +30,12 @@
 			</div>
 		</div>
 	</main>
+	<div class="modal edit-plotball-modal">
+		<div class="modal__window">
+		</div>
+	</div>
 	<?php require './partials/modal_new.php'; ?>
-	<script>
-		$("#new-plotball").click(function(){
-			$('.modal').show();
-		})
-
-		$(".modal").click(function(){
-			$(".modal").hide();
-		}).children().click(function(e) {
-			e.stopPropagation();
-		});
-
-		$('.modal__window').on("click", ".remove-validation", function() {
-			$(this).parent().remove();
-		})
-
-		$("#collapse-items").click(function(){
-			if($(".overview-table").hasClass('small')){
-				$(".overview-table").removeClass("small");
-				$(this).html('Collapse items');
-			}else{
-				$(".overview-table").addClass("small");
-				$(this).html('Uncollapse items');
-			}
-		})
-	</script>
+	<script src="../assets/admin/default.js"></script>
+	<script src="../assets/admin/modal_edit.js"></script>
 </body>
 </html>
