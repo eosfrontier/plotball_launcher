@@ -259,6 +259,7 @@ foreach ( $sls as $sl ) {
 	<div></div>
 	<p>
 		<button id="update_draft_button">Update draft</button>
+		<button id="publish_plotball_button">Publish plotball</button>
 	</p>
 	<input type="hidden" name="xf" value="update_plotball">
 	<input type="hidden" name="id" value="<?php echo $id; ?>">
@@ -268,7 +269,7 @@ foreach ( $sls as $sl ) {
 </p>
 
 <script>
-jQuery("#update-plotball-form").on('submit', function (e) {
+jQuery("#update_draft_button").on('click', function (e) {
 	e.preventDefault();
 	var form_data = jQuery('#update-plotball-form').serialize();
 	$.ajax({
@@ -280,5 +281,19 @@ jQuery("#update-plotball-form").on('submit', function (e) {
 			hideModal();
 		}
 	});
+});
+
+jQuery("#publish_plotball_button").on('click', function (e) {
+	e.preventDefault();
+	var form_data = {id: $( 'input[name="id"]' ).val(), xf: 'publish_plotball'};
+	$.ajax({
+		url: "xf.php",
+		type: "post",
+		data: form_data
+	}).done(function (response) {
+		if(response == 1){
+			hideModal();
+		}
+	})
 });
 </script>

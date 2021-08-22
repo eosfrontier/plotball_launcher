@@ -52,10 +52,14 @@ foreach ( $plotballs as $plotball ) {
 						$time    = explode( ':', $plotball['starting_time'] );
 						$minutes = ( ( ( $time[0] ) * 60 + $time[1] ) / 14.4 );
 						$length  = ( $plotball['expected_runtime'] / 14.4 );
+						$class   = '';
+						if ( $plotball['published'] === '1' ) {
+							$class = ' published';
+						}
 						?>
 						<tr>
 							<td>
-								<div style="left: <?php echo $minutes; ?>%; width:<?php echo $length; ?>%" class="timeline-plotball" data-id="<?php echo $plotball['id']; ?>">
+								<div style="left: <?php echo $minutes; ?>%; width:<?php echo $length; ?>%" class="timeline-plotball<?php echo $class; ?>" data-id="<?php echo $plotball['id']; ?>">
 									<span><?php echo $plotball['title']; ?></span>
 								</div>
 							</td>
