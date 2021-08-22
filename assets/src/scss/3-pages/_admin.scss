@@ -13,7 +13,6 @@ header {
 	min-height: 200px;
 	border-bottom: solid 1px #ccc;
 	margin-bottom: 24px;
-	padding-top: 24px;
 }
 
 .row {
@@ -42,6 +41,46 @@ button {
 		border-color: $warning-red;
 		background: $warning-red;
 		text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+	}
+}
+
+.logo {
+	max-height: 130px;
+	display: inline-block;
+	margin-top: 24px;
+	margin-right: 24px;
+}
+
+.tabs {
+	border-bottom: solid 1px $color-white;
+	margin-bottom: 24px;
+	display: flex;
+
+	.tab-button {
+		background: $background-block;
+		border: solid 1px $color-white;
+		padding: 12px;
+		margin-right: -1px;
+		margin-bottom: -1px;
+		cursor: pointer;
+
+		&:first-child {
+			margin-left: 12px;
+		}
+
+		&.active {
+			border-bottom: 0;
+			background: $background-default;
+			font-weight: bold;
+		}
+	}
+}
+
+.tab {
+	display: none;
+
+	&.active {
+		display: block;
 	}
 }
 
@@ -230,6 +269,80 @@ button {
 
 			.skill_row {
 				margin-bottom: 8px;
+			}
+		}
+	}
+}
+
+.timeline-tables {
+	.timeline-item {
+		margin-bottom: 24px;
+
+		.scrolling {
+			max-width: 100%;
+			overflow-x: scroll;
+		}
+
+		.timeline-table {
+			width: 1500px;
+			border-top: solid 1px rgba($color-white, 0.2);
+			border-left: solid 1px rgba($color-white, 0.2);
+			overflow: hidden;
+
+			td {
+				border-bottom: solid 1px rgba($color-white, 0.2);
+				border-right: solid 1px rgba($color-white, 0.2);
+				height: 30px;
+				text-align: center;
+			}
+
+			tr {
+				position: relative;
+
+				td {
+					height: 40px;
+					font-size: 14px;
+				}
+
+				.timeline-plotball {
+					position: absolute;
+					height: 30px;
+					min-width: 30px;
+					top: 5px;
+					line-height: 20px;
+					text-align: left;
+					cursor: pointer;
+
+					&::before {
+						content: '';
+						height: 6px;
+						top: 0;
+						width: 100%;
+						position: absolute;
+						left: 0;
+						background: $button-default;
+					}
+
+					span {
+						margin-left: 5px;
+						display: block;
+						margin-top: 10px;
+						white-space: nowrap;
+						transition: all 0.2s ease;
+					}
+
+					&:hover {
+						span {
+							color: $button-default;
+						}
+					}
+				}
+			}
+
+			thead {
+				td {
+					font-size: 12px;
+				}
 			}
 		}
 	}

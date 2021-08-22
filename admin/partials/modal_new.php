@@ -70,8 +70,8 @@ foreach ( $sls as $sl ) {
 				<label for="new_plotball_time" class="required">
 					Starting time
 				</label><br />
-				<input name="starting-date" id="new_plotball_date" type="date" required>
-				<input name="starting-time" id="new_plotball_time" type="time" required>
+				<input name="starting_date" id="new_plotball_date" type="date" required>
+				<input name="starting_time" id="new_plotball_time" type="time" required>
 			</p>
 			<p>
 				<label for="expected-runtime" class="required">

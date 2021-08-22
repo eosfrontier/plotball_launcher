@@ -11,7 +11,7 @@ class Get_All_Plotballs {
 	 * @return array
 	 */
 	public static function get_all_plotballs(): array {
-		$plotballs = Crud::get( 'SELECT * FROM plotball' );
+		$plotballs = Crud::get( 'SELECT * FROM plotball ORDER BY starting_date, starting_time' );
 
 		return $plotballs;
 	}
