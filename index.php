@@ -1,5 +1,9 @@
 <?php
-	require './includes/admin_includes.php';
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
+
+	require './includes/includes.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,3 +28,4 @@
 	</header>
 </body>
 </html>
+ 
