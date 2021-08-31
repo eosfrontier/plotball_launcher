@@ -3,9 +3,10 @@ require '../../vendor/autoload.php';
 
 $id = $_GET['id'];
 
-use frontier\ploball\admin\get\Get_All_Plotballs;
+
 use frontier\ploball\admin\Sl;
 use frontier\ploball\admin\Validations;
+use frontier\ploball\database\get\Get_All_Plotballs;
 
 $plotball = Get_All_Plotballs::get_plotball_by_id( $id )[0];
 

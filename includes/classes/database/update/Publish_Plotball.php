@@ -1,5 +1,5 @@
 <?php
-namespace frontier\ploball\admin\update;
+namespace frontier\ploball\database\update;
 
 use frontier\ploball\database\Crud;
 
