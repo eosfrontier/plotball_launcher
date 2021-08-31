@@ -1,0 +1,12 @@
+.overview {
+	.item {
+		margin-bottom: 24px;
+		padding: 16px;
+		background: $background-card;
+
+		.type {
+			max-height: 40px;
+			color: #f00;
+		}
+	}
+}

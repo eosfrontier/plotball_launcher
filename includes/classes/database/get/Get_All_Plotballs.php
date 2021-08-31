@@ -28,6 +28,11 @@ class Get_All_Plotballs {
 		return $plotballs;
 	}
 
+	/**
+	 * Get all viewable plotballs.
+	 *
+	 * @return array
+	 */
 	public static function get_all_active_plotballs(): array {
 		$current_date = date( 'Y-m-d' );
 		$current_time = date( 'H:i' );
