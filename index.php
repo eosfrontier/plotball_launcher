@@ -1,8 +1,4 @@
 <?php
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
-
 	require './includes/includes.php';
 ?>
 <!DOCTYPE html>
@@ -11,6 +7,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Talon - the tool for getting stuff done.">
 	<title>Talon</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="./assets/css/style.min.css" />
@@ -19,13 +16,19 @@
 	<header>
 		<div class="row">
 			<picture>
-				<img class="logo" src="./assets/images/talon.svg" />
+				<img class="logo" alt="" src="./assets/images/talon.svg" />
 			</picture>
 			<h1>
-				T.A.L.O.N.
+				Talon
 			</h1>
 		</div>
 	</header>
+	<main>
+		<div>
+			<div class="row">
+				<?php require './partials/overview.php'; ?>
+			</div>
+		</div>
+	</main>
 </body>
 </html>
- 
