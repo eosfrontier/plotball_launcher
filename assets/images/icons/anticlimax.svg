@@ -1,3 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#c1c1c1">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+ <title>OpenEnded</title>
+
+ <g id="Layer_1">
+  <title>Layer 1</title>
+  <path transform="rotate(180 220.732 230.488)" stroke="#ffffff" id="svg_44" d="m185.36585,300l35.36586,-139.02439l35.36584,139.02439l-70.7317,0z" stroke-width="0" fill="#fff"/>
+  <path stroke="#ffffff" id="svg_46" d="m43.90245,139.0244l35.36586,-139.0244l35.36584,139.0244l-70.7317,0z" stroke-width="0" fill="#fff"/>
+  <path id="svg_47" d="m185.16779,149.49093l0,-65.04064l72.3577,65.04064l-72.3577,0z" stroke-width="0" stroke="#ffffff" fill="#fff"/>
+  <path transform="rotate(180 79.0702 184.45)" id="svg_48" d="m42.89137,216.9706l0,-65.04064l72.35771,65.04064l-72.35771,0z" stroke-width="0" stroke="#ffffff" fill="#fff"/>
+  <path transform="rotate(-90 150.813 111.363)" stroke="#ffffff" id="svg_49" d="m122.76425,136.15949l0,-49.5935l56.09755,49.5935l-56.09755,0z" stroke-width="0" fill="#fff"/>
+  <path transform="rotate(90 150 189.412)" stroke="#ffffff" id="svg_50" d="m121.95122,214.20827l0,-49.59351l56.09755,49.59351l-56.09755,0z" stroke-width="0" fill="#fff"/>
+ </g>
 </svg>

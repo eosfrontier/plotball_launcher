@@ -1,3 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="#c1c1c1">
-  <path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-.5a1.5 1.5 0 00-3 0v.5a1 1 0 01-1 1H6a1 1 0 01-1-1v-3a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3H4a1 1 0 001-1V6a1 1 0 011-1h3a1 1 0 001-1v-.5z" />
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+ <title>worldbuliding</title>
+
+ <g id="Layer_1">
+  <title>Layer 1</title>
+  <path stroke="#ffffff" id="svg_60" d="m256.43441,251.21143l0,-96.21211l-213.63634,96.21211l213.63634,0z" stroke-width="0" fill="#fff"/>
+  <path transform="rotate(180 148.101 101.59)" stroke="#ffffff" id="svg_61" d="m254.91926,149.69628l0,-96.21212l-213.63634,96.21212l213.63634,0z" stroke-width="0" fill="#fff"/>
+  <path transform="rotate(90 84.0952 198.129)" stroke="#ffffff" id="svg_62" d="m47.35688,239.40427l36.73833,-82.5505l36.73833,82.5505l-73.47666,0z" stroke-width="0" fill="#fff"/>
+  <path transform="rotate(-90 213.091 105.497)" stroke="#ffffff" id="svg_63" d="m176.35288,146.7719l36.73833,-82.5505l36.73833,82.5505l-73.47666,0z" stroke-width="0" fill="#fff"/>
+  <path transform="rotate(90 281.652 104.739)" stroke="#ffffff" id="svg_64" d="m244.91345,121.39313l36.73833,-33.30808l36.73833,33.30808l-73.47666,0z" stroke-width="0" fill="#fff"/>
+  <path transform="rotate(-90 15.2016 199.586)" stroke="#ffffff" id="svg_66" d="m-21.53676,214.86632l36.73833,-30.56083l36.73833,30.56083l-73.47666,0z" stroke-width="0" fill="#fff"/>
+ </g>
 </svg>

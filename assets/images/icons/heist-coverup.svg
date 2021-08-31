@@ -1,3 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#c1c1c1">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+ <title>heist-coverup</title>
+
+ <g id="Layer_1">
+  <title>Layer 1</title>
+  <path stroke="#ffffff" id="svg_86" d="m53.84616,299.99998l96.15385,-180.34187l96.15385,180.34187l-192.3077,0z" stroke-width="0" fill="#fff"/>
+  <path transform="rotate(180 259.402 220.513)" stroke="#ffffff" id="svg_88" d="m218.80342,299.99998l0,-158.97437l81.19658,158.97437l-81.19658,0z" stroke-width="0" fill="#fff"/>
+  <path transform="rotate(180 40.5983 220.513)" stroke="#ffffff" id="svg_89" d="m81.19656,300.00001l0,-158.97437l-81.19656,158.97437l81.19656,0z" stroke-width="0" fill="#fff"/>
+  <path stroke="#ffffff" id="svg_90" d="m0,119.65812l41.02564,-68.37607l41.02564,68.37607l-82.05128,0z" stroke-width="0" fill="#fff"/>
+  <path stroke="#ffffff" id="svg_91" d="m217.94873,119.97644l41.02564,-68.37607l41.02564,68.37607l-82.05128,0z" stroke-width="0" fill="#fff"/>
+  <path transform="rotate(180 151.34 48.7891)" filter="url(#svg_93_blur)" stroke="#ffffff" id="svg_93" d="m110.31394,82.97715l41.02564,-68.37607l41.02564,68.37607l-82.05128,0z" stroke-width="0" fill="#fff"/>
+  <path transform="rotate(180 150 51.8351)" stroke="#ffffff" id="svg_94" d="m84.95475,103.67018l65.04525,-103.67019l65.04525,103.67019l-130.0905,0z" stroke-width="0" fill="#fff"/>
+ </g>
 </svg>
