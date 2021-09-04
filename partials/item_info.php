@@ -1,5 +1,6 @@
 <?php
-require '../vendor/autoload.php';
+
+require getcwd() . '/vendor/autoload.php';
 
 use frontier\ploball\database\get\Character;
 use frontier\ploball\database\get\Get_All_Plotballs;
