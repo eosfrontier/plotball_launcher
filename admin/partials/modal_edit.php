@@ -243,7 +243,12 @@ foreach ( $sls as $sl ) {
 		<label for="new_form_custom_validation">
 			Custom validation
 		</label><br />
-		<textarea id="new_form_custom_validation" name="custom_validation" placeholder="This field is optional"><?php echo json_decode( $plotball['validations'], true )['custom_validation']; ?></textarea>
+		<textarea id="new_form_custom_validation" name="custom_validation" placeholder="This field is optional">
+<?php
+if ( ! empty( json_decode( $plotball['validations'], true )['custom_validation'] ) ) {
+	echo json_decode( $plotball['validations'], true )['custom_validation'];}
+?>
+</textarea>
 	</p>
 	<p>
 		<label for="new_form_loot">

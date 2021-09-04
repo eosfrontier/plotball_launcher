@@ -34,9 +34,8 @@ class Get_All_Plotballs {
 	 * @return array
 	 */
 	public static function get_all_active_plotballs(): array {
-		$current_date = date( 'Y-m-d' );
-		$current_time = date( 'H:i' );
-		$plotballs    = Crud::get( "SELECT * FROM plotball WHERE published = 1 AND starting_date <= '$current_date' AND starting_time <= '$current_time' ORDER BY starting_date, starting_time" );
+		$current_unix = time();
+		$plotballs    = Crud::get( "SELECT * FROM plotball WHERE published = 1 AND UNIX_TIMESTAMP( STR_TO_DATE( CONCAT( starting_date, ' ', starting_time ), '%Y-%m-%d %H:%i' ) ) <= $current_unix ORDER BY starting_date, starting_time" );
 		return $plotballs;
 	}
 }

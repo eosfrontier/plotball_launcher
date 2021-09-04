@@ -1,12 +1,110 @@
+$flourish-border: solid 2px $color-link;
+
 .overview {
 	.item {
 		margin-bottom: 24px;
-		padding: 16px;
-		background: $background-card;
+		padding: 3px;
+		border: solid 2px $background-card;
+		position: relative;
 
-		.type {
-			max-height: 40px;
-			color: #f00;
+		.flourish {
+			width: 10px;
+			height: 10px;
+			position: absolute;
+			transition: all 0.2s linear;
+			z-index: 1;
+
+			&__left-top {
+				top: -2px;
+				left: -2px;
+				border-top: $flourish-border;
+				border-left: $flourish-border;
+			}
+
+			&__left-bottom {
+				bottom: -2px;
+				left: -2px;
+				border-bottom: $flourish-border;
+				border-left: $flourish-border;
+			}
+
+			&__right-top {
+				top: -2px;
+				right: -2px;
+				border-top: $flourish-border;
+				border-right: $flourish-border;
+			}
+
+			&__right-bottom {
+				bottom: -2px;
+				right: -2px;
+				border-bottom: $flourish-border;
+				border-right: $flourish-border;
+			}
+		}
+
+		&:hover {
+			.flourish {
+				width: 20px;
+				height: 20px;
+			}
+		}
+
+		&__main {
+			background: $background-card;
+			padding: 16px;
+			position: relative;
+			z-index: 2;
+			display: flex;
+			cursor: pointer;
+
+			.type {
+				max-height: 40px;
+				margin-right: 16px;
+			}
+
+			.title {
+				font-weight: 500;
+				font-size: 20px;
+				margin: 0;
+			}
+		}
+
+		&__info,
+		&__signup {
+			background: $background-card;
+			padding: 16px;
+			margin-top: 3px;
+
+			h3 {
+				margin: 0 0 16px;
+				font-size: 20px;
+				font-weight: normal;
+			}
+
+			.validations {
+				margin-top: 16px;
+				display: grid;
+				gap: 16px;
+				grid-template-columns: 1fr 1fr;
+
+				@media screen and (max-width: 768px) {
+					grid-template-columns: 1fr 1fr;
+				}
+
+				@media screen and (max-width: 480px) {
+					grid-template-columns: 1fr;
+				}
+
+				strong {
+					display: block;
+					margin-bottom: 8px;
+					border-bottom: solid 1px $text-fade;
+					padding-bottom: 4px;
+					font-size: 16px;
+				}
+
+			}
 		}
 	}
 }
