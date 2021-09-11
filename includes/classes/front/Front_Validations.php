@@ -133,11 +133,10 @@ class Front_Validations {
 	public static function show_checkboxes( $skills, $validations, $faction ): string {
 		$validations = json_decode( $validations, true );
 
-		$i = 0;
-
 		$html = '';
 
 		if ( isset( $validations['main_skills_validations'] ) ) {
+			$i = 0;
 			foreach ( $validations['main_skills_validations'] as $val_skill ) {
 				$has_skill = 0;
 
@@ -174,6 +173,8 @@ class Front_Validations {
 		}
 
 		if ( isset( $validations['specialty_skills_validations'] ) ) {
+			$i = 0;
+
 			foreach ( $validations['specialty_skills_validations'] as $val_skill ) {
 				$has_skill = 0;
 
@@ -202,7 +203,7 @@ class Front_Validations {
 
 				if ( $has_skill === 1 ) {
 					$front_validation = new Front_Validations();
-					$html            .= $front_validation->generate_checkbox_skill( $val_skill['skill'], $val_skill['argument'], $val_skill['level'], $i, 'main' );
+					$html            .= $front_validation->generate_checkbox_skill( $val_skill['skill'], $val_skill['argument'], $val_skill['level'], $i, 'specialty' );
 				}
 
 				$i++;
@@ -219,7 +220,7 @@ class Front_Validations {
 				if ( $faction === $valfaction['faction'] ) {
 					$random = rand( 0, 100000 );
 
-					$html .= "<input type='checkbox' id='$random' name='character[faction][$i]' />";
+					$html .= "<input type='radio' id='$random' name='character' value='faction_$i' />";
 					$html .= "<label for='$random'>$factionname</label>";
 				}
 
@@ -230,7 +231,7 @@ class Front_Validations {
 		if ( isset( $validations['custom_validation'] ) ) {
 			$random = rand( 0, 100000 );
 
-			$html .= "<input type='checkbox' id='$random' name='character[custom]' />";
+			$html .= "<input type='radio' id='$random' name='character' value='custom_0' />";
 			$html .= "<label for='$random'>Custom requirement</label>";
 		}
 
@@ -241,8 +242,10 @@ class Front_Validations {
 		$random    = rand( 0, 100000 );
 		$skillname = Skills::get_skill_by_id( $skill_id );
 
+		$value = $type . '_' . $array_number;
+
 		$html  = '';
-		$html .= "<input type='checkbox' id='$random' name='character[$type][$array_number]' />";
+		$html .= "<input type='radio' id='$random' name='character' value='$value' />";
 		$html .= "<label for='$random'>$skillname ";
 
 		if ( $argument === '1' ) {

@@ -30,3 +30,22 @@ $plotballs = Get_All_Plotballs::get_all_active_plotballs();
 		</div>
 	<?php } ?>
 </div>
+<script>
+	jQuery(".participate-button").unbind().on("click", function(){
+		jQuery(this).parent().next().slideToggle();
+	})
+
+	jQuery( ".character_signup" ).unbind().on( 'submit', function(e) {
+		e.preventDefault();
+		var form_data = jQuery( this ).serialize();
+
+		$.ajax( {
+			url: "xf.php",
+			type: "post",
+			data: form_data
+		} ).done( function( response ) {
+			//hideModal();
+			console.log(response);
+		} );
+	} );
+</script>

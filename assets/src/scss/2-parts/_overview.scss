@@ -1,53 +1,37 @@
 $flourish-border: solid 2px $color-link;
 
+:root {
+	--background-color: #262e3e;
+	--AccentColor: rgba(51, 192, 255, 1);
+	--AccentColor10percent: hsla(199, 100%, 60%, 0.1);
+	--AccentColor20percent: hsla(199, 100%, 60%, 0.2);
+}
+
 .overview {
 	.item {
 		margin-bottom: 24px;
 		padding: 3px;
-		border: solid 2px $background-card;
 		position: relative;
 
-		.flourish {
-			width: 10px;
-			height: 10px;
-			position: absolute;
-			transition: all 0.2s linear;
-			z-index: 1;
+		--border-width: 2px;
+		--flourish-size: 10px;
+		--bordercolor: var(--AccentColor10percent);
 
-			&__left-top {
-				top: -2px;
-				left: -2px;
-				border-top: $flourish-border;
-				border-left: $flourish-border;
-			}
-
-			&__left-bottom {
-				bottom: -2px;
-				left: -2px;
-				border-bottom: $flourish-border;
-				border-left: $flourish-border;
-			}
-
-			&__right-top {
-				top: -2px;
-				right: -2px;
-				border-top: $flourish-border;
-				border-right: $flourish-border;
-			}
-
-			&__right-bottom {
-				bottom: -2px;
-				right: -2px;
-				border-bottom: $flourish-border;
-				border-right: $flourish-border;
-			}
-		}
+		box-shadow: 0 0 0 var(--border-width) var(--background-color),
+			calc(-1 * ((var(--border-width) * 2) + var(--flourish-size))) 0 0 calc(-1 * var(--flourish-size)) var(--bordercolor),
+			calc((var(--border-width) * 2) + var(--flourish-size)) 0 0 calc(-1 * var(--flourish-size)) var(--bordercolor),
+			0 calc(-1 * ((var(--border-width) * 1.5) + var(--flourish-size))) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--bordercolor),
+			0 calc((var(--border-width) * 1.5) + var(--flourish-size)) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--bordercolor),
+			calc(-1 * ((var(--border-width) * 2) + var(--flourish-size))) 0 0 calc(-1 * var(--flourish-size)) var(--background-color),
+			calc((var(--border-width) * 2) + var(--flourish-size)) 0 0 calc(-1 * var(--flourish-size)) var(--background-color),
+			0 calc(-1 * ((var(--border-width) * 1.5) + var(--flourish-size))) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--background-color),
+			0 calc((var(--border-width) * 1.5) + var(--flourish-size)) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--background-color),
+			0 0 0 calc(var(--border-width) * 2) var(--AccentColor);
+		transition: cubic-bezier(0, 0.99, 0.5, 0.99) 0.5s;
 
 		&:hover {
-			.flourish {
-				width: 20px;
-				height: 20px;
-			}
+			--flourish-size: 20px;
+			--bordercolor: var(--AccentColor20percent);
 		}
 
 		&__main {
@@ -106,5 +90,38 @@ $flourish-border: solid 2px $color-link;
 
 			}
 		}
+
+		&__signup {
+			display: none;
+
+			form {
+				display: flex;
+				flex-wrap: wrap;
+			}
+
+			&__image {
+				overflow: hidden;
+				width: 150px;
+				height: 150px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				transform: skewY(-15deg);
+				margin-right: 16px;
+
+				img {
+					object-fit: cover;
+					width: 150px;
+					height: 150px;
+					transform: skewY(15deg);
+				}
+			}
+
+			.break {
+				flex-basis: 100%;
+				height: 24px;
+			}
+		}
+
 	}
 }
