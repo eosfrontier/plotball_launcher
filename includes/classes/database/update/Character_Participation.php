@@ -20,11 +20,11 @@ class Character_Participation {
 			$plotball_characters[ $character_id ] = $post['character'];
 		}
 		else {
-			$plotball_characters                  = unserialize( $plotball_characters );
+			$plotball_characters                  = json_decode( $plotball_characters, true );
 			$plotball_characters[ $character_id ] = $post['character'];
 		}
 
-		$plotball_characters = serialize( $plotball_characters );
+		$plotball_characters = json_encode( $plotball_characters );
 
 		$arg['characters'] = $plotball_characters;
 		$conditions['id']  = $plotball_id;

@@ -18,7 +18,7 @@ $plotballs = Get_All_Plotballs::get_all_active_plotballs();
 			<span class="flourish flourish__right-top"></span>
 			<span class="flourish flourish__right-bottom"></span>
 			<div class="item__main">
-				<img class="type" src="assets/images/icons/<?php echo $plotball['type']; ?>.svg" />
+				<img alt="" class="type" src="assets/images/icons/<?php echo $plotball['type']; ?>.svg" />
 				<h2 class="title">
 					<?php echo $plotball['title']; ?>
 				</h2>

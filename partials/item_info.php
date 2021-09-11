@@ -9,12 +9,13 @@ use frontier\ploball\front\Front_Validations;
 if ( ! isset( $_GET['id'] ) ) {
 	return false;
 }
-$plotball          = Get_All_Plotballs::get_plotball_by_id( $_GET['id'] )['0'];
-$character         = Character::get_active_character_by_jid( $jid );
-$character_id      = $character['characterID'];
-$character_faction = $character['faction'];
-$character_skills  = Character::get_character_skills_by_id( $character_id );
-$validations       = $plotball['validations'];
+$plotball              = Get_All_Plotballs::get_plotball_by_id( $_GET['id'] )['0'];
+$character             = Character::get_active_character_by_jid( $jid );
+$character_id          = $character['characterID'];
+$character_faction     = $character['faction'];
+$character_skills      = Character::get_character_skills_by_id( $character_id );
+$validations           = $plotball['validations'];
+$character_validations = $plotball['characters'];
 ?>
 
 <div class="item__info">
@@ -31,14 +32,14 @@ $validations       = $plotball['validations'];
 		We require people that have these skills or are members from these Factions.
 	</p>
 	<div class="validations">
-		<?php echo Front_Validations::show_requirements( $validations ); ?>
+		<?php echo Front_Validations::show_requirements( $validations, $character_validations ); ?>
 	</div>
 	<button class="button participate-button">I want to participate</button>
 </div>
 <div class="item__signup">
 	<form class="character_signup">
 		<div class="item__signup__image">
-			<img loading="lazy" src="https://www.eosfrontier.space/eos_douane/images/mugs/<?php echo $character_id; ?>.jpg" />
+			<img loading="lazy" alt="" src="https://www.eosfrontier.space/eos_douane/images/mugs/<?php echo $character_id; ?>.jpg" />
 		</div>
 		<div>
 			<?php echo Front_Validations::show_checkboxes( $character_skills, $validations, $character_faction ); ?>

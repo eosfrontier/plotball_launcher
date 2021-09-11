@@ -11,11 +11,19 @@ class Front_Validations {
 	 * @param  mixed $validations json array of the validations.
 	 * @return string
 	 */
-	public static function show_requirements( $validations ):string {
+	public static function show_requirements( $validations, $character_validations ):string {
 		$validations = json_decode( $validations, true );
+
+		if ( ! empty( $character_validations ) ) {
+			$character_validations = json_decode( $character_validations, true );
+		}
+		else {
+			$character_validations = [];
+		}
 
 		$list = '';
 
+		$i = 0;
 		if ( isset( $validations['main_skills_validations'] ) ) {
 			$list .= '<p>';
 			$list .= '<strong>Main Skills</strong>';
@@ -54,9 +62,32 @@ class Front_Validations {
 				if ( $main_skill['level'] === '5' ) {
 					$list .= ' advanced<sup>5</sup><br />';
 				}
+				$html           = '';
+				$has_characters = 0;
+
+				if ( ! empty( $character_validations ) ) {
+					foreach ( $character_validations as $key => $character_validation ) {
+
+						$check = explode( '_', $character_validation );
+						if ( $check[0] === 'main' && $check[1] === strval( $i ) ) {
+							$has_characters = 1;
+
+							$html .= "<span class='small-image'><img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$key.jpg' /></span>";
+						}
+					}
+
+					if ( $has_characters === 1 ) {
+						$list .= $html . '<br />';
+					}
+				}
+				$i++;
 			}
-			$list .= '</p>';
+
+				$list .= '</p>';
+
+
 		}
+
 
 		if ( isset( $validations['specialty_skills_validations'] ) ) {
 			$list .= '<p>';
