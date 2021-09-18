@@ -18,6 +18,18 @@ class Character {
 	}
 
 	/**
+	 * Get the character by id.
+	 *
+	 * @param  mixed $id the id.
+	 * @return array
+	 */
+	public static function get_active_character_by_id( $id ):array {
+		$character = Crud::get( "SELECT * FROM ecc_characters where characterID = $id" );
+
+		return $character['0'];
+	}
+
+	/**
 	 * Get the parent and level columns in an array.
 	 *
 	 * @param  mixed $id the character id.

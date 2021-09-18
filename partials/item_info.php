@@ -34,7 +34,9 @@ $character_validations = $plotball['characters'];
 	<div class="validations">
 		<?php echo Front_Validations::show_requirements( $validations, $character_validations ); ?>
 	</div>
+	<?php if ( $plotball['published'] === '1' ) { ?>
 	<button class="button participate-button">I want to participate</button>
+	<?php } ?>
 </div>
 <div class="item__signup">
 	<form class="character_signup">

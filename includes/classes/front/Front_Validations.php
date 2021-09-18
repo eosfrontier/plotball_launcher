@@ -2,6 +2,7 @@
 namespace frontier\ploball\front;
 
 use frontier\ploball\admin\Skills;
+use frontier\ploball\database\get\Character;
 
 class Front_Validations {
 
@@ -9,6 +10,7 @@ class Front_Validations {
 	 * Generate the html of the validations.
 	 *
 	 * @param  mixed $validations json array of the validations.
+	 * @param  mixed $character_validations json array of the character validations.
 	 * @return string
 	 */
 	public static function show_requirements( $validations, $character_validations ):string {
@@ -23,9 +25,9 @@ class Front_Validations {
 
 		$list = '';
 
-		$i = 0;
 		if ( isset( $validations['main_skills_validations'] ) ) {
-			$list .= '<p>';
+			$i     = 0;
+			$list .= '<div>';
 			$list .= '<strong>Main Skills</strong>';
 
 			foreach ( $validations['main_skills_validations'] as $main_skill ) {
@@ -72,7 +74,8 @@ class Front_Validations {
 						if ( $check[0] === 'main' && $check[1] === strval( $i ) ) {
 							$has_characters = 1;
 
-							$html .= "<span class='small-image'><img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$key.jpg' /></span>";
+							$info  = new Front_Validations();
+							$html .= $info->show_character_info( $key );
 						}
 					}
 
@@ -83,14 +86,13 @@ class Front_Validations {
 				$i++;
 			}
 
-				$list .= '</p>';
-
-
+				$list .= '</div>';
 		}
 
 
 		if ( isset( $validations['specialty_skills_validations'] ) ) {
-			$list .= '<p>';
+			$i     = 0;
+			$list .= '<div>';
 			$list .= '<strong>Specialty Skills</strong>';
 
 			foreach ( $validations['specialty_skills_validations'] as $special_skill ) {
@@ -127,30 +129,111 @@ class Front_Validations {
 				if ( $special_skill['level'] === '10' ) {
 					$list .= ' authority<sup>10</sup><br />';
 				}
+				$html           = '';
+				$has_characters = 0;
+
+				if ( ! empty( $character_validations ) ) {
+					foreach ( $character_validations as $key => $character_validation ) {
+
+						$check = explode( '_', $character_validation );
+						if ( $check[0] === 'specialty' && $check[1] === strval( $i ) ) {
+							$has_characters = 1;
+
+							$info  = new Front_Validations();
+							$html .= $info->show_character_info( $key );
+						}
+					}
+
+					if ( $has_characters === 1 ) {
+						$list .= $html . '<br />';
+					}
+				}
+				$i++;
 			}
-			$list .= '</p>';
+			$list .= '</div>';
 		}
 
 		if ( isset( $validations['faction_validations'] ) ) {
-			$list .= '<p>';
+			$i     = 0;
+			$list .= '<div>';
 			$list .= '<strong>Factions</strong>';
 
 			foreach ( $validations['faction_validations'] as $faction ) {
 
-				$list .= ucfirst( $faction['faction'] ) . '<br />';
+				$list          .= ucfirst( $faction['faction'] ) . '<br />';
+				$html           = '';
+				$has_characters = 0;
+
+				if ( ! empty( $character_validations ) ) {
+					foreach ( $character_validations as $key => $character_validation ) {
+
+						$check = explode( '_', $character_validation );
+						if ( $check[0] === 'faction' && $check[1] === strval( $i ) ) {
+							$has_characters = 1;
+
+							$info  = new Front_Validations();
+							$html .= $info->show_character_info( $key );
+						}
+					}
+
+					if ( $has_characters === 1 ) {
+						$list .= $html . '<br />';
+					}
+				}
+				$i++;
 			}
-			$list .= '</p>';
+			$list .= '</div>';
 		}
 
 		if ( ! empty( $validations['custom_validation'] ) ) {
-			$list .= '<p>';
-			$list .= '<strong>Custom requirements</strong>';
-			$list .= $validations['custom_validation'] . '<br />';
-			$list .= '</p>';
+			$i                  = 0;
+			$list              .= '<div>';
+			$list              .= '<strong>Custom requirements</strong>';
+			$list              .= $validations['custom_validation'] . '<br />';
+			$html               = '';
+				$has_characters = 0;
+
+			if ( ! empty( $character_validations ) ) {
+				foreach ( $character_validations as $key => $character_validation ) {
+
+					$check = explode( '_', $character_validation );
+					if ( $check[0] === 'custom' && $check[1] === strval( $i ) ) {
+						$has_characters = 1;
+
+						$info  = new Front_Validations();
+						$html .= $info->show_character_info( $key );
+					}
+				}
+
+				if ( $has_characters === 1 ) {
+					$list .= $html . '<br />';
+				}
+			}
+				$i++;
+			$list .= '</div>';
 		}
 
-
 		return $list;
+	}
+
+	/**
+	 * Character that has signed up for a validation.
+	 *
+	 * @param  mixed $id Id of the character.
+	 * @return string Generated html.
+	 */
+	public function show_character_info( $id ) {
+		$character = Character::get_active_character_by_id( $id )['character_name'];
+
+		$html = "<span tabindex='0' class='small-image'>
+					<img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$id.jpg' />
+					<div class='hover-info'>
+						<img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$id.jpg' />
+						<span>$character</span>
+					</div>
+				</span>";
+
+		return $html;
 	}
 
 	/**
@@ -269,6 +352,16 @@ class Front_Validations {
 		return $html;
 	}
 
+	/**
+	 * Generate radio list to check for validations.
+	 *
+	 * @param  mixed $skill_id The skill id.
+	 * @param  mixed $argument Equal to and such.
+	 * @param  mixed $level Level of the skill.
+	 * @param  mixed $array_number Position in the validation array.
+	 * @param  mixed $type Type of validation.
+	 * @return string
+	 */
 	public function generate_checkbox_skill( $skill_id, $argument, $level, $array_number, $type ): string {
 		$random    = rand( 0, 100000 );
 		$skillname = Skills::get_skill_by_id( $skill_id );
@@ -333,7 +426,6 @@ class Front_Validations {
 		}
 
 		$html .= '</label>';
-
 
 		return $html;
 	}
