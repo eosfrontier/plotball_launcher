@@ -44,8 +44,7 @@ $plotballs = Get_All_Plotballs::get_all_active_plotballs();
 			type: "post",
 			data: form_data
 		} ).done( function( response ) {
-			//hideModal();
-			console.log(response);
+			
 		} );
 	} );
 </script>

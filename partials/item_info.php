@@ -43,7 +43,7 @@ $character_validations = $plotball['characters'];
 		<div class="item__signup__image">
 			<img loading="lazy" alt="" src="https://www.eosfrontier.space/eos_douane/images/mugs/<?php echo $character_id; ?>.jpg" />
 		</div>
-		<div>
+		<div class="checkbox_holder">
 			<?php echo Front_Validations::show_checkboxes( $character_skills, $validations, $character_faction ); ?>
 		</div>
 		<div class="break"></div>
