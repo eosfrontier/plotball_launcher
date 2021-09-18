@@ -2,44 +2,6 @@ body {
 	font-family: 'Atkinson Hyperlegible', sans-serif;
 	font-size: 16px;
 	color: $color-white;
-
-	&.comic {
-		font-family: 'Comic Neue', cursive !important;
-
-		h1 {
-			animation: .8s shake infinite alternate;
-		}
-
-		.logo {
-			animation: .8s shake infinite alternate;
-		}
-
-		@keyframes shake {
-			0% {
-				transform: skewX(-15deg);
-			}
-
-			5% {
-				transform: skewX(15deg);
-			}
-
-			10% {
-				transform: skewX(-15deg);
-			}
-
-			15% {
-				transform: skewX(15deg);
-			}
-
-			20% {
-				transform: skewX(0deg);
-			}
-
-			100% {
-				transform: skewX(0deg);
-			}
-		}
-	}
 }
 
 .warning {
