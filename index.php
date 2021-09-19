@@ -2,6 +2,7 @@
 	require './includes/includes.php';
 	$random = rand( 0, 1000 );
 	$logo   = 'talon';
+	$class  = '';
 ?>
 <!DOCTYPE html>
 <html lang="en">

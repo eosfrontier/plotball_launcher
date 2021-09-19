@@ -4,6 +4,7 @@ require getcwd() . '/vendor/autoload.php';
 
 use frontier\ploball\database\get\Character;
 use frontier\ploball\database\get\Get_All_Plotballs;
+use frontier\ploball\front\Double_Signup;
 use frontier\ploball\front\Front_Validations;
 
 if ( ! isset( $_GET['id'] ) ) {
@@ -16,6 +17,8 @@ $character_faction     = $character['faction'];
 $character_skills      = Character::get_character_skills_by_id( $character_id );
 $validations           = $plotball['validations'];
 $character_validations = $plotball['characters'];
+$status                = $plotball['published'];
+$plot_id               = $_GET['id'];
 ?>
 
 <div class="item__info">
@@ -49,7 +52,61 @@ $character_validations = $plotball['characters'];
 		<div class="break"></div>
 		<input class="sign_up_button button" type="submit" value="Sign up" />
 		<input type="hidden" name="xf" value="add_character_to_plotball" />
-		<input type="hidden" name="plot_id" value="<?php echo $_GET['id']; ?>" />
+		<input type="hidden" name="plot_id" value="<?php echo $plot_id; ?>" />
 		<input type="hidden" name="character_id" value="<?php echo $character_id; ?>" />
 	</form>
+	<div class="signup_info signup_1">
+		Sign up succesfull. Page will reload in 5 seconds.
+	</div>
+	<div class="signup_info signup_2">
+		All requirements are filled. But there are double. Page will reload in 5 seconds.
+	</div>
+	<div class="signup_info signup_3">
+		All requirements are filled. Page will reload in 5 seconds.
+	</div>
 </div>
+<?php if ( $status === '2' ) { ?>
+	<div class="item__double">
+		<h3>Resolve multiple signups</h3>
+
+		<?php
+		$doubles = Double_Signup::get_double_signups( $plotball['id'] );
+		$problem = 0;
+		foreach ( $doubles as $characters ) {
+			echo '<div class="double_signups"><div>These people have signed up for the same thing. They need to choose who participates and who doesn\'t.</div>';
+			foreach ( $characters as $signed_in_character ) {
+				if ( $signed_in_character === intval( $character_id ) ) {
+					$problem = 1;
+				}
+				$name = Character::get_active_character_by_id( $signed_in_character )['character_name'];
+				echo "<span tabindex='0' class='small-image'>
+				<img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$signed_in_character.jpg' />
+				<div class='hover-info'>
+					<img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$signed_in_character.jpg' />
+					<span>$name</span>
+				</div>
+			</span>";
+			}
+			echo '</div>';
+		}
+
+		if ( $problem === 1 ) {
+			?>
+			<form class="double_signout_form">
+				It seems that you're signed up with someone for the same thing. Do you want to sign out so that the other can participate? <br />
+				<input type="hidden" name="character_id" value="<?php echo $character_id; ?>" />
+				<input type="hidden" name="plot_id" value="<?php echo $plot_id; ?>" />
+				<input type="hidden" name="xf" value="sign_out_as_double" />
+				<input class="double_signout_button button" type="submit" value="Sign out" />
+			</form>
+			<div class="signup_info signup_2">
+				There are still double signups. Page will reload in 5 seconds.
+			</div>
+			<div class="signup_info signup_3">
+				All requirements are filled. Page will reload in 5 seconds.
+			</div>
+			<?php
+		}
+		?>
+	</div>
+<?php } ?>

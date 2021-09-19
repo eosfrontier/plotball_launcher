@@ -54,8 +54,20 @@ $flourish-border: solid 2px $color-link;
 			}
 		}
 
+		&__block {
+			display: none
+		}
+
+		&.active {
+
+			.item__block {
+				display: block;
+			}
+		}
+
 		&__info,
-		&__signup {
+		&__signup,
+		&__double {
 			background: $background-card;
 			padding: 16px;
 			margin-top: 3px;
@@ -63,6 +75,12 @@ $flourish-border: solid 2px $color-link;
 			h3 {
 				margin: 0 0 16px;
 				font-size: 20px;
+				font-weight: normal;
+			}
+
+			h4 {
+				margin-bottom: 4px;
+				font-size: 18px;
 				font-weight: normal;
 			}
 
@@ -87,61 +105,64 @@ $flourish-border: solid 2px $color-link;
 					padding-bottom: 4px;
 					font-size: 16px;
 				}
+			}
 
-				.small-image {
+			.signup_info {
+				display: none;
+			}
+
+			.small-image {
+				width: 50px;
+				height: 50px;
+				display: inline-block;
+				justify-content: center;
+				align-items: center;
+				margin-right: 16px;
+				position: relative;
+				cursor: pointer;
+
+				img {
+					object-fit: cover;
 					width: 50px;
 					height: 50px;
-					display: inline-block;
-					justify-content: center;
-					align-items: center;
-					margin-right: 16px;
-					position: relative;
-					cursor: pointer;
+				}
+
+				.hover-info {
+					width: 200px;
+					cursor: initial;
+					padding: 16px;
+					background: $background-default;
+					position: absolute;
+					left: 0px;
+					bottom: calc(100% + 8px);
+					z-index: 4;
+					display: none;
+					box-shadow: 0 0 0 var(--border-width) var(--background-color),
+						calc(-1 * ((var(--border-width) * 2) + var(--flourish-size))) 0 0 calc(-1 * var(--flourish-size)) var(--bordercolor),
+						calc((var(--border-width) * 2) + var(--flourish-size)) 0 0 calc(-1 * var(--flourish-size)) var(--bordercolor),
+						0 calc(-1 * ((var(--border-width) * 1.5) + var(--flourish-size))) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--bordercolor),
+						0 calc((var(--border-width) * 1.5) + var(--flourish-size)) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--bordercolor),
+						calc(-1 * ((var(--border-width) * 2) + var(--flourish-size))) 0 0 calc(-1 * var(--flourish-size)) var(--background-color),
+						calc((var(--border-width) * 2) + var(--flourish-size)) 0 0 calc(-1 * var(--flourish-size)) var(--background-color),
+						0 calc(-1 * ((var(--border-width) * 1.5) + var(--flourish-size))) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--background-color),
+						0 calc((var(--border-width) * 1.5) + var(--flourish-size)) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--background-color),
+						0 0 0 calc(var(--border-width) * 2) var(--AccentColor);
+
 
 					img {
-						object-fit: cover;
-						width: 50px;
-						height: 50px;
-					}
-
-					.hover-info {
-						width: 200px;
-						cursor: initial;
-						padding: 16px;
-						background: $background-default;
-						position: absolute;
-						left: 0px;
-						bottom: calc(100% + 8px);
-						z-index: 4;
-						display: none;
-						box-shadow: 0 0 0 var(--border-width) var(--background-color),
-							calc(-1 * ((var(--border-width) * 2) + var(--flourish-size))) 0 0 calc(-1 * var(--flourish-size)) var(--bordercolor),
-							calc((var(--border-width) * 2) + var(--flourish-size)) 0 0 calc(-1 * var(--flourish-size)) var(--bordercolor),
-							0 calc(-1 * ((var(--border-width) * 1.5) + var(--flourish-size))) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--bordercolor),
-							0 calc((var(--border-width) * 1.5) + var(--flourish-size)) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--bordercolor),
-							calc(-1 * ((var(--border-width) * 2) + var(--flourish-size))) 0 0 calc(-1 * var(--flourish-size)) var(--background-color),
-							calc((var(--border-width) * 2) + var(--flourish-size)) 0 0 calc(-1 * var(--flourish-size)) var(--background-color),
-							0 calc(-1 * ((var(--border-width) * 1.5) + var(--flourish-size))) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--background-color),
-							0 calc((var(--border-width) * 1.5) + var(--flourish-size)) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--background-color),
-							0 0 0 calc(var(--border-width) * 2) var(--AccentColor);
-
-
-						img {
-							width: 100%;
-							height: auto;
-							display: block;
-							margin-bottom: 8px;
-						}
-					}
-
-					&:hover,
-					&:focus {
-						.hover-info {
-							display: block;
-						}
+						width: 100%;
+						height: auto;
+						display: block;
+						margin-bottom: 8px;
 					}
 				}
 
+				&:hover,
+				&:focus {
+					.hover-info {
+						display: block;
+					}
+				}
 			}
 
 			.participate-button {
@@ -179,6 +200,10 @@ $flourish-border: solid 2px $color-link;
 				flex-basis: 100%;
 				height: 24px;
 			}
+		}
+
+		.double_signout_form {
+			margin-top: 24px;
 		}
 
 	}

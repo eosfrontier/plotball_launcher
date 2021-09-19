@@ -153,7 +153,10 @@ class Character_Participation {
 				$arg['published'] = 2;
 			}
 
+			$arg['signed_in'] = $plotball['characters'];
+
 			$conditions['id'] = $id;
+
 			Crud::update( 'plotball', $arg, $conditions );
 		}
 	}
