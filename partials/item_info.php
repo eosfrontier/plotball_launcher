@@ -20,7 +20,7 @@ $validations           = $plotball['validations'];
 $character_validations = $plotball['characters'];
 $status                = $plotball['published'];
 $plot_id               = $_GET['id'];
-if ( $status === '3' ) {
+if ( $status === '3' || $status === '4' ) {
 	$team = json_decode( $plotball['signed_in'], true );
 }
 ?>
@@ -32,6 +32,8 @@ if ( $status === '3' ) {
 	<p class="description">
 		<?php echo nl2br( $plotball['message'] ); ?>
 	</p>
+</div>
+<div class="item__info">
 	<h3>
 		Requirements
 	</h3>
@@ -153,6 +155,29 @@ if ( $status === '3' ) {
 	</div>
 <?php } ?>
 <?php if ( $status === '4' && ! empty( $plotball['loot'] ) ) { ?>
+	<div class="item__double">
+		<h3>Current team</h3>
+		<?php
+		$active = [];
+		foreach ( $team as $key => $team_member ) {
+			if ( $key !== 'completed' ) {
+				$name     = Character::get_active_character_by_id( $key )['character_name'];
+				$finished = '';
+				if ( isset( $team['completed'] ) && in_array( $key, $team['completed'] ) ) {
+					$finished = '<br />has completed their task.';
+				}
+				echo "<span tabindex='0' class='small-image'>
+			<img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$key.jpg' />
+			<div class='hover-info'>
+				<img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$key.jpg' />
+				<span>$name</span>$finished
+			</div>
+		</span>";
+			}
+		}
+
+		?>
+	</div>
 	<div class="item__double">
 		<h3>Task finished</h3>
 		<?php echo $plotball['loot']; ?>

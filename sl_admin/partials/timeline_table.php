@@ -20,7 +20,7 @@ foreach ( $plotballs as $plotball ) {
 			<span></span>Published
 		</div>
 		<div class="doubles">
-			<span></span>Doubles
+			<span></span>Double signups
 		</div>
 		<div class="active">
 			<span></span>Active
