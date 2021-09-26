@@ -1,5 +1,6 @@
 <?php
 
+use frontier\ploball\front\Plotball_Status;
 use frontier\ploball\database\get\Get_All_Plotballs;
 
 $plotballs = Get_All_Plotballs::get_all_active_plotballs();
@@ -15,9 +16,12 @@ $plotballs = Get_All_Plotballs::get_all_active_plotballs();
 		<div class="item" id="item-<?php echo $id; ?>" data-id="<?php echo $id; ?>">
 			<div class="item__main">
 				<img alt="" class="type" src="assets/images/icons/<?php echo $plotball['type']; ?>.svg" />
-				<h2 class="title">
-					<?php echo $plotball['title']; ?>
-				</h2>
+				<div>
+					<h2 class="title">
+						<?php echo $plotball['title']; ?>
+					</h2>
+					Status: <?php echo Plotball_Status::get_current_status( $plotball['published'] ); ?>
+				</div>
 			</div>
 			<div class="item__block">
 			<?php
@@ -70,7 +74,7 @@ $plotballs = Get_All_Plotballs::get_all_active_plotballs();
 		} );
 	} );
 
-	jQuery(".item__main").click(function(){
+	jQuery(".item__main").click(function(e){
 		jQuery(this).parent(".item").toggleClass("active");
 	})
 
@@ -81,10 +85,12 @@ $plotballs = Get_All_Plotballs::get_all_active_plotballs();
 
 		if(item !== null){
 			const id = "#" + item;
+			if(jQuery(id).length){
 			jQuery(id).addClass("active");
-			jQuery([document.documentElement, document.body]).animate({
-				scrollTop: $(id).offset().top
-			}, 500);
+				jQuery([document.documentElement, document.body]).animate({
+					scrollTop: $(id).offset().top
+				}, 500);
+			}
 		}
 	})
 
@@ -115,6 +121,29 @@ $plotballs = Get_All_Plotballs::get_all_active_plotballs();
 				}, 5000);
 			}
 
+		} );
+	} );
+
+	jQuery( ".resolve_task_form" ).unbind().on( 'submit', function(e) {
+		e.preventDefault();
+		var form_data = jQuery( this ).serialize();
+		var object = jQuery( this.offsetParent );
+		var url = location.protocol + '//' + location.host + location.pathname + "?item=" + jQuery(object).attr("id");
+
+		jQuery( object ).find(".resolve_task_button").hide();
+
+		$.ajax( {
+			url: "xf.php",
+			type: "post",
+			data: form_data
+		} ).done( function( response ) {
+			console.log(response);
+			if(response === "1"){
+				jQuery( object ).find(".signup_1").show();
+				setTimeout(function(){
+					window.location.href = url;
+				}, 5000);
+			}
 		} );
 	} );
 </script>

@@ -2,10 +2,11 @@
 
 require getcwd() . '/vendor/autoload.php';
 
-use frontier\ploball\database\get\Character;
-use frontier\ploball\database\get\Get_All_Plotballs;
 use frontier\ploball\front\Double_Signup;
+use frontier\ploball\front\Plotball_Status;
+use frontier\ploball\database\get\Character;
 use frontier\ploball\front\Front_Validations;
+use frontier\ploball\database\get\Get_All_Plotballs;
 
 if ( ! isset( $_GET['id'] ) ) {
 	return false;
@@ -19,6 +20,9 @@ $validations           = $plotball['validations'];
 $character_validations = $plotball['characters'];
 $status                = $plotball['published'];
 $plot_id               = $_GET['id'];
+if ( $status === '3' ) {
+	$team = json_decode( $plotball['signed_in'], true );
+}
 ?>
 
 <div class="item__info">
@@ -56,7 +60,7 @@ $plot_id               = $_GET['id'];
 		<input type="hidden" name="character_id" value="<?php echo $character_id; ?>" />
 	</form>
 	<div class="signup_info signup_1">
-		Sign up succesfull. Page will reload in 5 seconds.
+		Sign up succesful. Page will reload in 5 seconds.
 	</div>
 	<div class="signup_info signup_2">
 		All requirements are filled. But there are double. Page will reload in 5 seconds.
@@ -108,5 +112,49 @@ $plot_id               = $_GET['id'];
 			<?php
 		}
 		?>
+	</div>
+<?php } ?>
+<?php if ( $status === '3' ) { ?>
+	<div class="item__double">
+		<h3>Current team</h3>
+		<?php
+		$active = [];
+		foreach ( $team as $key => $team_member ) {
+			if ( $key !== 'completed' ) {
+				$name     = Character::get_active_character_by_id( $key )['character_name'];
+				$finished = '';
+				if ( isset( $team['completed'] ) && in_array( $key, $team['completed'] ) ) {
+					$finished = '<br />has completed their task.';
+				}
+				echo "<span tabindex='0' class='small-image'>
+			<img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$key.jpg' />
+			<div class='hover-info'>
+				<img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$key.jpg' />
+				<span>$name</span>$finished
+			</div>
+		</span>";
+			}
+		}
+
+		if ( Plotball_Status::can_complete_task( $team, $character_id ) ) {
+			?>
+		<form class="resolve_task_form">
+			<input type="hidden" name="character_id" value="<?php echo $character_id; ?>" />
+			<input type="hidden" name="plot_id" value="<?php echo $plot_id; ?>" />
+			<input type="hidden" name="xf" value="resolve_task" />
+			<input class="resolve_task_button button" type="submit" value="Resolve my task" />
+		</form>
+		<div class="signup_info signup_1">
+			Thank you for completing your task. Page will reload in 5 seconds.
+		</div>
+			<?php
+		}
+		?>
+	</div>
+<?php } ?>
+<?php if ( $status === '4' && ! empty( $plotball['loot'] ) ) { ?>
+	<div class="item__double">
+		<h3>Task finished</h3>
+		<?php echo $plotball['loot']; ?>
 	</div>
 <?php } ?>
