@@ -1,5 +1,5 @@
 <?php
-namespace frontier\ploball\admin\get;
+namespace frontier\ploball\database\get;
 
 use frontier\ploball\database\Crud;
 
@@ -25,6 +25,17 @@ class Get_All_Plotballs {
 	public static function get_plotball_by_id( int $id ): array {
 		$plotballs = Crud::get( "SELECT * FROM plotball WHERE id = $id" );
 
+		return $plotballs;
+	}
+
+	/**
+	 * Get all viewable plotballs.
+	 *
+	 * @return array
+	 */
+	public static function get_all_active_plotballs(): array {
+		$current_unix = time();
+		$plotballs    = Crud::get( "SELECT * FROM plotball WHERE published = 1 or published = 2 or published = 3 or published = 4 AND UNIX_TIMESTAMP( STR_TO_DATE( CONCAT( starting_date, ' ', starting_time ), '%Y-%m-%d %H:%i' ) ) <= $current_unix ORDER BY starting_date, starting_time" );
 		return $plotballs;
 	}
 }

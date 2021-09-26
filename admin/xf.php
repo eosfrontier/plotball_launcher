@@ -1,8 +1,8 @@
 <?php
 
-use frontier\ploball\admin\insert\Insert_Plotball;
-use frontier\ploball\admin\update\Publish_Plotball;
-use frontier\ploball\admin\update\Update_Plotball;
+use frontier\ploball\database\insert\Insert_Plotball;
+use frontier\ploball\database\update\Update_Plotball;
+use frontier\ploball\database\update\Publish_Plotball;
 
 require '../vendor/autoload.php';
 

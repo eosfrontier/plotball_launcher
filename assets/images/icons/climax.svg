@@ -1,0 +1,11 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+ <g id="Layer_1">
+  <title>Layer 1</title>
+  <path stroke="#ffffff" stroke-width="0" id="svg_8" d="m160.23203,140.15408l69.88399,-140.15408l69.88399,140.15408l-139.76797,0z" fill="#fff"/>
+  <path transform="rotate(180 230.116 229.923)" stroke="#ffffff" stroke-width="0" id="svg_10" d="m160.23201,300l69.88399,-140.15408l69.88399,140.15408l-139.76798,0z" fill="#fff"/>
+  <path stroke="#ffffff" id="svg_11" d="m29.67367,210.60179l56.3584,-26.32459l56.3584,26.32459l-112.7168,0z" stroke-width="0" fill="#fff"/>
+  <path transform="rotate(180 86.3584 230.642)" stroke="#ffffff" id="svg_14" d="m30,243.80415l56.35841,-26.32459l56.3584,26.32459l-112.71681,0z" stroke-width="0" fill="#fff"/>
+  <path transform="rotate(-90 59.9257 66.3192)" stroke="#ffffff" id="svg_16" d="m30,92.63849l29.92565,-52.63849l29.92565,52.63849l-59.8513,0z" stroke-width="0" fill="#fff"/>
+  <path transform="rotate(90 121.926 65.8231)" stroke="#ffffff" id="svg_17" d="m92,92.14232l29.92565,-52.63849l29.92565,52.63849l-59.8513,0z" stroke-width="0" fill="#fff"/>
+ </g>
+</svg>

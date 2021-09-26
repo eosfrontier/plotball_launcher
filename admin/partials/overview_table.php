@@ -3,7 +3,7 @@
 use frontier\ploball\admin\Sl;
 use frontier\ploball\admin\Status;
 use frontier\ploball\admin\Validations;
-use frontier\ploball\admin\get\Get_All_Plotballs;
+use frontier\ploball\database\get\Get_All_Plotballs;
 
 $items = Get_All_Plotballs::get_all_plotballs();
 

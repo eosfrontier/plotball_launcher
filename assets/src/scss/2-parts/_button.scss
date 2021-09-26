@@ -1,0 +1,16 @@
+.button {
+	cursor: pointer;
+	color: $color-white;
+	background: $button-default;
+	border: 1px solid $button-default;
+	border-radius: 5px;
+	padding: 1ch 2ch;
+	transition: 0.4s;
+	text-shadow: 1px 1px 4px rgb(38 46 62 / 60%);
+
+	&:hover,
+	&:active {
+		background: $accent-default;
+		border-color: $accent-default;
+	}
+}

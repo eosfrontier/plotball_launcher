@@ -1,6 +1,6 @@
 <?php
 
-use frontier\ploball\admin\get\Get_All_Plotballs;
+use frontier\ploball\database\get\Get_All_Plotballs;
 
 $plotballs   = Get_All_Plotballs::get_all_plotballs();
 $timestamped = [];

@@ -1,0 +1,211 @@
+$flourish-border: solid 2px $color-link;
+
+:root {
+	--background-color: #262e3e;
+	--AccentColor: rgba(51, 192, 255, 1);
+	--AccentColor10percent: hsla(199, 100%, 60%, 0.1);
+	--AccentColor20percent: hsla(199, 100%, 60%, 0.2);
+}
+
+.overview {
+	.item {
+		margin-bottom: 24px;
+		padding: 3px;
+		position: relative;
+
+		--border-width: 2px;
+		--flourish-size: 10px;
+		--bordercolor: var(--AccentColor10percent);
+
+		box-shadow: 0 0 0 var(--border-width) var(--background-color),
+			calc(-1 * ((var(--border-width) * 2) + var(--flourish-size))) 0 0 calc(-1 * var(--flourish-size)) var(--bordercolor),
+			calc((var(--border-width) * 2) + var(--flourish-size)) 0 0 calc(-1 * var(--flourish-size)) var(--bordercolor),
+			0 calc(-1 * ((var(--border-width) * 1.5) + var(--flourish-size))) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--bordercolor),
+			0 calc((var(--border-width) * 1.5) + var(--flourish-size)) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--bordercolor),
+			calc(-1 * ((var(--border-width) * 2) + var(--flourish-size))) 0 0 calc(-1 * var(--flourish-size)) var(--background-color),
+			calc((var(--border-width) * 2) + var(--flourish-size)) 0 0 calc(-1 * var(--flourish-size)) var(--background-color),
+			0 calc(-1 * ((var(--border-width) * 1.5) + var(--flourish-size))) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--background-color),
+			0 calc((var(--border-width) * 1.5) + var(--flourish-size)) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--background-color),
+			0 0 0 calc(var(--border-width) * 2) var(--AccentColor);
+		transition: cubic-bezier(0, 0.99, 0.5, 0.99) 0.5s;
+
+		&:hover {
+			--flourish-size: 20px;
+			--bordercolor: var(--AccentColor20percent);
+		}
+
+		&__main {
+			background: $background-card;
+			padding: 16px;
+			position: relative;
+			z-index: 2;
+			display: flex;
+			cursor: pointer;
+
+			.type {
+				max-height: 40px;
+				margin-right: 16px;
+			}
+
+			.title {
+				font-weight: 500;
+				font-size: 20px;
+				margin: 0;
+			}
+		}
+
+		&__block {
+			display: none
+		}
+
+		&.active {
+
+			.item__block {
+				display: block;
+			}
+		}
+
+		&__info,
+		&__signup,
+		&__double {
+			background: $background-card;
+			padding: 16px;
+			margin-top: 3px;
+
+			h3 {
+				margin: 0 0 16px;
+				font-size: 20px;
+				font-weight: normal;
+			}
+
+			h4 {
+				margin-bottom: 4px;
+				font-size: 18px;
+				font-weight: normal;
+			}
+
+			.validations {
+				margin-top: 16px;
+				display: grid;
+				gap: 16px;
+				grid-template-columns: 1fr 1fr;
+
+				@media screen and (max-width: 768px) {
+					grid-template-columns: 1fr 1fr;
+				}
+
+				@media screen and (max-width: 480px) {
+					grid-template-columns: 1fr;
+				}
+
+				strong {
+					display: block;
+					margin-bottom: 8px;
+					border-bottom: solid 1px $text-fade;
+					padding-bottom: 4px;
+					font-size: 16px;
+				}
+			}
+
+			.signup_info {
+				display: none;
+			}
+
+			.small-image {
+				width: 50px;
+				height: 50px;
+				display: inline-block;
+				justify-content: center;
+				align-items: center;
+				margin-right: 16px;
+				position: relative;
+				cursor: pointer;
+
+				img {
+					object-fit: cover;
+					width: 50px;
+					height: 50px;
+				}
+
+				.hover-info {
+					width: 200px;
+					cursor: initial;
+					padding: 16px;
+					background: $background-default;
+					position: absolute;
+					left: 0px;
+					bottom: calc(100% + 8px);
+					z-index: 4;
+					display: none;
+					box-shadow: 0 0 0 var(--border-width) var(--background-color),
+						calc(-1 * ((var(--border-width) * 2) + var(--flourish-size))) 0 0 calc(-1 * var(--flourish-size)) var(--bordercolor),
+						calc((var(--border-width) * 2) + var(--flourish-size)) 0 0 calc(-1 * var(--flourish-size)) var(--bordercolor),
+						0 calc(-1 * ((var(--border-width) * 1.5) + var(--flourish-size))) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--bordercolor),
+						0 calc((var(--border-width) * 1.5) + var(--flourish-size)) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--bordercolor),
+						calc(-1 * ((var(--border-width) * 2) + var(--flourish-size))) 0 0 calc(-1 * var(--flourish-size)) var(--background-color),
+						calc((var(--border-width) * 2) + var(--flourish-size)) 0 0 calc(-1 * var(--flourish-size)) var(--background-color),
+						0 calc(-1 * ((var(--border-width) * 1.5) + var(--flourish-size))) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--background-color),
+						0 calc((var(--border-width) * 1.5) + var(--flourish-size)) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--background-color),
+						0 0 0 calc(var(--border-width) * 2) var(--AccentColor);
+
+
+					img {
+						width: 100%;
+						height: auto;
+						display: block;
+						margin-bottom: 8px;
+					}
+				}
+
+				&:hover,
+				&:focus {
+					.hover-info {
+						display: block;
+					}
+				}
+			}
+
+			.participate-button {
+				margin-top: 24px;
+			}
+		}
+
+		&__signup {
+			display: none;
+
+			form {
+				display: flex;
+				flex-wrap: wrap;
+			}
+
+			&__image {
+				overflow: hidden;
+				width: 150px;
+				height: 150px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				transform: skewY(-15deg);
+				margin-right: 16px;
+
+				img {
+					object-fit: cover;
+					width: 150px;
+					height: 150px;
+					transform: skewY(15deg);
+				}
+			}
+
+			.break {
+				flex-basis: 100%;
+				height: 24px;
+			}
+		}
+
+		.double_signout_form,
+		.resolve_task_form {
+			margin-top: 24px;
+		}
+
+	}
+}

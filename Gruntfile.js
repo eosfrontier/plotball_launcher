@@ -1,7 +1,7 @@
 'use strict';
-module.exports = function (grunt) {
+module.exports = function( grunt ) {
 
-	grunt.initConfig({
+	grunt.initConfig( {
 		jshint: {
 			options: {
 				jshintrc: '.jshintrc'
@@ -22,6 +22,9 @@ module.exports = function (grunt) {
 				files: {
 					'assets/css/style.min.css': [
 						'assets/src/scss/style.scss'
+					],
+					'assets/css/font.min.css': [
+						'assets/src/scss/font.scss'
 					],
 					'assets/css/admin.min.css': [
 						'assets/src/scss/admin.scss'
@@ -47,7 +50,7 @@ module.exports = function (grunt) {
 				files: [
 					'assets/src/scss/**/*.scss'
 				],
-				tasks: ['sass'],
+				tasks: [ 'sass' ],
 				options: {
 					livereload: true
 				}
@@ -56,7 +59,7 @@ module.exports = function (grunt) {
 				files: [
 					'assets/js/**/*.js'
 				],
-				tasks: ['jshint', 'uglify']
+				tasks: [ 'jshint', 'uglify' ]
 			},
 			html: {
 				files: [
@@ -70,23 +73,23 @@ module.exports = function (grunt) {
 				'assets/javascript.min.js'
 			]
 		}
-	});
+	} );
 
 	// Load tasks
-	grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks( 'grunt-contrib-clean' );
+	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
+	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
+	grunt.loadNpmTasks( 'grunt-contrib-watch' );
+	grunt.loadNpmTasks( 'grunt-contrib-sass' );
 
 	// Register tasks
-	grunt.registerTask('default', [
+	grunt.registerTask( 'default', [
 		'clean',
 		'sass',
 		'uglify'
-	]);
-	grunt.registerTask('dev', [
+	] );
+	grunt.registerTask( 'dev', [
 		'watch'
-	]);
+	] );
 
 };

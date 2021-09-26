@@ -1,0 +1,14 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+ <title>strategy</title>
+
+ <g id="Layer_1">
+  <title>Layer 1</title>
+  <path transform="rotate(180 151.34 48.7891)" filter="url(#svg_93_blur)" stroke="#ffffff" id="svg_93" d="m110.31394,82.97715l41.02564,-68.37607l41.02564,68.37607l-82.05128,0z" stroke-width="0" fill="#fff"/>
+  <path stroke="#ffffff" id="svg_97" d="m107.08659,107.08661l0,-107.08661l-107.08659,107.08661l107.08659,0z" stroke-width="0" fill="#fff"/>
+  <path id="svg_100" d="m129.61326,269.85147l0,-231.49608l19.68503,231.49608l-19.68503,0z" stroke-width="0" stroke="#ffffff" fill="#fff"/>
+  <path transform="rotate(180 159.141 153.316)" id="svg_101" d="m149.2983,269.06407l0,-231.49608l19.68503,231.49608l-19.68503,0z" stroke-width="0" stroke="#ffffff" fill="#fff"/>
+  <path transform="rotate(90 246.457 53.5433)" stroke="#ffffff" id="svg_102" d="m299.99999,107.08661l0,-107.08661l-107.08659,107.08661l107.08659,0z" stroke-width="0" fill="#fff"/>
+  <path transform="rotate(180 246.457 215.354)" stroke="#ffffff" id="svg_103" d="m300.00001,299.99999l0,-169.29134l-107.08659,169.29134l107.08659,0z" stroke-width="0" fill="#fff"/>
+  <path transform="rotate(-90 53.5433 216.142)" stroke="#ffffff" id="svg_104" d="m137.40157,269.68504l0,-107.08661l-167.7165,107.08661l167.7165,0z" stroke-width="0" fill="#fff"/>
+ </g>
+</svg>

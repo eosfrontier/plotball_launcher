@@ -1,0 +1,13 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+ <title>whodunnit</title>
+
+ <g id="Layer_1">
+  <title>Layer 1</title>
+  <path stroke="#ffffff" id="svg_78" d="m109.82907,300l40.17094,-152.99146l40.17094,152.99146l-80.34188,0z" stroke-width="0" fill="#fff"/>
+  <path stroke="#ffffff" id="svg_81" d="m147.41594,45.29914l0,-45.29914l-114.52993,45.29914l114.52993,0z" stroke-width="0" fill="#fff"/>
+  <path stroke="#ffffff" id="svg_82" d="m151.68945,107.11466l0,-34.18803l74.35896,34.18803l-74.35896,0z" stroke-width="0" fill="#fff"/>
+  <path transform="rotate(180 203.972 197.471)" stroke="#ffffff" id="svg_83" d="m184.3134,269.69306l0,-144.44444l39.31624,144.44444l-39.31624,0z" stroke-width="0" fill="#fff"/>
+  <path transform="rotate(180 56.9628 183.761)" stroke="#ffffff" id="svg_84" d="m81.74917,299.14525l0,-230.76924l-49.57266,230.76924l49.57266,0z" stroke-width="0" fill="#fff"/>
+  <path transform="rotate(180 223.912 47.2856)" stroke="#ffffff" id="svg_85" d="m186.73219,64.37962l0,-34.18802l74.35896,34.18802l-74.35896,0z" stroke-width="0" fill="#fff"/>
+ </g>
+</svg>

@@ -49,6 +49,7 @@
 		<exclude name="Yoast.Files.TestDoubles.MissingBasePath" />
 		<exclude name="WordPress.Security.NonceVerification.Missing" />
 		<exclude name="WordPress.Security.NonceVerification.Recommended" />
+		<exclude name="WordPress.DateTime.RestrictedFunctions.date_date" />
 	</rule>
 	<rule ref="ruleset.xml" />
 </ruleset>

@@ -1,0 +1,17 @@
+header {
+	padding-bottom: 24px;
+	margin-bottom: 24px;
+
+	.logo {
+		height: 100px;
+		display: inline-block;
+		margin-top: 25px;
+	}
+
+	h1 {
+		margin-bottom: 0;
+		display: inline-block;
+	}
+
+	border-bottom: solid 1px $color-white;
+}

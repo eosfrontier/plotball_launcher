@@ -1,0 +1,12 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+ <title>OpenEnded</title>
+ <g id="Layer_1">
+  <title>Layer 1</title>
+  <path stroke="#ffffff" id="svg_18" d="m70.7317,40.65042l79.2683,-40.65041l79.2683,40.65041l-158.53659,0z" stroke-width="0" fill="#fff"/>
+  <path transform="rotate(120 277.968 241.514)" stroke="#ffffff" id="svg_21" d="m198.69983,261.83923l79.2683,-40.65041l79.26829,40.65041l-158.53659,0z" stroke-width="0" fill="#fff"/>
+  <path transform="rotate(-120 22.0323 241.515)" stroke="#ffffff" id="svg_22" d="m-57.236,261.83979l79.2683,-40.65041l79.26829,40.65041l-158.53659,0z" stroke-width="0" fill="#fff"/>
+  <path stroke="#ffffff" id="svg_38" d="m13.68184,130.76075l41.05691,-69.10569l41.05692,69.10569l-82.11383,0z" stroke-width="0" fill="#fff"/>
+  <path stroke="#ffffff" id="svg_39" d="m205.55175,134.82579l41.05691,-69.10569l41.05692,69.10569l-82.11383,0z" stroke-width="0" fill="#fff"/>
+  <path stroke="#ffffff" id="svg_40" d="m108.80379,300.00001l41.05691,-69.10569l41.05692,69.10569l-82.11383,0z" stroke-width="0" fill="#fff"/>
+ </g>
+</svg>

@@ -1,9 +1,9 @@
 <?php
-namespace frontier\ploball\admin\update;
+namespace frontier\ploball\database\insert;
 
 use frontier\ploball\database\Crud;
 
-class Update_Plotball {
+class Insert_Plotball {
 
 	/**
 	 * Insert a new plotbal in the database
@@ -11,13 +11,10 @@ class Update_Plotball {
 	 * @param  mixed $post Array of data.
 	 * @return bool
 	 */
-	public static function update( $post ) {
-
+	public static function insert( $post ) {
 		unset( $post['xf'] );
 
 		$validations = [];
-
-		$id['id'] = $post['id'];
 
 		$post['bounce'] = implode( ',', $post['bounce'] );
 
@@ -43,7 +40,7 @@ class Update_Plotball {
 
 		$post['validations'] = json_encode( $validations );
 
-		$return = Crud::update( 'plotball', $post, $id );
+		$return = Crud::insert( 'plotball', $post );
 
 		return $return;
 	}
