@@ -11,5 +11,21 @@ class Status {
 		if ( $status === '1' ) {
 			return 'Published';
 		}
+
+		if ( $status === '2' ) {
+			return 'Double signups';
+		}
+
+		if ( $status === '3' ) {
+			return 'Active';
+		}
+
+		if ( $status === '4' ) {
+			return 'Finished';
+		}
+
+		if ( $status === '5' ) {
+			return 'Archived';
+		}
 	}
 }

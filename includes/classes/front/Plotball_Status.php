@@ -104,8 +104,9 @@ class Plotball_Status {
 			}
 
 			if ( count( $completed ) === count( $characters ) ) {
-				$arg['published'] = 4;
-				$conditions['id'] = $id;
+				$arg['published']   = 4;
+				$arg['finish_date'] = date( 'Y-m-d H:i:s' );
+				$conditions['id']   = $id;
 
 				Crud::update( 'plotball', $arg, $conditions );
 			}
