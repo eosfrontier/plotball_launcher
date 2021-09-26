@@ -40,7 +40,14 @@
 	<main>
 		<div>
 			<div class="row">
-				<?php require './partials/overview.php'; ?>
+				<?php
+				if ( ! empty( $jid ) ) {
+					require './partials/overview.php';
+				}
+				else {
+					echo '<a href="https://ic.eosfrontier.space">Return to dashboard to login</a>';
+				}
+				?>
 			</div>
 		</div>
 	</main>
