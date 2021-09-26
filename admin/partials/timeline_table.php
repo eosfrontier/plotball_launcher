@@ -12,6 +12,27 @@ foreach ( $plotballs as $plotball ) {
 ?>
 
 <div class="timeline-tables">
+	<div class="color-explanation">
+		<div class="draft">
+			<span></span>Draft
+		</div>
+		<div class="published">
+			<span></span>Published
+		</div>
+		<div class="doubles">
+			<span></span>Doubles
+		</div>
+		<div class="active">
+			<span></span>Active
+		</div>
+		<div class="finished">
+			<span></span>Finished
+		</div>
+		<div class="archived">
+			<span></span>Archived
+		</div>
+	</div>
+
 	<?php
 	foreach ( $timestamps as $key => $timestamp ) {
 		?>
@@ -45,7 +66,7 @@ foreach ( $plotballs as $plotball ) {
 						<td>21:00</td>
 						<td>22:00</td>
 						<td>23:00</td>
-						
+
 					</thead>
 					<?php
 					foreach ( $timestamp as $plotball ) {
@@ -55,6 +76,18 @@ foreach ( $plotballs as $plotball ) {
 						$class   = '';
 						if ( $plotball['published'] === '1' ) {
 							$class = ' published';
+						}
+						if ( $plotball['published'] === '2' ) {
+							$class = ' doubles';
+						}
+						if ( $plotball['published'] === '3' ) {
+							$class = ' active';
+						}
+						if ( $plotball['published'] === '4' ) {
+							$class = ' finished';
+						}
+						if ( $plotball['published'] === '5' ) {
+							$class = ' archived';
 						}
 						?>
 						<tr>
