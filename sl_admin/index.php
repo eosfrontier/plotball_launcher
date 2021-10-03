@@ -36,6 +36,9 @@
 				<div class="tab-button" data-tab="overview-table">
 					Overview
 				</div>
+				<div class="tab-button" data-tab="archive-table">
+					Archive
+				</div>
 			</div>
 			<div class="timeline-table tab active">
 				<?php require './partials/timeline_table.php'; ?>
@@ -44,6 +47,11 @@
 				<button id="collapse-items" class="button">Collapse items</button>
 				<div class="overview-tables">
 					<?php require './partials/overview_table.php'; ?>
+				</div>
+			</div>
+			<div class="archive-table tab">
+				<div class="overview-tables">
+				<?php require './partials/archive_table.php'; ?>
 				</div>
 			</div>
 		</div>

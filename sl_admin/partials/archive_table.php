@@ -8,7 +8,7 @@ use frontier\ploball\database\get\Get_All_Plotballs;
 $items = Get_All_Plotballs::get_all_plotballs();
 
 foreach ( $items as $item ) {
-	if ( $item['published'] !== '5' ) {
+	if ( $item['published'] === '5' ) {
 		?>
 	<ul class="item" data-id="<?php echo $item['id']; ?>">
 		<li class="title"><?php echo $item['title']; ?></li>
