@@ -54,6 +54,5 @@
 	</div>
 	<?php require './partials/modal_new.php'; ?>
 	<script src="../assets/admin/default.js"></script>
-	<script src="../assets/admin/modal_edit.js"></script>
 </body>
 </html>

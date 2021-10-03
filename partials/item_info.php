@@ -41,7 +41,7 @@ if ( $status === '3' || $status === '4' ) {
 		We require people that have these skills or are members from these Factions.
 	</p>
 	<div class="validations">
-		<?php echo Front_Validations::show_requirements( $validations, $character_validations ); ?>
+		<?php echo Front_Validations::show_requirements( $plotball['id'] ); ?>
 	</div>
 	<?php if ( $plotball['published'] === '1' ) { ?>
 	<button class="button participate-button">I want to participate</button>
@@ -183,6 +183,6 @@ if ( $status === '3' || $status === '4' ) {
 	</div>
 	<div class="item__double">
 		<h3>Task finished</h3>
-		<?php echo $plotball['loot']; ?>
+		<?php echo $plotball['flavourtext']; ?>
 	</div>
 <?php } ?>

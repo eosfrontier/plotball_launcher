@@ -3,6 +3,7 @@ namespace frontier\ploball\front;
 
 use frontier\ploball\admin\Skills;
 use frontier\ploball\database\get\Character;
+use frontier\ploball\database\get\Get_All_Plotballs;
 
 class Front_Validations {
 
@@ -13,8 +14,11 @@ class Front_Validations {
 	 * @param  mixed $character_validations json array of the character validations.
 	 * @return string
 	 */
-	public static function show_requirements( $validations, $character_validations ):string {
-		$validations = json_decode( $validations, true );
+	public static function show_requirements( $id, $admin = false ):string {
+		$plotball = Get_All_Plotballs::get_plotball_by_id( $id )[0];
+
+		$validations           = json_decode( $plotball['validations'], true );
+		$character_validations = $plotball['characters'];
 
 		if ( ! empty( $character_validations ) ) {
 			$character_validations = json_decode( $character_validations, true );
@@ -75,7 +79,7 @@ class Front_Validations {
 							$has_characters = 1;
 
 							$info  = new Front_Validations();
-							$html .= $info->show_character_info( $key );
+							$html .= $info->show_character_info( $key, $id, $admin );
 						}
 					}
 
@@ -140,7 +144,7 @@ class Front_Validations {
 							$has_characters = 1;
 
 							$info  = new Front_Validations();
-							$html .= $info->show_character_info( $key );
+							$html .= $info->show_character_info( $key, $id, $admin );
 						}
 					}
 
@@ -172,7 +176,7 @@ class Front_Validations {
 							$has_characters = 1;
 
 							$info  = new Front_Validations();
-							$html .= $info->show_character_info( $key );
+							$html .= $info->show_character_info( $key, $id, $admin );
 						}
 					}
 
@@ -201,7 +205,7 @@ class Front_Validations {
 						$has_characters = 1;
 
 						$info  = new Front_Validations();
-						$html .= $info->show_character_info( $key );
+						$html .= $info->show_character_info( $key, $id, $admin );
 					}
 				}
 
@@ -222,16 +226,24 @@ class Front_Validations {
 	 * @param  mixed $id Id of the character.
 	 * @return string Generated html.
 	 */
-	public function show_character_info( $id ) {
-		$character = Character::get_active_character_by_id( $id )['character_name'];
+	public function show_character_info( $character_id, $plot_id = 0, $admin = false ) {
+		$character = Character::get_active_character_by_id( $character_id )['character_name'];
 
 		$html = "<span tabindex='0' class='small-image'>
-					<img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$id.jpg' />
+					<img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$character_id.jpg' />
 					<div class='hover-info'>
-						<img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$id.jpg' />
-						<span>$character</span>
-					</div>
-				</span>";
+						<img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$character_id.jpg' />
+						<span>$character</span>";
+		if ( $admin ) {
+			$html .= "<form class='remove_character_from_validation_form'>
+							<input name='plot_id' type='hidden' value='$plot_id' />
+							<input name='character_id' type='hidden' value='$character_id' />
+							<input name='xf' type='hidden' value='remove_character_from_validation' />
+							<div class='remove_character_from_validation button'>Remove character</div>
+						</form>";
+		}
+		$html .= '</div>
+				</span>';
 
 		return $html;
 	}

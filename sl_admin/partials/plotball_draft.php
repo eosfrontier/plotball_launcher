@@ -245,6 +245,7 @@ if ( ! empty( json_decode( $plotball['validations'], true )['custom_validation']
 	<p>
 		<button id="update_draft_button">Update draft</button>
 		<button id="publish_plotball_button">Publish plotball</button>
+		<button id="delete_plotball_button">Delete plotball</button>
 	</p>
 	<input type="hidden" name="xf" value="update_plotball">
 	<input type="hidden" name="id" value="<?php echo $id; ?>">
@@ -272,15 +273,35 @@ jQuery("#update_draft_button").on('click', function (e) {
 
 jQuery("#publish_plotball_button").on('click', function (e) {
 	e.preventDefault();
-	var form_data = {id: $( 'input[name="id"]' ).val(), xf: 'publish_plotball'};
-	$.ajax({
-		url: "xf.php",
-		type: "post",
-		data: form_data
-	}).done(function (response) {
-		if(response == 1){
-			hideModal();
-		}
-	})
+	var form_data = {id: $( 'input[name="id"]' ).val(), xf: 'move_to_publish'};
+	var answer = window.confirm("Are you sure you want to publish this plotball?");
+	if(answer === true){
+		$.ajax({
+			url: "xf.php",
+			type: "post",
+			data: form_data
+		}).done(function (response) {
+			if(response == 1){
+				hideModal();
+			}
+		})
+	}
+});
+
+jQuery("#delete_plotball_button").on('click', function (e) {
+	e.preventDefault();
+	var form_data = {id: $( 'input[name="id"]' ).val(), xf: 'delete_plotball'};
+	var answer = window.confirm("Are you sure you want to delete this plotball?");
+	if(answer === true){
+		$.ajax({
+			url: "xf.php",
+			type: "post",
+			data: form_data
+		}).done(function (response) {
+			if(response == 1){
+				hideModal();
+			}
+		})
+	}
 });
 </script>

@@ -20,7 +20,8 @@ header {
 	margin: 0 auto;
 }
 
-button {
+button,
+.button {
 	cursor: pointer;
 	color: $color-white;
 	background: $button-default;
@@ -36,7 +37,8 @@ button {
 		border-color: $accent-default;
 	}
 
-	&.remove-validation {
+	&.remove-validation,
+	&#delete_plotball_button {
 		font-weight: bold;
 		border-color: $warning-red;
 		background: $warning-red;
@@ -381,4 +383,87 @@ button {
 			}
 		}
 	}
+}
+
+.front-validations {
+	margin-top: 16px;
+	display: grid;
+	gap: 16px;
+	grid-template-columns: 1fr 1fr;
+
+	@media screen and (max-width: 768px) {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	@media screen and (max-width: 480px) {
+		grid-template-columns: 1fr;
+	}
+
+	strong {
+		display: block;
+		margin-bottom: 8px;
+		border-bottom: solid 1px $text-fade;
+		padding-bottom: 4px;
+		font-size: 16px;
+	}
+}
+
+.small-image {
+	width: 50px;
+	height: 50px;
+	display: inline-block;
+	justify-content: center;
+	align-items: center;
+	margin-right: 16px;
+	position: relative;
+	cursor: pointer;
+
+	img {
+		object-fit: cover;
+		width: 50px;
+		height: 50px;
+	}
+
+	.hover-info {
+		width: 200px;
+		cursor: initial;
+		padding: 16px;
+		background: $background-default;
+		position: absolute;
+		left: 0px;
+		bottom: calc(100% + 8px);
+		z-index: 4;
+		display: none;
+		box-shadow: 0 0 0 var(--border-width) var(--background-color),
+			calc(-1 * ((var(--border-width) * 2) + var(--flourish-size))) 0 0 calc(-1 * var(--flourish-size)) var(--bordercolor),
+			calc((var(--border-width) * 2) + var(--flourish-size)) 0 0 calc(-1 * var(--flourish-size)) var(--bordercolor),
+			0 calc(-1 * ((var(--border-width) * 1.5) + var(--flourish-size))) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--bordercolor),
+			0 calc((var(--border-width) * 1.5) + var(--flourish-size)) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--bordercolor),
+			calc(-1 * ((var(--border-width) * 2) + var(--flourish-size))) 0 0 calc(-1 * var(--flourish-size)) var(--background-color),
+			calc((var(--border-width) * 2) + var(--flourish-size)) 0 0 calc(-1 * var(--flourish-size)) var(--background-color),
+			0 calc(-1 * ((var(--border-width) * 1.5) + var(--flourish-size))) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--background-color),
+			0 calc((var(--border-width) * 1.5) + var(--flourish-size)) 0 calc(-1 * (var(--flourish-size) - (var(--border-width) / 2))) var(--background-color),
+			0 0 0 calc(var(--border-width) * 2) var(--AccentColor);
+
+		img {
+			width: 100%;
+			height: auto;
+			display: block;
+			margin-bottom: 8px;
+		}
+	}
+
+	&:focus {
+		.hover-info {
+			display: block;
+
+			&:focus-within {
+				display: block;
+			}
+		}
+	}
+}
+
+.update_plotball_status {
+	margin-bottom: 16px;
 }

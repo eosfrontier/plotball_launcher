@@ -27,7 +27,6 @@ jQuery( ".character_signup" ).unbind().on( 'submit', function( e ) {
 		type: "post",
 		data: form_data
 	} ).done( function( response ) {
-		console.log( response );
 
 		if ( response === "none" ) {
 			jQuery( object ).find( ".signup_none" ).show();
@@ -134,7 +133,6 @@ jQuery( ".resolve_task_form" ).unbind().on( 'submit', function( e ) {
 		type: "post",
 		data: form_data
 	} ).done( function( response ) {
-		console.log( response );
 		if ( response === "1" ) {
 			jQuery( object ).find( ".signup_1" ).show();
 			setTimeout( function() {

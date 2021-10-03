@@ -61,10 +61,8 @@ class Plotball_Status {
 	 * @param  array $post Array with plot id and character id.
 	 * @return int Result of function.
 	 */
-	public static function complete_task( $post ) {
-		$character_id = $post['character_id'];
-		$plot_id      = $post['plot_id'];
-		$signed_in    = json_decode( Get_All_Plotballs::get_plotball_by_id( $plot_id )[0]['signed_in'], true );
+	public static function complete_task( $character_id, $plot_id ) {
+		$signed_in = json_decode( Get_All_Plotballs::get_plotball_by_id( $plot_id )[0]['signed_in'], true );
 
 		if ( isset( $signed_in['completed'] ) ) {
 			array_push( $signed_in['completed'], $character_id );

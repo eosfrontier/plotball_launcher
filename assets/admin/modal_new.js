@@ -16,7 +16,7 @@ function add_main_skill( e ) {
 
 	var date = + new Date() + Math.floor( Math.random() * 100 );
 	var html = `
-		<div class="`+ date + ` skill_row">			
+		<div class="`+ date + ` skill_row">
 			<select class="" name="main_skills_validations[`+ date + `][skill]">
 				<optgroup label="Main Skills">
 					` + main_skills + `
@@ -35,7 +35,7 @@ function add_main_skill( e ) {
 				<option value="5">5</option>
 			</select>
 			<button class="remove-validation">Remove row 🗑️</i>
-		</div>		
+		</div>
 	`;
 	$( "#new_main_skill_button" ).before( html );
 };
@@ -91,8 +91,6 @@ function add_faction() {
 	`;
 	$( "#new_faction_button" ).before( html );
 };
-
-
 
 jQuery( "#new-plotball-form" ).on( 'submit', function() {
 	var form_data = jQuery( '#new-plotball-form' ).serialize();

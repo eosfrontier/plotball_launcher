@@ -16,7 +16,7 @@ switch ( $_POST['xf'] ) {
 		echo $result;
 		break;
 	case 'resolve_task':
-		$result = Plotball_Status::complete_task( $_POST );
+		$result = Plotball_Status::complete_task( $_POST['character_id'], $_POST['plot_id'] );
 		echo $result;
 		break;
 }
