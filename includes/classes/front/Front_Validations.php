@@ -332,10 +332,10 @@ class Front_Validations {
 				$factionname = ucfirst( $valfaction['faction'] );
 
 				if ( $faction === $valfaction['faction'] ) {
-					$random = rand( 0, 100000 );
+					$random = 'faction' . rand( 0, 100000 );
 
 					$html .= "<input type='radio' id='$random' name='character' value='faction_$i' />";
-					$html .= "<label for='$random'>$factionname</label>";
+					$html .= "<label for='$random'>$factionname</label><br />";
 				}
 
 				$i++;
@@ -343,11 +343,15 @@ class Front_Validations {
 		}
 
 		if ( isset( $validations['custom_validation'] ) ) {
-			$random = rand( 0, 100000 );
+			$random = 'custom' . rand( 0, 100000 );
 
 			$html .= "<input type='radio' id='$random' name='character' value='custom_0' />";
-			$html .= "<label for='$random'>Custom requirement</label>";
+			$html .= "<label for='$random'>Custom requirement</label><br />";
 		}
+
+		$random = 'none' . rand( 0, 100000 );
+		$html  .= "<input type='radio' id='$random' name='character' value='none' />";
+		$html  .= "<label for='$random'>None</label>";
 
 		return $html;
 	}
@@ -363,7 +367,7 @@ class Front_Validations {
 	 * @return string
 	 */
 	public function generate_checkbox_skill( $skill_id, $argument, $level, $array_number, $type ): string {
-		$random    = rand( 0, 100000 );
+		$random    = $type . rand( 0, 100000 );
 		$skillname = Skills::get_skill_by_id( $skill_id );
 
 		$value = $type . '_' . $array_number;

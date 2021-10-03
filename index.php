@@ -38,17 +38,30 @@
 		</div>
 	</header>
 	<main>
-		<div>
-			<div class="row">
+		<div class="row">
 				<?php
 				if ( ! empty( $jid ) ) {
-					require './partials/overview.php';
+					?>
+					<div class="tabs">
+						<div class="active tab-button" data-tab="active-tab">
+							Active tasks
+						</div>
+						<div class="tab-button" data-tab="completed-tab">
+							Completed tasks
+						</div>
+					</div>
+					<div class="active-tab tab active">
+						<?php require './partials/overview.php'; ?>
+					</div>
+					<div class="completed-tab tab">
+						<?php require './partials/completed.php'; ?>
+					</div>
+					<?php
 				}
 				else {
 					echo '<a href="https://ic.eosfrontier.space">Return to dashboard to login</a>';
 				}
 				?>
-			</div>
 		</div>
 	</main>
 	<?php if ( $random === 666 ) { ?>
@@ -68,5 +81,6 @@
 	});
 	</script>
 	<?php } ?>
+	<script src="./assets/js/default.js"></script>
 </body>
 </html>

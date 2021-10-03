@@ -70,6 +70,9 @@ if ( $status === '3' || $status === '4' ) {
 	<div class="signup_info signup_3">
 		All requirements are filled. Page will reload in 5 seconds.
 	</div>
+	<div class="signup_info signup_none">
+		You have withdrawn from the task. Page will reload in 5 seconds.
+	</div>
 </div>
 <?php if ( $status === '2' ) { ?>
 	<div class="item__double">

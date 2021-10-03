@@ -1,0 +1,32 @@
+.tabs {
+	border-bottom: solid 1px $color-white;
+	margin-bottom: 24px;
+	display: flex;
+
+	.tab-button {
+		background: $background-block;
+		border: solid 1px $color-white;
+		padding: 12px;
+		margin-right: -1px;
+		margin-bottom: -1px;
+		cursor: pointer;
+
+		&:first-child {
+			margin-left: 12px;
+		}
+
+		&.active {
+			border-bottom: 0;
+			background: $background-default;
+			font-weight: bold;
+		}
+	}
+}
+
+.tab {
+	display: none;
+
+	&.active {
+		display: block;
+	}
+}

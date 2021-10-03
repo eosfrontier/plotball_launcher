@@ -3,7 +3,7 @@
 use frontier\ploball\front\Plotball_Status;
 use frontier\ploball\database\get\Get_All_Plotballs;
 
-$plotballs = Get_All_Plotballs::get_all_active_plotballs();
+$plotballs = Get_All_Plotballs::get_all_completed_plotballs();
 
 
 ?>

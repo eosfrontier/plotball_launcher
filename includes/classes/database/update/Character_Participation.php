@@ -22,6 +22,22 @@ class Character_Participation {
 		unset( $post['plot_id'] );
 		unset( $post['character_id'] );
 
+		if ( $post['character'] === 'none' ) {
+
+			if ( ! empty( $plotball_characters ) ) {
+				$plotball_characters = json_decode( $plotball_characters, true );
+				unset( $plotball_characters[ $character_id ] );
+				$plotball_characters = json_encode( $plotball_characters );
+
+				$arg['characters'] = $plotball_characters;
+				$conditions['id']  = $plotball_id;
+
+				Crud::update( 'plotball', $arg, $conditions );
+			}
+
+			return 'none';
+		}
+
 		if ( empty( $plotball_characters ) ) {
 			$plotball_characters                  = [];
 			$plotball_characters[ $character_id ] = $post['character'];
