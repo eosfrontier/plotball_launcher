@@ -87,94 +87,106 @@ class Validations {
 	}
 
 	public static function list_main_skills( $list ) {
-		$validations = json_decode( $list, true )['main_skills_validations'];
+		$list = json_decode( $list, true );
 
 		$html = '';
 
-		foreach ( $validations as $key => $validation ) {
-			$html .= '<div class="' . $key . ' skill_row">';
-			$html .= '<select class="" name="main_skills_validations[' . $key . '][skill]"><optgroup label="Main Skills">';
-			$html .= self::main_skills_select( $validation['skill'] );
-			$html .= '</optgroup></select>';
-			$html .= '<select class="" name="main_skills_validations[' . $key . '][argument]">';
-			$html .= self::arguments( $key, $validation['argument'] );
-			$html .= '</select>';
-			$html .= '<select class="" name="main_skills_validations[' . $key . '][level]">';
-			$html .= self::lowerlevel( $key, $validation['level'] );
-			$html .= '</select>';
-			$html .= '<button class="remove-validation">Remove row 🗑️</button>';
-			$html .= '</div>';
+		if ( isset( $list['main_skills_validations'] ) ) {
+			$validations = $list['main_skills_validations'];
+
+			foreach ( $validations as $key => $validation ) {
+				$html .= '<div class="' . $key . ' skill_row">';
+				$html .= '<select class="" name="main_skills_validations[' . $key . '][skill]"><optgroup label="Main Skills">';
+				$html .= self::main_skills_select( $validation['skill'] );
+				$html .= '</optgroup></select>';
+				$html .= '<select class="" name="main_skills_validations[' . $key . '][argument]">';
+				$html .= self::arguments( $key, $validation['argument'] );
+				$html .= '</select>';
+				$html .= '<select class="" name="main_skills_validations[' . $key . '][level]">';
+				$html .= self::lowerlevel( $key, $validation['level'] );
+				$html .= '</select>';
+				$html .= '<button class="remove-validation">Remove row 🗑️</button>';
+				$html .= '</div>';
+			}
 		}
 
 		return $html;
 	}
 
 	public static function list_specialty_skills( $list ) {
-		$validations = json_decode( $list, true )['specialty_skills_validations'];
+		$list = json_decode( $list, true );
 
 		$html = '';
 
-		foreach ( $validations as $key => $validation ) {
-			$html .= '<div class="' . $key . ' skill_row">';
-			$html .= '<select class="" name="specialty_skills_validations[' . $key . '][skill]"><optgroup label="Main Skills">';
-			$html .= self::specialty_skills_select( $validation['skill'] );
-			$html .= '</optgroup></select>';
-			$html .= '<select class="" name="specialty_skills_validations[' . $key . '][argument]">';
-			$html .= self::arguments( $validation['argument'] );
-			$html .= '</select>';
-			$html .= '<select class="" name="specialty_skills_validations[' . $key . '][level]">';
-			$html .= self::higherlevel( $validation['level'] );
-			$html .= '</select>';
-			$html .= '<button class="remove-validation">Remove row 🗑️</button>';
-			$html .= '</div>';
+		if ( isset( $list['specialty_skills_validations'] ) ) {
+			$validations = $list['specialty_skills_validations'];
+
+			foreach ( $validations as $key => $validation ) {
+				$html .= '<div class="' . $key . ' skill_row">';
+				$html .= '<select class="" name="specialty_skills_validations[' . $key . '][skill]"><optgroup label="Main Skills">';
+				$html .= self::specialty_skills_select( $validation['skill'] );
+				$html .= '</optgroup></select>';
+				$html .= '<select class="" name="specialty_skills_validations[' . $key . '][argument]">';
+				$html .= self::arguments( $validation['argument'] );
+				$html .= '</select>';
+				$html .= '<select class="" name="specialty_skills_validations[' . $key . '][level]">';
+				$html .= self::higherlevel( $validation['level'] );
+				$html .= '</select>';
+				$html .= '<button class="remove-validation">Remove row 🗑️</button>';
+				$html .= '</div>';
+			}
 		}
 
 		return $html;
 	}
 
 	public static function list_faction( $list ): string {
-		$validations = json_decode( $list, true )['faction_validations'];
-		$html        = '';
-		foreach ( $validations as $key => $validation ) {
-			$selected = '';
-			$html    .= '<div class="' . $key . ' skill_row">';
-			$html    .= '<select class="" name="faction_validations[' . $key . '][faction]">';
-			$html    .= '<optgroup label="Faction">';
+		$list = json_decode( $list, true );
+		$html = '';
 
-			if ( $validation['faction'] === 'aquila' ) {
-				$selected = ' selected';
+		if ( isset( $list['faction_validations'] ) ) {
+			$validations = $list['faction_validations'];
+			foreach ( $validations as $key => $validation ) {
+				$selected = '';
+				$html    .= '<div class="' . $key . ' skill_row">';
+				$html    .= '<select class="" name="faction_validations[' . $key . '][faction]">';
+				$html    .= '<optgroup label="Faction">';
+
+				if ( $validation['faction'] === 'aquila' ) {
+					$selected = ' selected';
+				}
+				$html    .= '<option value="aquila"' . $selected . '>Aquila</option>';
+				$selected = '';
+
+				if ( $validation['faction'] === 'dugo' ) {
+					$selected = ' selected';
+				}
+				$html    .= '<option value="dugo"' . $selected . '>Dugo</option>';
+				$selected = '';
+
+				if ( $validation['faction'] === 'ekanesh' ) {
+					$selected = ' selected';
+				}
+				$html    .= '<option value="ekanesh"' . $selected . '>Ekanesh</option>';
+				$selected = '';
+
+				if ( $validation['faction'] === 'pendzal' ) {
+					$selected = ' selected';
+				}
+				$html    .= '<option value="pendzal"' . $selected . '>Pendzal</option>';
+				$selected = '';
+
+				if ( $validation['faction'] === 'sona' ) {
+					$selected = ' selected';
+				}
+				$html    .= '<option value="sona"' . $selected . '>Sona</option>';
+				$selected = '';
+
+				$html .= '</select>';
+				$html .= '</optgroup>';
+				$html .= '<button class="remove-validation">Remove row 🗑️</button>';
+				$html .= '</div>';
 			}
-			$html    .= '<option value="aquila"' . $selected . '>Aquila</option>';
-			$selected = '';
-
-			if ( $validation['faction'] === 'dugo' ) {
-				$selected = ' selected';
-			}
-			$html    .= '<option value="dugo"' . $selected . '>Dugo</option>';
-			$selected = '';
-
-			if ( $validation['faction'] === 'ekanesh' ) {
-				$selected = ' selected';
-			}
-			$html    .= '<option value="ekanesh"' . $selected . '>Ekanesh</option>';
-			$selected = '';
-
-			if ( $validation['faction'] === 'pendzal' ) {
-				$selected = ' selected';
-			}
-			$html    .= '<option value="pendzal"' . $selected . '>Pendzal</option>';
-			$selected = '';
-
-			if ( $validation['faction'] === 'sona' ) {
-				$selected = ' selected';
-			}
-			$html    .= '<option value="sona"' . $selected . '>Sona</option>';
-			$selected = '';
-
-			$html .= '</select>';
-			$html .= '</optgroup>';
-			$html .= '<button class="remove-validation">Remove row 🗑️</button>';
-			$html .= '</div>';
 		}
 
 		return $html;
