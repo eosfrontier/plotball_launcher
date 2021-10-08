@@ -46,7 +46,6 @@ $array = array(
 echo json_encode($array);
 
 $jgroups = $array["groups"];
-echo json_encode($jgroups);
 //      foreach ($groups as $group)
 //      {
 //      echo json_encode(Group = ' . $group . '</p>';

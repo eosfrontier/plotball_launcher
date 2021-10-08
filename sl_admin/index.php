@@ -3,7 +3,8 @@
 	if ( isset( $_ENV['SERVER'] ) && ( $_ENV['SERVER'] === 'production' ) ) {
 		require_once('../includes/idandgroups.php');
 	}
-	var_dump($jgroups);
+echo json_encode($jgroups);
+
 if ( !(in_array("30", $jgroups) || in_array("8", $jgroups) || in_array("7", $jgroups )) ){
 	echo 'Unauthorized';
 	die;
