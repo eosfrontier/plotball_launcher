@@ -16,3 +16,16 @@ jimport('joomla.user.authentication');
 // now get user object and 3 example user variables
 $user = JFactory::getUser();
 $jid = $user->id;
+$myobj = new \stdClass();
+$myobj->id = $user->get('id');
+$myobj->groups = $user->get('groups');
+
+foreach ($myobj->groups as $array) {
+    $array1[] = $array;
+}
+
+$array = array(
+    'id' => $myobj->id,
+    'groups' => $array1
+);
+$jgroups = $array["groups"];

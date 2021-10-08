@@ -1,5 +1,8 @@
 <?php
 	require '../includes/admin_includes.php';
+if ( strpos( $jgroups, 29 ) !== false || strpos( $jgroups, 7 ) !== false  ){
+	echo 'Admin check is working';
+}
 ?>
 
 <!DOCTYPE html>
