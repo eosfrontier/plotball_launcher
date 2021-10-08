@@ -4,12 +4,7 @@
 	if ( isset( $_ENV['SERVER'] ) && ( $_ENV['SERVER'] === 'production' ) ) {
 		
 	}
-echo json_encode($jgroups);
 
-if ( !(in_array("30", $jgroups) || in_array("8", $jgroups) || in_array("7", $jgroups )) ){
-	echo 'Unauthorized';
-	die;
-}
 ?>
 
 <!DOCTYPE html>
@@ -37,6 +32,12 @@ if ( !(in_array("30", $jgroups) || in_array("8", $jgroups) || in_array("7", $jgr
 			</button>
 		</div>
 	</header>
+	<?php
+	if ( !(in_array("30", $jgroups) || in_array("8", $jgroups) || in_array("7", $jgroups )) ){
+		echo 'Unauthorized';
+		die;
+	}
+	?>
 	<main>
 		<div class="row">
 			<div class="tabs">

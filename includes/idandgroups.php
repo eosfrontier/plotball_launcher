@@ -43,8 +43,6 @@ $array = array(
     'groups' => $array1
 );
 
-echo json_encode($array);
-
 $jgroups = $array["groups"];
 //      foreach ($groups as $group)
 //      {
