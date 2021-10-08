@@ -16,6 +16,9 @@ jimport('joomla.user.authentication');
 // now get user object and 3 example user variables
 $user = JFactory::getUser();
 $jid = $user->id;
+$jname = $user->name;
+$jguest = $user->guest;
+//$TIJDELIJKID = $user->id;
 $myobj = new \stdClass();
 $myobj->id = $user->get('id');
 $myobj->groups = $user->get('groups');
