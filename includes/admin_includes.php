@@ -6,7 +6,7 @@ if ( ! isset( $_SESSION ) ) {
 	// session_start();
 }
 if ( isset( $_ENV['SERVER'] ) && ( $_ENV['SERVER'] === 'production' ) ) {
-	require_once 'SSO.php';
+	require 'SSO.php';
 }
 else {
 	$jid = 736;
