@@ -1,6 +1,6 @@
 <?php
 	require '../includes/admin_includes.php';
-	include '../includes/idandgroups.php';
+	include '../includes/joomla.php';
 	if ( isset( $_ENV['SERVER'] ) && ( $_ENV['SERVER'] === 'production' ) ) {
 		
 	}
