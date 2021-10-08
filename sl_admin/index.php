@@ -1,6 +1,6 @@
 <?php
 	require '../includes/admin_includes.php';
-if ( in_array($jgroups, 29 ) || in_array( $jgroups, 7 ) ){
+if ( in_array("29", $jgroups ) || in_array("7", $jgroups ) ){
 	echo 'Admin check is working';
 }
 ?>
