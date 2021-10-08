@@ -1,7 +1,7 @@
 <?php
 	require '../includes/admin_includes.php';
 	if ( isset( $_ENV['SERVER'] ) && ( $_ENV['SERVER'] === 'production' ) ) {
-		require_once('../includes/joomla.php');
+		require_once('../includes/idandgroups.php');
 	}
 	var_dump($jgroups);
 if ( !(in_array("30", $jgroups) || in_array("8", $jgroups) || in_array("7", $jgroups )) ){
