@@ -27,17 +27,18 @@
 			<picture>
 				<img class="logo" src="../assets/images/talon.svg" />
 			</picture>
+			<?php
+			if ( !(in_array("30", $jgroups) || in_array("8", $jgroups) || in_array("7", $jgroups )) ){
+				echo '<h1>Unauthorized</h1>';
+				die;
+			}
+			?>
 			<button id="new-plotball">
 				new plotball
 			</button>
 		</div>
 	</header>
-	<?php
-	if ( !(in_array("30", $jgroups) || in_array("8", $jgroups) || in_array("7", $jgroups )) ){
-		echo 'Unauthorized';
-		die;
-	}
-	?>
+
 	<main>
 		<div class="row">
 			<div class="tabs">
