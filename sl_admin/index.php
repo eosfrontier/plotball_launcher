@@ -1,7 +1,8 @@
 <?php
 	require '../includes/admin_includes.php';
+	include '../includes/idandgroups.php';
 	if ( isset( $_ENV['SERVER'] ) && ( $_ENV['SERVER'] === 'production' ) ) {
-		require_once('../includes/idandgroups.php');
+		
 	}
 echo json_encode($jgroups);
 
