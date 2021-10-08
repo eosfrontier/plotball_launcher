@@ -24,7 +24,6 @@
 				<img class="logo" src="../assets/images/talon.svg" />
 			</picture>
 			<?php
-			if ( isset( $_ENV['SERVER'] ) && ( $_ENV['SERVER'] === 'production' ) ) {
 				if ( !(in_array("30", $jgroups) || in_array("8", $jgroups) || in_array("7", $jgroups) || in_array("36", $jgroups )) ){
 					echo '<h1>Unauthorized</h1>';
 					echo '<form method="get" action="/">';
@@ -32,7 +31,6 @@
 					echo '</form>';
 					die;
 				}
-			}
 			?>
 			<button id="new-plotball">
 				new plotball
