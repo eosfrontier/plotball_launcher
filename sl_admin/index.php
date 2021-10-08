@@ -30,6 +30,9 @@
 			<?php
 			if ( !(in_array("30", $jgroups) || in_array("8", $jgroups) || in_array("7", $jgroups) || in_array("36", $jgroups )) ){
 				echo '<h1>Unauthorized</h1>';
+				echo '<form method="get" action="/">';
+				echo 'button type="submit">Return to Talon</button>';
+				echo '</form>';
 				die;
 			}
 			?>
