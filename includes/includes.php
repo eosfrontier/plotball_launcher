@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set( 'Europe/Amsterdam' );
+
 require './vendor/autoload.php';
 
 use Dotenv\Dotenv;
