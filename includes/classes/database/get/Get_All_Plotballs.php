@@ -11,7 +11,7 @@ class Get_All_Plotballs {
 	 * @return array
 	 */
 	public static function get_all_plotballs(): array {
-		$plotballs = Crud::get( 'SELECT * FROM plotball ORDER BY starting_date, starting_time' );
+		$plotballs = Crud::get( 'SELECT SQL_NO_CACHE * FROM plotball ORDER BY starting_date, starting_time' );
 
 		return $plotballs;
 	}
@@ -23,7 +23,7 @@ class Get_All_Plotballs {
 	 * @return array
 	 */
 	public static function get_plotball_by_id( int $id ): array {
-		$plotballs = Crud::get( "SELECT * FROM plotball WHERE id = $id" );
+		$plotballs = Crud::get( "SELECT SQL_NO_CACHE * FROM plotball WHERE id = $id" );
 
 		return $plotballs;
 	}
@@ -35,7 +35,7 @@ class Get_All_Plotballs {
 	 */
 	public static function get_all_active_plotballs(): array {
 		$current_unix = time();
-		$plotballs    = Crud::get( "SELECT * FROM plotball WHERE published = 1 or published = 2 or published = 3 AND UNIX_TIMESTAMP( STR_TO_DATE( CONCAT( starting_date, ' ', starting_time ), '%Y-%m-%d %H:%i' ) ) <= $current_unix ORDER BY starting_date, starting_time" );
+		$plotballs    = Crud::get( "SELECT SQL_NO_CACHE * FROM plotball WHERE published = 1 or published = 2 or published = 3 AND UNIX_TIMESTAMP( STR_TO_DATE( CONCAT( starting_date, ' ', starting_time ), '%Y-%m-%d %H:%i' ) ) <= $current_unix ORDER BY starting_date, starting_time" );
 		return $plotballs;
 	}
 
@@ -46,7 +46,7 @@ class Get_All_Plotballs {
 	 */
 	public static function get_all_completed_plotballs(): array {
 		$current_unix = time();
-		$plotballs    = Crud::get( "SELECT * FROM plotball WHERE published = 4 AND UNIX_TIMESTAMP( STR_TO_DATE( CONCAT( starting_date, ' ', starting_time ), '%Y-%m-%d %H:%i' ) ) <= $current_unix ORDER BY starting_date, starting_time" );
+		$plotballs    = Crud::get( "SELECT SQL_NO_CACHE * FROM plotball WHERE published = 4 AND UNIX_TIMESTAMP( STR_TO_DATE( CONCAT( starting_date, ' ', starting_time ), '%Y-%m-%d %H:%i' ) ) <= $current_unix ORDER BY starting_date, starting_time" );
 		return $plotballs;
 	}
 }
