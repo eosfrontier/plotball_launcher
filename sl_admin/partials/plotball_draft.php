@@ -273,7 +273,7 @@ jQuery("#update_draft_button").on('click', function (e) {
 
 jQuery("#publish_plotball_button").on('click', function (e) {
 	e.preventDefault();
-	var form_data = {id: $( 'input[name="id"]' ).val(), xf: 'move_to_publish'};
+	var form_data = {id: $( 'input[name="id"]' ).val(), xf: 'move_to_published'};
 	var answer = window.confirm("Are you sure you want to publish this plotball?");
 	if(answer === true){
 		$.ajax({
