@@ -124,7 +124,7 @@ jQuery( ".resolve_task_form" ).unbind().on( 'submit', function( e ) {
 	e.preventDefault();
 	var form_data = jQuery( this ).serialize();
 	var object = jQuery( this.offsetParent );
-	var url = location.protocol + '//' + location.host + location.pathname + "?item=" + jQuery( object ).attr( "id" );
+	var url = location.protocol + '//' + location.host + location.pathname + "?tab=completed&item=" + jQuery( object ).attr( "id" );
 
 	jQuery( object ).find( ".resolve_task_button" ).hide();
 
