@@ -21,7 +21,7 @@ switch ( $_POST['xf'] ) {
 		$result = Update_Plotball::move_to_draft( $_POST['id'] );
 		echo $result;
 		break;
-	case 'move_to_publish':
+	case 'move_to_published':
 		$result = Update_Plotball::move_to_publish( $_POST['id'] );
 		echo $result;
 		break;
