@@ -2,7 +2,13 @@
 
 require '../vendor/autoload.php';
 
+use Dotenv\Dotenv;
+
 $access = false;
+
+$root_dir = dirname( __DIR__, 1 );
+$dotenv   = Dotenv::createImmutable( $root_dir );
+$dotenv->load();
 
 if ( isset( $_ENV['SERVER'] ) && ( $_ENV['SERVER'] === 'production' ) ) {
 	require '.joomla.php';
