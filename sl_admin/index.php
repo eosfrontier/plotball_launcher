@@ -1,6 +1,6 @@
 <?php
 	require '../includes/admin_includes.php';
-	include '../includes/joomla.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -23,22 +23,16 @@
 			<picture>
 				<img class="logo" src="../assets/images/talon.svg" />
 			</picture>
-			<?php
-				if ( !(in_array("30", $jgroups) || in_array("8", $jgroups) || in_array("7", $jgroups) || in_array("36", $jgroups )) ){
-					echo '<h1>Unauthorized</h1>';
-					echo '<form method="get" action="/">';
-					echo '<button type="submit">Return to Talon</button>';
-					echo '</form>';
-					die;
-				}
-			?>
+			<?php if ( $access ) { ?>
 			<button id="new-plotball">
 				new plotball
 			</button>
+			<?php } ?>
 		</div>
 	</header>
 
 	<main>
+	<?php if ( $access ) { ?>
 		<div class="row">
 			<div class="tabs">
 				<div class="active tab-button" data-tab="timeline-table">
@@ -66,6 +60,19 @@
 				</div>
 			</div>
 		</div>
+
+		<?php
+	}
+
+	if ( ! $access ) {
+		?>
+		<div class="row">
+			<h1>Unauthorized</h1>
+			<a href="./../" class="button">Return to Talon</a>
+		</div>
+		<?php
+	}
+	?>
 	</main>
 	<div class="modal edit-plotball-modal">
 		<div class="modal__window">
