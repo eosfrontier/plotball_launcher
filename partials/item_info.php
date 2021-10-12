@@ -183,7 +183,7 @@ if ( $status === '3' || $status === '4' ) {
 	</div>
 	<?php
 }
-if ( ! empty( $plotball['flavourtext'] ) ) {
+if ( ! empty( $plotball['flavourtext'] && $status === '4' ) ) {
 	?>
 	<div class="item__double">
 		<h3>Task finished</h3>
