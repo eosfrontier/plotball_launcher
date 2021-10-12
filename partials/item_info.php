@@ -157,7 +157,7 @@ if ( $status === '3' || $status === '4' ) {
 		?>
 	</div>
 <?php } ?>
-<?php if ( $status === '4' && ! empty( $plotball['loot'] ) ) { ?>
+<?php if ( $status === '4' ) { ?>
 	<div class="item__double">
 		<h3>Current team</h3>
 		<?php
@@ -181,8 +181,12 @@ if ( $status === '3' || $status === '4' ) {
 
 		?>
 	</div>
+	<?php
+}
+if ( ! empty( $plotball['flavourtext'] ) ) {
+	?>
 	<div class="item__double">
 		<h3>Task finished</h3>
-		<?php echo $plotball['flavourtext']; ?>
+	<?php echo $plotball['flavourtext']; ?>
 	</div>
 <?php } ?>
