@@ -362,7 +362,7 @@ class Front_Validations {
 		}
 
 		$random = 'none' . rand( 0, 100000 );
-		$html  .= "<input type='radio' id='$random' name='character' value='none' />";
+		$html  .= "<input type='radio' id='$random' name='character' value='none' required />";
 		$html  .= "<label for='$random'>None</label>";
 
 		return $html;
