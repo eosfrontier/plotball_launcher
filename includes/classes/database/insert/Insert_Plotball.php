@@ -33,6 +33,18 @@ class Insert_Plotball {
 			unset( $post['faction_validations'] );
 		}
 
+		if ( ! empty( $post['loot'] ) ) {
+			$post['loot'] = addslashes( $post['loot'] );
+		}
+
+		if ( ! empty( $post['message'] ) ) {
+			$post['message'] = addslashes( $post['message'] );
+		}
+
+		if ( ! empty( $post['flavourtext'] ) ) {
+			$post['flavourtext'] = addslashes( $post['flavourtext'] );
+		}
+
 		if ( ! empty( $post['custom_validation'] ) ) {
 			$validations['custom_validation'] = $post['custom_validation'];
 		}

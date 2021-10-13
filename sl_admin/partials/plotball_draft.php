@@ -187,7 +187,7 @@ use frontier\ploball\admin\Validations;
 		<label for="new_plotball_message" class="required">
 			Plotball description for the players
 		</label><br />
-		<textarea id="new_plotball_message" name="message" placeholder="Roleplay-type description that the players will see." required><?php echo $plotball['message']; ?></textarea>
+		<textarea id="new_plotball_message" name="message" placeholder="Roleplay-type description that the players will see." required><?php echo stripslashes( $plotball['message'] ); ?></textarea>
 	</p>
 	<div id="main_skills">
 		<label>
@@ -225,7 +225,7 @@ use frontier\ploball\admin\Validations;
 		<textarea id="new_form_custom_validation" name="custom_validation" placeholder="This field is optional">
 <?php
 if ( ! empty( json_decode( $plotball['validations'], true )['custom_validation'] ) ) {
-	echo json_decode( $plotball['validations'], true )['custom_validation'];}
+	echo stripslashes( json_decode( $plotball['validations'], true )['custom_validation'] );}
 ?>
 </textarea>
 	</p>
@@ -233,13 +233,13 @@ if ( ! empty( json_decode( $plotball['validations'], true )['custom_validation']
 		<label for="new_form_loot">
 			Loot
 		</label><br />
-		<textarea id="new_form_loot" name="loot"><?php echo $plotball['loot']; ?></textarea>
+		<textarea id="new_form_loot" name="loot"><?php echo stripslashes( $plotball['loot'] ); ?></textarea>
 	</p>
 	<p>
 		<label for="new_form_flavourtext">
 			Flavour text after plot
 		</label><br />
-		<textarea id="new_form_flavourtext" name="flavourtext"><?php echo $plotball['flavourtext']; ?></textarea>
+		<textarea id="new_form_flavourtext" name="flavourtext"><?php echo stripslashes( $plotball['flavourtext'] ); ?></textarea>
 	</p>
 	<div></div>
 	<p>
