@@ -1,3 +1,4 @@
+
 $( "#new-plotball" ).click( function() {
 	$( ".modal.new-plotball-modal" ).show();
 } )
@@ -48,7 +49,16 @@ $( document ).on( "click", ".overview-table .item", function( e ) {
 } )
 
 $( document ).on( "click", ".timeline-plotball", function( e ) {
-	var dataId = $( e.originalEvent.path ).closest( ".timeline-plotball" ).attr( "data-id" );
+	// console.dir(e.target.parentElement.dataset.id);
+
+	const actualDataId = e.target?.dataset?.id || e.target.parentElement.dataset.id
+	// console.log(actualDataId)
+	// console.log(e.originalEvent);
+
+	// var dataId = $( e.originalEvent.path ).closest( ".timeline-plotball" ).attr( "data-id" );
 	$( ".modal.edit-plotball-modal" ).show();
-	$( ".modal.edit-plotball-modal .modal__window" ).load( "partials/modal_edit.php?id=" + dataId );
+
+	// $( ".modal.edit-plotball-modal .modal__window" ).load( "partials/modal_edit.php?id=" + dataId );
+	$( ".modal.edit-plotball-modal .modal__window" ).load( "partials/modal_edit.php?id=" + actualDataId );
+
 } );
