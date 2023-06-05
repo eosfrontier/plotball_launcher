@@ -11,11 +11,11 @@ foreach ( $items as $item ) {
 	if ( $item['published'] !== '5' ) {
 		?>
 	<ul class="item" data-id="<?php echo $item['id']; ?>">
-		<li class="title"><?php echo $item['title']; ?></li>
-		<li><?php echo date( 'd-m-Y', strtotime( $item['starting_date'] ) ) . ' - ' . $item['starting_time']; ?></li>
-		<li><?php echo Sl::get_sl_by_id( $item['plot_owner'] ); ?></li>
-		<li class="validations"><?php echo Validations::get_overview_list( $item['validations'] ); ?></li>
-		<li>Status: <?php echo Status::get_status_as_text( $item['published'] ); ?></li>
+		<li style="pointer-events: none;" class="title"><?php echo $item['title']; ?></li>
+		<li style="pointer-events: none;"><?php echo date( 'd-m-Y', strtotime( $item['starting_date'] ) ) . ' - ' . $item['starting_time']; ?></li>
+		<li style="pointer-events: none;"><?php echo Sl::get_sl_by_id( $item['plot_owner'] ); ?></li>
+		<li style="pointer-events: none;" class="validations"><?php echo Validations::get_overview_list( $item['validations'] ); ?></li>
+		<li style="pointer-events: none;">Status: <?php echo Status::get_status_as_text( $item['published'] ); ?></li>
 	</ul>
 		<?php
 	}
