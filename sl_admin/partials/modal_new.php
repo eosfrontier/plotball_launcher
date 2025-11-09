@@ -143,7 +143,7 @@ foreach ( $sls as $sl ) {
 			</p>
 			<p>
 				<label for="new_form_loot">
-					Loot
+					Loot (Visible to SL Only)
 				</label><br />
 				<textarea id="new_form_loot" name="loot"></textarea>
 			</p>

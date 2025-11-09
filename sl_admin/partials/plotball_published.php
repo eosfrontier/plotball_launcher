@@ -16,7 +16,7 @@ use frontier\ploball\front\Front_Validations;
 		<?php echo $plotball['flavourtext']; ?>
 	</p>
 	<p>
-		<strong>Loot:</strong><br />
+		<strong>Loot (Visible to SL Only):</strong><br />
 		<?php echo $plotball['loot']; ?>
 	</p>
 	<h3>Validations</h3>

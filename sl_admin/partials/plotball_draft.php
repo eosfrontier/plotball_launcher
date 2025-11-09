@@ -237,7 +237,7 @@ if ( ! empty( json_decode( $plotball['validations'], true )['custom_validation']
 	</p>
 	<p>
 		<label for="new_form_loot">
-			Loot
+			Loot (Visible to SL Only)
 		</label><br />
 		<textarea id="new_form_loot" name="loot"><?php echo stripslashes( $plotball['loot'] ); ?></textarea>
 	</p>
