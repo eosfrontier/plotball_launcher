@@ -11,10 +11,10 @@ use frontier\ploball\admin\Validations;
 		<input id="title-plotbal" name="title" type="text" value="<?php echo $plotball['title']; ?>" required />
 	</p>
 	<p>
-		<label for="new_form_type" class="required">
+		<label for="new_form_type">
 			Type
 		</label><br />
-		<select id="new_form_type" required name="type">
+		<select id="new_form_type" name="type">
 			<option disabled selected value>Select an option</option>
 			<optgroup label="Plotgedreven">
 				<option
