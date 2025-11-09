@@ -109,10 +109,10 @@ use frontier\ploball\admin\Validations;
 		<input name="expected_runtime" required min="0" id="expected-runtime" step="10" type="number" required  value="<?php echo $plotball['expected_runtime']; ?>">
 	</p>
 	<p>
-		<label for="new_form_bounce" class="required">
+		<label for="new_form_bounce">
 			Bounce
 		</label><br />
-		<select id="new_form_bounce" name="bounce[]" class="bounce" required multiple>
+		<select id="new_form_bounce" name="bounce[]" class="bounce" multiple>
 			<option value="buff"
 			<?php
 			if ( in_array( 'buff', $bounce, true ) ) {

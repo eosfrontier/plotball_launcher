@@ -80,7 +80,7 @@ foreach ( $sls as $sl ) {
 				<input name="expected_runtime" required min="0" id="expected-runtime" step="10" type="number" required>
 			</p>
 			<p>
-				<label for="new_form_bounce" class="required">
+				<label for="new_form_bounce">
 					Bounce
 				</label><br />
 				<select id="new_form_bounce" class="bounce" name="bounce[]" required multiple>
