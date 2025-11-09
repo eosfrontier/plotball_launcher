@@ -84,6 +84,7 @@ foreach ( $sls as $sl ) {
 					Bounce
 				</label><br />
 				<select id="new_form_bounce" class="bounce" name="bounce[]" required multiple value="NULL">
+					<option value ="NULL" selected>N/A</option>
 					<option value="buff">Buff</option>
 					<option value="faciliterende">Faciliterende</option>
 					<option value="factional">Factional</option>
