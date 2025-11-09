@@ -40,7 +40,7 @@ foreach ( $sls as $sl ) {
 				<label for="new_form_type">
 					Type
 				</label><br />
-				<select id="new_form_type" name="type">
+				<select id="new_form_type" name="type" value="NULL">
 					<option disabled selected value>Select an option</option>
 					<optgroup label="Plotgedreven">
 						<option value="anticlimax">Anti-Climax</option>
@@ -83,7 +83,7 @@ foreach ( $sls as $sl ) {
 				<label for="new_form_bounce">
 					Bounce
 				</label><br />
-				<select id="new_form_bounce" class="bounce" name="bounce[]" required multiple>
+				<select id="new_form_bounce" class="bounce" name="bounce[]" required multiple value="NULL">
 					<option value="buff">Buff</option>
 					<option value="faciliterende">Faciliterende</option>
 					<option value="factional">Factional</option>
