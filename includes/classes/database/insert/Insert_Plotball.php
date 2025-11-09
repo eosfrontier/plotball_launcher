@@ -16,12 +16,7 @@ class Insert_Plotball {
 
 		$validations = [];
 
-		if(is_null($post['bounce'])){
-			$post['bounce'] = 'NULL';
-		}
-		else {
 		$post['bounce'] = implode( ',', $post['bounce'] );
-		}
 
 		if ( isset( $post['main_skills_validations'] ) ) {
 			$validations['main_skills_validations'] = $post['main_skills_validations'];

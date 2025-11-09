@@ -113,6 +113,12 @@ use frontier\ploball\admin\Validations;
 			Bounce
 		</label><br />
 		<select id="new_form_bounce" name="bounce[]" class="bounce" multiple>
+			<option value="NULL"
+			<?php
+			if ( in_array( 'NULL', $bounce, true ) ) {
+				echo ' selected';}
+			?>
+			>N/A</option>
 			<option value="buff"
 			<?php
 			if ( in_array( 'buff', $bounce, true ) ) {
