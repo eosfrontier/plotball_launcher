@@ -1,6 +1,6 @@
 <?php
 if ( isset( $_ENV['SERVER'] ) && ( $_ENV['SERVER'] === 'production' ) ) {
-	require './joomla.php';
+	require 'includes/joomla.php';
 }
 else {
 	$jid = "720";
