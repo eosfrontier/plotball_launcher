@@ -29,31 +29,35 @@ use frontier\ploball\front\Front_Validations;
 	<h3>Current team</h3>
 	<?php
 	$plot_id = $plotball['id'];
-	foreach ($team as $key => $team_member) {
-		if ($key !== 'completed') {
-			$name     = Character::get_active_character_by_id($key)['character_name'];
-			$finished = '';
-			$finish   = 0;
-			if (isset($team['completed']) && in_array($key, $team['completed'])) {
-				$finished = '<br />has completed their task.';
-				$finish   = 1;
-			}
-			$html = "<span tabindex='0' class='small-image'>
+	if (!isset($team)) {
+		echo "No team members currently assigned.<br />";
+	} else {
+		foreach ($team as $key => $team_member) {
+			if ($key !== 'completed') {
+				$name     = Character::get_active_character_by_id($key)['character_name'];
+				$finished = '';
+				$finish   = 0;
+				if (isset($team['completed']) && in_array($key, $team['completed'])) {
+					$finished = '<br />has completed their task.';
+					$finish   = 1;
+				}
+				$html = "<span tabindex='0' class='small-image'>
 			<img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$key.jpg' />
 			<div class='hover-info'>
 				<img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$key.jpg' />
 				<span>$name</span>$finished";
-			if ($finish === 0) {
-				$html .= "<form class='resolve_task_form'>
+				if ($finish === 0) {
+					$html .= "<form class='resolve_task_form'>
 				<input name='plot_id' type='hidden' value='$plot_id' />
 				<input name='character_id' type='hidden' value='$key' />
 				<input name='xf' type='hidden' value='finish_task' />
 				<div class='resolve_task button'>Resolve task</div>
 			</form>";
-			}
-			$html .= '</div>
+				}
+				$html .= '</div>
 			</span>';
-			echo $html;
+				echo $html;
+			}
 		}
 	}
 
@@ -66,7 +70,8 @@ use frontier\ploball\front\Front_Validations;
 <?php require './move_to_published.php'; ?>
 <?php require './move_to_active.php'; ?>
 <?php require './move_to_completed.php'; ?>
-<?php # require './move_to_archive.php'; 
+<?php # require './move_to_archive.php';
 ?>
+<?php require './delete_plotball.php'; ?>
 <script src="../assets/admin/published.js"></script>
 <script src="../assets/admin/update_plotball_status.js"></script>

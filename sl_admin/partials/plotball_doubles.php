@@ -29,25 +29,36 @@ use frontier\ploball\front\Front_Validations;
 	<h3>Double Signups</h3>
 	<?php
 	$plot_id = $plotball['id'];
-	foreach ($doubles as $characters) {
-		echo '<div class="double_signups"><div>These people have signed up for the same thing.</div>';
-		foreach ($characters as $signed_in_character) {
-			$name = Character::get_active_character_by_id($signed_in_character)['character_name'];
-			echo "<span tabindex='0' class='small-image'>
-			<img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$signed_in_character.jpg' />
+	if (!isset($team)) {
+		echo "No team members currently assigned.<br />";
+	} else {
+		foreach ($team as $key => $team_member) {
+			if ($key !== 'completed') {
+				$name     = Character::get_active_character_by_id($key)['character_name'];
+				$finished = '';
+				$finish   = 0;
+				if (isset($team['completed']) && in_array($key, $team['completed'])) {
+					$finished = '<br />has completed their task.';
+					$finish   = 1;
+				}
+				$html = "<span tabindex='0' class='small-image'>
+			<img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$key.jpg' />
 			<div class='hover-info'>
-				<img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$signed_in_character.jpg' />
-				<span>$name</span>
-				<form class='remove_character_from_double_form'>
-					<input name='plot_id' type='hidden' value='$plot_id' />
-					<input name='character_id' type='hidden' value='$signed_in_character' />
-					<input name='xf' type='hidden' value='remove_character_from_doubles' />
-					<div class='remove_character_from_double button'>Remove character</div>
-				</form>
-			</div>
-		</span>";
+				<img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$key.jpg' />
+				<span>$name</span>$finished";
+				if ($finish === 0) {
+					$html .= "<form class='resolve_task_form'>
+				<input name='plot_id' type='hidden' value='$plot_id' />
+				<input name='character_id' type='hidden' value='$key' />
+				<input name='xf' type='hidden' value='finish_task' />
+				<div class='resolve_task button'>Resolve task</div>
+			</form>";
+				}
+				$html .= '</div>
+			</span>';
+				echo $html;
+			}
 		}
-		echo '</div>';
 	}
 	?>
 </div>

@@ -29,7 +29,11 @@ use frontier\ploball\front\Front_Validations;
 	<h3>Current team</h3>
 	<?php
 	$plot_id = $plotball['id'];
-	foreach ($team as $key => $team_member) {
+	if (!isset($team)){
+		echo "No team members currently assigned.<br />";
+	}
+	else { 
+		foreach ($team as $key => $team_member) {
 		if ($key !== 'completed') {
 			$name     = Character::get_active_character_by_id($key)['character_name'];
 			$finished = '';
@@ -56,6 +60,7 @@ use frontier\ploball\front\Front_Validations;
 			echo $html;
 		}
 	}
+	}
 
 	?>
 </div>
@@ -67,5 +72,6 @@ use frontier\ploball\front\Front_Validations;
 <?php # require './move_to_active.php'; ?> 
 <?php require './move_to_completed.php'; ?>
 <?php require './move_to_archive.php'; ?>
+<?php require './delete_plotball.php'; ?>
 <script src="../assets/admin/published.js"></script>
 <script src="../assets/admin/update_plotball_status.js"></script>
