@@ -29,10 +29,10 @@ use frontier\ploball\front\Front_Validations;
 	<h3>Double Signups</h3>
 	<?php
 	$plot_id = $plotball['id'];
-	foreach ( $doubles as $characters ) {
+	foreach ($doubles as $characters) {
 		echo '<div class="double_signups"><div>These people have signed up for the same thing.</div>';
-		foreach ( $characters as $signed_in_character ) {
-			$name = Character::get_active_character_by_id( $signed_in_character )['character_name'];
+		foreach ($characters as $signed_in_character) {
+			$name = Character::get_active_character_by_id($signed_in_character)['character_name'];
 			echo "<span tabindex='0' class='small-image'>
 			<img loading='lazy' alt='' src='https://www.eosfrontier.space/eos_douane/images/mugs/$signed_in_character.jpg' />
 			<div class='hover-info'>
@@ -47,6 +47,8 @@ use frontier\ploball\front\Front_Validations;
 			</div>
 		</span>";
 		}
+		echo '</div>';
+	}
 	?>
 </div>
 <?php require './move_to_published.php'; ?>
