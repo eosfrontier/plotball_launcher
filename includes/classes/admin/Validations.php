@@ -93,7 +93,6 @@ class Validations {
 
 		if ( isset( $list['main_skills_validations'] ) ) {
 			$validations = $list['main_skills_validations'];
-
 			foreach ( $validations as $key => $validation ) {
 				$html .= '<div class="' . $key . ' skill_row">';
 				$html .= '<select class="" name="main_skills_validations[' . $key . '][skill]"><optgroup label="Main Skills">';
@@ -256,7 +255,7 @@ class Validations {
 		return $arguments;
 	}
 
-	private static function lowerlevel( $level ): string {
+	private static function lowerlevel($key, $level ): string {
 		$selected = '';
 
 		if ( $level === '1' ) {

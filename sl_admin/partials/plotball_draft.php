@@ -2,12 +2,14 @@
 
 use frontier\ploball\admin\Validations;
 ?>
+<!-- plotball_draft.php -->
 
 <form method="post" id="update-plotball-form">
 	<p>
 		<label for="title-plotbal" class="required">
 			Title plotball
 		</label><br />
+		Plotball ID: <?php echo $plotball['id']; ?><br />
 		<input id="title-plotbal" name="title" type="text" value="<?php echo $plotball['title']; ?>" required />
 	</p>
 	<p>
@@ -18,77 +20,88 @@ use frontier\ploball\admin\Validations;
 			<option disabled selected value>Select an option</option>
 			<optgroup label="Plotgedreven">
 				<option
-				<?php
-				if ( $plotball['type'] === 'anticlimax' ) {
-					echo 'selected';}
-				?>
-				value="anticlimax">Anti-Climax</option>
+					<?php
+					if ($plotball['type'] === 'anticlimax') {
+						echo 'selected';
+					}
+					?>
+					value="anticlimax">Anti-Climax</option>
 				<option
-				<?php
-				if ( $plotball['type'] === 'climax' ) {
-					echo 'selected';}
-				?>
-				value="climax">Climax</option>
+					<?php
+					if ($plotball['type'] === 'climax') {
+						echo 'selected';
+					}
+					?>
+					value="climax">Climax</option>
 				<option
-				<?php
-				if ( $plotball['type'] === 'openended' ) {
-					echo 'selected';}
-				?>
-				value="openended">Open ended</option>
+					<?php
+					if ($plotball['type'] === 'openended') {
+						echo 'selected';
+					}
+					?>
+					value="openended">Open ended</option>
 			</optgroup>
 			<optgroup label="Infodrip">
 				<option
-				<?php
-				if ( $plotball['type'] === 'mystery' ) {
-					echo 'selected';}
-				?>
-				value="mystery">Mystery</option>
+					<?php
+					if ($plotball['type'] === 'mystery') {
+						echo 'selected';
+					}
+					?>
+					value="mystery">Mystery</option>
 				<option
-				<?php
-				if ( $plotball['type'] === 'noir' ) {
-					echo 'selected';}
-				?>
-				value="noir">Noir</option>
+					<?php
+					if ($plotball['type'] === 'noir') {
+						echo 'selected';
+					}
+					?>
+					value="noir">Noir</option>
 				<option
-				<?php
-				if ( $plotball['type'] === 'worldbuilding' ) {
-					echo 'selected';}
-				?>
-				value="worldbuilding">Worldbuilding</option>
+					<?php
+					if ($plotball['type'] === 'worldbuilding') {
+						echo 'selected';
+					}
+					?>
+					value="worldbuilding">Worldbuilding</option>
 			</optgroup>
 			<optgroup label="Planning">
 				<option
-				<?php
-				if ( $plotball['type'] === 'heist-coverup' ) {
-					echo 'selected';}
-				?>
-				value="heist-coverup">Heist/coverup</option>
+					<?php
+					if ($plotball['type'] === 'heist-coverup') {
+						echo 'selected';
+					}
+					?>
+					value="heist-coverup">Heist/coverup</option>
 				<option
-				<?php
-				if ( $plotball['type'] === 'strategy' ) {
-					echo 'selected';}
-				?>
-				value="strategy">Strategy</option>
+					<?php
+					if ($plotball['type'] === 'strategy') {
+						echo 'selected';
+					}
+					?>
+					value="strategy">Strategy</option>
 			</optgroup>
 			<optgroup label="Talky">
 				<option
-				<?php
-				if ( $plotball['type'] === 'legal' ) {
-					echo 'selected';}
-				?>
-				value="legal">Legal</option>
+					<?php
+					if ($plotball['type'] === 'legal') {
+						echo 'selected';
+					}
+					?>
+					value="legal">Legal</option>
 				<option
-				<?php
-				if ( $plotball['type'] === 'philosophical' ) {
-					echo 'selected';}
-				?>
-				value="philosophical">Philosophical</option>
+					<?php
+					if ($plotball['type'] === 'philosophical') {
+						echo 'selected';
+					}
+					?>
+					value="philosophical">Philosophical</option>
 				<option
-				<?php
-				if ( $plotball['type'] === 'political' ) {
-					echo 'selected';}
-				?>
-				value="political">Political</option>
+					<?php
+					if ($plotball['type'] === 'political') {
+						echo 'selected';
+					}
+					?>
+					value="political">Political</option>
 			</optgroup>
 		</select>
 	</p>
@@ -106,7 +119,7 @@ use frontier\ploball\admin\Validations;
 		<label for="expected-runtime" class="required">
 			Expected runtime in minutes
 		</label><br />
-		<input name="expected_runtime" required min="0" id="expected-runtime" step="10" type="number" required  value="<?php echo $plotball['expected_runtime']; ?>">
+		<input name="expected_runtime" required min="0" id="expected-runtime" step="10" type="number" required value="<?php echo $plotball['expected_runtime']; ?>">
 	</p>
 	<p>
 		<label for="new_form_bounce">
@@ -114,71 +127,71 @@ use frontier\ploball\admin\Validations;
 		</label><br />
 		<select id="new_form_bounce" name="bounce[]" class="bounce" multiple>
 			<option value="NULL"
-			<?php
-			if ( in_array( 'NULL', $bounce, true ) ) {
-				echo ' selected';}
-			?>
-			>N/A</option>
+				<?php
+				if (in_array('NULL', $bounce, true)) {
+					echo ' selected';
+				}
+				?>>N/A</option>
 			<option value="buff"
-			<?php
-			if ( in_array( 'buff', $bounce, true ) ) {
-				echo ' selected';}
-			?>
-			>Buff</option>
+				<?php
+				if (in_array('buff', $bounce, true)) {
+					echo ' selected';
+				}
+				?>>Buff</option>
 			<option value="faciliterende"
-			<?php
-			if ( in_array( 'faciliterende', $bounce, true ) ) {
-				echo ' selected';}
-			?>
-			>Faciliterende</option>
+				<?php
+				if (in_array('faciliterende', $bounce, true)) {
+					echo ' selected';
+				}
+				?>>Faciliterende</option>
 			<option value="factional"
-			<?php
-			if ( in_array( 'factional', $bounce, true ) ) {
-				echo ' selected';}
-			?>
-			>Factional</option>
+				<?php
+				if (in_array('factional', $bounce, true)) {
+					echo ' selected';
+				}
+				?>>Factional</option>
 			<option value="group"
-			<?php
-			if ( in_array( 'group', $bounce, true ) ) {
-				echo ' selected';}
-			?>
-			>Group</option>
+				<?php
+				if (in_array('group', $bounce, true)) {
+					echo ' selected';
+				}
+				?>>Group</option>
 			<option value="healing"
-			<?php
-			if ( in_array( 'healing', $bounce, true ) ) {
-				echo ' selected';}
-			?>
-			>Healing/Reparatie</option>
+				<?php
+				if (in_array('healing', $bounce, true)) {
+					echo ' selected';
+				}
+				?>>Healing/Reparatie</option>
 			<option value="item"
-			<?php
-			if ( in_array( 'item', $bounce, true ) ) {
-				echo ' selected';}
-			?>
-			>Item</option>
+				<?php
+				if (in_array('item', $bounce, true)) {
+					echo ' selected';
+				}
+				?>>Item</option>
 			<option value="multiplier"
-			<?php
-			if ( in_array( 'multiplier', $bounce, true ) ) {
-				echo ' selected';}
-			?>
-			>Multiplier</option>
+				<?php
+				if (in_array('multiplier', $bounce, true)) {
+					echo ' selected';
+				}
+				?>>Multiplier</option>
 			<option value="skill"
-			<?php
-			if ( in_array( 'skill', $bounce, true ) ) {
-				echo ' selected';}
-			?>
-			>Skill</option>
+				<?php
+				if (in_array('skill', $bounce, true)) {
+					echo ' selected';
+				}
+				?>>Skill</option>
 			<option value="skill_transfer"
-			<?php
-			if ( in_array( 'skill_transfer', $bounce, true ) ) {
-				echo ' selected';}
-			?>
-			>Skill transfer</option>
+				<?php
+				if (in_array('skill_transfer', $bounce, true)) {
+					echo ' selected';
+				}
+				?>>Skill transfer</option>
 			<option value="threshold"
-			<?php
-			if ( in_array( 'threshold', $bounce, true ) ) {
-				echo ' selected';}
-			?>
-			>Threshold</option>
+				<?php
+				if (in_array('threshold', $bounce, true)) {
+					echo ' selected';
+				}
+				?>>Threshold</option>
 		</select>
 	</p>
 	<p>
@@ -193,14 +206,14 @@ use frontier\ploball\admin\Validations;
 		<label for="new_plotball_message" class="required">
 			Plotball description for the players
 		</label><br />
-		<textarea id="new_plotball_message" name="message" placeholder="Roleplay-type description that the players will see." required><?php echo stripslashes( $plotball['message'] ); ?></textarea>
+		<textarea id="new_plotball_message" name="message" placeholder="Roleplay-type description that the players will see." required><?php echo stripslashes($plotball['message']); ?></textarea>
 	</p>
 	<div id="main_skills">
 		<label>
 			Main skills validation
 		</label><br />
 
-		<?php echo Validations::list_main_skills( $plotball['validations'] ); ?>
+		<?php echo Validations::list_main_skills($plotball['validations']); ?>
 
 		<button id="new_main_skill_button" onClick="add_main_skill(); return false">
 			New main skill validation
@@ -210,7 +223,7 @@ use frontier\ploball\admin\Validations;
 		<label>
 			Specialty skills validation
 		</label><br />
-		<?php echo Validations::list_specialty_skills( $plotball['validations'] ); ?>
+		<?php echo Validations::list_specialty_skills($plotball['validations']); ?>
 		<button id="new_specialty_skill_button" onClick="add_specialty_skill(); return false">
 			New specialty skill validation
 		</button>
@@ -219,7 +232,7 @@ use frontier\ploball\admin\Validations;
 		<label>
 			Faction validation
 		</label><br />
-		<?php echo Validations::list_faction( $plotball['validations'] ); ?>
+		<?php echo Validations::list_faction($plotball['validations']); ?>
 		<button id="new_faction_button" onClick="add_faction(); return false">
 			New Faction validation
 		</button>
@@ -230,8 +243,9 @@ use frontier\ploball\admin\Validations;
 		</label><br />
 		<textarea id="new_form_custom_validation" name="custom_validation" placeholder="This field is optional">
 <?php
-if ( ! empty( json_decode( $plotball['validations'], true )['custom_validation'] ) ) {
-	echo stripslashes( json_decode( $plotball['validations'], true )['custom_validation'] );}
+if (! empty(json_decode($plotball['validations'], true)['custom_validation'])) {
+	echo stripslashes(json_decode($plotball['validations'], true)['custom_validation']);
+}
 ?>
 </textarea>
 	</p>
@@ -239,13 +253,13 @@ if ( ! empty( json_decode( $plotball['validations'], true )['custom_validation']
 		<label for="new_form_loot">
 			Loot (Visible to SL Only)
 		</label><br />
-		<textarea id="new_form_loot" name="loot"><?php echo stripslashes( $plotball['loot'] ); ?></textarea>
+		<textarea id="new_form_loot" name="loot"><?php echo stripslashes($plotball['loot']); ?></textarea>
 	</p>
 	<p>
 		<label for="new_form_flavourtext">
 			Flavour text after plot
 		</label><br />
-		<textarea id="new_form_flavourtext" name="flavourtext"><?php echo stripslashes( $plotball['flavourtext'] ); ?></textarea>
+		<textarea id="new_form_flavourtext" name="flavourtext"><?php echo stripslashes($plotball['flavourtext']); ?></textarea>
 	</p>
 	<div></div>
 	<p>
@@ -263,51 +277,57 @@ if ( ! empty( json_decode( $plotball['validations'], true )['custom_validation']
 
 
 <script>
-jQuery("#update_draft_button").on('click', function (e) {
-	e.preventDefault();
-	var form_data = jQuery('#update-plotball-form').serialize();
-	$.ajax({
-		url: "xf.php",
-		type: "post",
-		data: form_data
-	}).done(function (response) {
-		if(response == 1){
-			hideModal();
+	jQuery("#update_draft_button").on('click', function(e) {
+		e.preventDefault();
+		var form_data = jQuery('#update-plotball-form').serialize();
+		$.ajax({
+			url: "xf.php",
+			type: "post",
+			data: form_data
+		}).done(function(response) {
+			if (response == 1) {
+				hideModal();
+			}
+		});
+	});
+
+	jQuery("#publish_plotball_button").on('click', function(e) {
+		e.preventDefault();
+		var form_data = {
+			id: $('input[name="id"]').val(),
+			xf: 'move_to_published'
+		};
+		var answer = window.confirm("Are you sure you want to publish this plotball?");
+		if (answer === true) {
+			$.ajax({
+				url: "xf.php",
+				type: "post",
+				data: form_data
+			}).done(function(response) {
+				if (response == 1) {
+					hideModal();
+				}
+			})
 		}
 	});
-});
 
-jQuery("#publish_plotball_button").on('click', function (e) {
-	e.preventDefault();
-	var form_data = {id: $( 'input[name="id"]' ).val(), xf: 'move_to_published'};
-	var answer = window.confirm("Are you sure you want to publish this plotball?");
-	if(answer === true){
-		$.ajax({
-			url: "xf.php",
-			type: "post",
-			data: form_data
-		}).done(function (response) {
-			if(response == 1){
-				hideModal();
-			}
-		})
-	}
-});
-
-jQuery("#delete_plotball_button").on('click', function (e) {
-	e.preventDefault();
-	var form_data = {id: $( 'input[name="id"]' ).val(), xf: 'delete_plotball'};
-	var answer = window.confirm("Are you sure you want to delete this plotball?");
-	if(answer === true){
-		$.ajax({
-			url: "xf.php",
-			type: "post",
-			data: form_data
-		}).done(function (response) {
-			if(response == 1){
-				hideModal();
-			}
-		})
-	}
-});
+	jQuery("#delete_plotball_button").on('click', function(e) {
+		e.preventDefault();
+		var form_data = {
+			id: $('input[name="id"]').val(),
+			xf: 'delete_plotball'
+		};
+		var answer = window.confirm("Are you sure you want to delete this plotball?");
+		if (answer === true) {
+			$.ajax({
+				url: "xf.php",
+				type: "post",
+				data: form_data
+			}).done(function(response) {
+				if (response == 1) {
+					hideModal();
+				}
+			})
+		}
+	});
 </script>

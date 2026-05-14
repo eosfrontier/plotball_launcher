@@ -8,21 +8,21 @@ $sls    = Sl::get_all_sls();
 
 $main_skills = '';
 
-foreach ( $skills as $skill ) {
-	if ( $skill['parents'] === 'none' || $skill['parents'] === 'tele' ) {
+foreach ($skills as $skill) {
+	if ($skill['parents'] === 'none' || $skill['parents'] === 'tele') {
 		$main_skills .= '<option value="' . $skill['primaryskill_id'] . '">' . $skill['name'] . '</option>';
 	}
 }
 
 $special_skills = '';
-foreach ( $skills as $skill ) {
-	if ( $skill['parents'] !== 'none' ) {
+foreach ($skills as $skill) {
+	if ($skill['parents'] !== 'none') {
 		$special_skills .= '<option value="' . $skill['primaryskill_id'] . '">' . $skill['name'] . '</option>';
 	}
 }
 
 $sl_list = '';
-foreach ( $sls as $sl ) {
+foreach ($sls as $sl) {
 	$sl_list .= '<option value="' . $sl['id'] . '">' . $sl['name'] . '</option>';
 }
 
@@ -84,7 +84,7 @@ foreach ( $sls as $sl ) {
 					Bounce
 				</label><br />
 				<select id="new_form_bounce" class="bounce" name="bounce[]" required multiple value="NULL">
-					<option value ="NULL" selected>N/A</option>
+					<option value="NULL" selected>N/A</option>
 					<option value="buff">Buff</option>
 					<option value="faciliterende">Faciliterende</option>
 					<option value="factional">Factional</option>

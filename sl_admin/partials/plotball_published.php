@@ -1,7 +1,9 @@
 <?php
+
 use frontier\ploball\front\Front_Validations;
 
 ?>
+<!-- plotball_published.php -->
 <div>
 	<h3><?php echo $plotball['title']; ?></h3>
 	<p>
@@ -21,7 +23,7 @@ use frontier\ploball\front\Front_Validations;
 	</p>
 	<h3>Validations</h3>
 	<div class="front-validations">
-		<?php echo Front_Validations::show_requirements( $plotball['id'], true ); ?>
+		<?php echo Front_Validations::show_requirements($plotball['id'], true); ?>
 	</div>
 </div>
 <?php require './move_to_draft.php'; ?>

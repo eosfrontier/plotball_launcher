@@ -1,5 +1,12 @@
 <?php
-include 'joomla.php';
+if ( isset( $_ENV['SERVER'] ) && ( $_ENV['SERVER'] === 'production' ) ) {
+	require './../includes/joomla.php';
+}
+else {
+	$jid = "720";
+	$jname = "Nimuel Agati Iskandu (Development Environment)";
+	$jgroups = ["32", "30"];
+}
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -13,7 +20,7 @@ curl_setopt_array($curl, array(
   CURLOPT_CUSTOMREQUEST => 'GET',
   CURLOPT_HTTPHEADER => array(
     'accountID:' . $jid,
-    'token: am9zaHNwbGF5Z3JvdW5k'
+    'token:' . $_ENV['token']
   ),
 ));
 
