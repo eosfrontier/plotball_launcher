@@ -59,8 +59,13 @@ use frontier\ploball\front\Front_Validations;
 
 	?>
 </div>
+<p>
+	<br /><strong>Status:</strong> Completed<br />
+</p>
+<?php require './move_to_draft.php'; ?>
 <?php require './move_to_published.php'; ?>
-<?php require './move_to_active.php'; ?>
+<?php require './move_to_active.php'; ?> 
+<?php #require './move_to_completed.php'; ?>
 <?php require './move_to_archive.php'; ?>
 <script src="../assets/admin/published.js"></script>
 <script src="../assets/admin/update_plotball_status.js"></script>

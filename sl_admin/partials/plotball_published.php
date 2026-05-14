@@ -26,7 +26,13 @@ use frontier\ploball\front\Front_Validations;
 		<?php echo Front_Validations::show_requirements($plotball['id'], true); ?>
 	</div>
 </div>
+<p>
+	<br /><strong>Status:</strong> Published<br />
+</p>
 <?php require './move_to_draft.php'; ?>
+<?php # require './move_to_published.php'; ?>
+<?php require './move_to_active.php'; ?> 
+<?php require './move_to_completed.php'; ?>
 <?php require './move_to_archive.php'; ?>
 <script src="../assets/admin/published.js"></script>
 <script src="../assets/admin/update_plotball_status.js"></script>
