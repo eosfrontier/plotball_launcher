@@ -5,12 +5,12 @@ use frontier\ploball\database\get\Get_All_Plotballs;
 $plotballs   = Get_All_Plotballs::get_all_plotballs();
 $timestamped = [];
 
-foreach ( $plotballs as $plotball ) {
-	$timestamps[ $plotball['starting_date'] ][] = $plotball;
+foreach ($plotballs as $plotball) {
+	$timestamps[$plotball['starting_date']][] = $plotball;
 }
 
 ?>
-
+<!-- timeline_table.php -->
 <div class="timeline-tables">
 	<div class="color-explanation">
 		<div class="draft">
@@ -34,10 +34,10 @@ foreach ( $plotballs as $plotball ) {
 	</div>
 
 	<?php
-	foreach ( $timestamps as $key => $timestamp ) {
-		?>
+	foreach ($timestamps as $key => $timestamp) {
+	?>
 		<div class="timeline-item">
-			<h3><?php echo date( 'd-m-Y', strtotime( $key ) ); ?></h3>
+			<h3><?php echo date('d-m-Y', strtotime($key)); ?></h3>
 
 			<div class="scrolling">
 				<table cellspacing="0" cellpadding="0" class="timeline-table">
@@ -69,27 +69,27 @@ foreach ( $plotballs as $plotball ) {
 
 					</thead>
 					<?php
-					foreach ( $timestamp as $plotball ) {
-						$time    = explode( ':', $plotball['starting_time'] );
-						$minutes = ( ( ( $time[0] ) * 60 + $time[1] ) / 14.4 );
-						$length  = ( $plotball['expected_runtime'] / 14.4 );
+					foreach ($timestamp as $plotball) {
+						$time    = explode(':', $plotball['starting_time']);
+						$minutes = ((($time[0]) * 60 + $time[1]) / 14.4);
+						$length  = ($plotball['expected_runtime'] / 14.4);
 						$class   = '';
-						if ( $plotball['published'] === '1' ) {
+						if ($plotball['published'] === '1') {
 							$class = ' published';
 						}
-						if ( $plotball['published'] === '2' ) {
+						if ($plotball['published'] === '2') {
 							$class = ' doubles';
 						}
-						if ( $plotball['published'] === '3' ) {
+						if ($plotball['published'] === '3') {
 							$class = ' active';
 						}
-						if ( $plotball['published'] === '4' ) {
+						if ($plotball['published'] === '4') {
 							$class = ' finished';
 						}
-						if ( $plotball['published'] === '5' ) {
+						if ($plotball['published'] === '5') {
 							$class = ' archived';
 						}
-						?>
+					?>
 						<tr>
 							<td>
 								<div style="left: <?php echo $minutes; ?>%; width:<?php echo $length; ?>%" class="timeline-plotball<?php echo $class; ?>" data-id="<?php echo $plotball['id']; ?>">
@@ -124,7 +124,7 @@ foreach ( $plotballs as $plotball ) {
 				</table>
 			</div>
 		</div>
-		<?php
+	<?php
 	}
 	?>
 </div>

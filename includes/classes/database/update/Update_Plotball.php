@@ -61,7 +61,7 @@ class Update_Plotball {
 	}
 
 	/**
-	 * Set the published column to five.
+	 * Set the published column to zero.
 	 *
 	 * @param  mixed $id The id of the plotball you want to change.
 	 * @return bool
@@ -93,7 +93,7 @@ class Update_Plotball {
 	}
 
 	/**
-	 * Set the published column to five.
+	 * Set the published column to two.
 	 *
 	 * @param  mixed $id The id of the plotball you want to change.
 	 * @return bool
@@ -107,7 +107,7 @@ class Update_Plotball {
 	}
 
 	/**
-	 * Set the published column to five.
+	 * Set the published column to three.
 	 *
 	 * @param  mixed $id The id of the plotball you want to change.
 	 * @return bool
@@ -121,7 +121,7 @@ class Update_Plotball {
 	}
 
 	/**
-	 * Set the published column to five.
+	 * Set the published column to four.
 	 *
 	 * @param  mixed $id The id of the plotball you want to change.
 	 * @return bool

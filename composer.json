@@ -8,5 +8,10 @@
 		"psr-4": {
 			"frontier\\ploball\\": "includes/classes"
 		}
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
 	}
 }

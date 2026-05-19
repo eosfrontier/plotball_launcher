@@ -6,10 +6,10 @@ use frontier\ploball\admin\Skills;
 $skills = Skills::get_all_skills_groups();
 
 $special_skills = '';
-foreach ( $skills as $skill ) {
-	if ( $skill['parents'] !== 'none' ) {
+foreach ($skills as $skill) {
+	if ($skill['parents'] !== 'none') {
 		$special_skills .= '<option value="' . $skill['primaryskill_id'] . '">' . $skill['name'] . '</option>';
 	}
 }
-
+echo '<!-- specialty_skills.php -->';
 echo $special_skills;

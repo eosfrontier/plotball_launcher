@@ -93,17 +93,16 @@ class Validations {
 
 		if ( isset( $list['main_skills_validations'] ) ) {
 			$validations = $list['main_skills_validations'];
-
 			foreach ( $validations as $key => $validation ) {
 				$html .= '<div class="' . $key . ' skill_row">';
 				$html .= '<select class="" name="main_skills_validations[' . $key . '][skill]"><optgroup label="Main Skills">';
 				$html .= self::main_skills_select( $validation['skill'] );
 				$html .= '</optgroup></select>';
 				$html .= '<select class="" name="main_skills_validations[' . $key . '][argument]">';
-				$html .= self::arguments( $key, $validation['argument'] );
+				$html .= self::arguments( $validation['argument'] );
 				$html .= '</select>';
 				$html .= '<select class="" name="main_skills_validations[' . $key . '][level]">';
-				$html .= self::lowerlevel( $key, $validation['level'] );
+				$html .= self::lowerlevel( $validation['level'] );
 				$html .= '</select>';
 				$html .= '<button class="remove-validation">Remove row 🗑️</button>';
 				$html .= '</div>';
